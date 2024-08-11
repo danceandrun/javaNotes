@@ -1,0 +1,77 @@
+GET _analyze
+{
+  "text": "我是一只因为有光，所以有梦想的鱼",
+  "analyzer": "ik_max_word"
+}
+
+
+# 创建索引
+PUT teacher
+
+# 查询索引
+GET teacher
+
+# 删除索引
+DELETE teacher
+
+# 对一个已经存在的索引，定义映射
+PUT teacher/_mapping
+{
+  "properties": {
+    "id": {"type": "integer"},
+    "name": {"type": "text"}
+  }
+    
+}
+
+# 查看映射
+GET teacher/_mapping
+
+# 创建索引的同时，定义映射
+PUT teacher
+{
+  "mappings": {
+    "properties": {
+       "id": {"type": "integer"},
+      "name": {"type": "text"}
+    }
+  }
+}
+
+# 修改映射(添加字段)
+PUT teacher/_mapping
+{
+  "properties": {
+    "age": {"type" : "integer"}
+  }
+}
+
+# 不能修改已经存在字段
+PUT teacher/_mapping
+{
+  "properties": {
+    "name": {"type" : "keyword"}
+  }
+}
+
+# 添加文档 "_id" 代表文档唯一标识
+POST teacher/_doc/100
+{
+  "id": 1,
+  "name": "changfeng",
+  "age": 18
+}
+
+POST teacher/_doc/
+{
+  "id": 2,
+  "name": "kongling",
+  "age": 19
+}
+
+# 查询单条文档
+GET teacher/_doc/Z3QgJ4sBQe_hafgf3B6q
+
+#查询文档
+GET teacher/_search
+

@@ -1,0 +1,253 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET _analyze
+{
+  "text": "我是一只因为有光，所以有梦想的鱼",
+  "analyzer": "ik_max_word"
+}
+
+
+# 创建索引
+PUT teacher
+
+# 查询索引
+GET teacher
+
+# 删除索引
+DELETE teacher
+
+# 对一个已经存在的索引，定义映射
+PUT teacher/_mapping
+{
+  "properties": {
+    "id": {"type": "integer"},
+    "name": {"type": "text"}
+  }
+    
+}
+
+# 查看映射
+GET teacher/_mapping
+
+# 创建索引的同时，定义映射
+PUT teacher
+{
+  "mappings": {
+    "properties": {
+       "id": {"type": "integer"},
+      "name": {"type": "text"}
+    }
+  }
+}
+
+# 修改映射(添加字段)
+PUT teacher/_mapping
+{
+  "properties": {
+    "age": {"type" : "integer"}
+  }
+}
+
+# 不能修改已经存在字段
+PUT teacher/_mapping
+{
+  "properties": {
+    "name": {"type" : "keyword"}
+  }
+}
+
+# 添加文档 "_id" 代表文档唯一标识
+POST teacher/_doc/100
+{
+  "id": 1,
+  "name": "changfeng",
+  "age": 18
+}
+
+POST teacher/_doc/
+{
+  "id": 2,
+  "name": "kongling",
+  "age": 19
+}
+
+# 查询单条文档
+GET teacher/_doc/Z3QgJ4sBQe_hafgf3B6q
+
+#查询文档
+GET teacher/_search
+
+# 文档的修改——全量修改
+POST teacher/_doc/100
+{
+  "id": 1,
+  "name": "changfeng",
+  "age": 18
+}
+
+# 文档的修改: 部分修改
+POST teacher/_update/100
+{
+  "doc": {
+    "name": "beihai"
+  }
+}
+
+# 文档的删除
+DELETE teacher/_doc/Z3QgJ4sBQe_hafgf3B6q
+
+# 测试分词器的分词效果
+
+# 1. ik_max_word
+GET  _analyze
+{
+  "text": "好好学习，天天向上",
+  "analyzer": "ik_max_word"
+}
+
+# 2. ik_smart
+GET _analyze
+{
+ "text": "好好学习，天天向上",
+  "analyzer": "ik_smart"
+}
+
+# 在映射中指定目标字段所使用的的分词器
+# a. 该字段在创建倒排索引项的时候所使用的的分词器
+# b. 针对address查询是，关键词的分词器
+PUT teacher
+{
+  "mappings": {
+    "properties": {
+      "id": {"type": "integer"},
+      "name": {"type": "text"},
+      "address": {
+        "type": "text",
+         "analyzer": "ik_max_word"
+      }
+    }
+  }
+}
+
+POST teacher/_doc/cskaoyan001
+{
+  "id": 1,
+  "name": "changfeng",
+  "address": "武汉市江岸区"
+}
+
+POST teacher/_doc/cskaoyan002
+{
+  "id": 2,
+  "name": "kongling",
+  "address": "武汉市江夏区"
+}
+
+POST teacher/_doc/cskaoyan003
+{
+  "id": 3,
+  "name": "shitou",
+  "address": "武汉黄陂"
+}
+
+GET teacher/_search
+
+# match 全文查询: 会对查询关键字分词
+#  武汉市 ——> 武汉  市
+GET teacher/_search
+{
+  "query": {
+    "match": {
+      "address": "武汉市"
+    }
+  }
+}
+
+# term 词条查询: 不会对查询的关键字分词
+# "武汉市"
+GET teacher/_search
+{
+  "query": {
+    "term": {
+      "address": {
+        "value": "武汉市"
+      }
+    }
+  }
+}
+
+GET test_53th/_search
+
+DELETE test_53th
+
+DELETE teacher
+
+PUT teacher
+{
+  "mappings": {
+    "properties": {
+    "id": {"type": "long"},
+    "name": {"type": "text"},
+    "age": {"type": "integer"}
+   }
+  }
+}
+
+# 批量操作
+POST _bulk
+{"create": {"_index": "teacher", "_id": "cskaoyan001"}}
+{"id":1, "name":"changfeng", "age":18}
+{"create": {"_index": "teacher", "_id": "cskaoyan002"}}
+{"id":2, "name":"kongling", "age":19}
+{"update": {"_index": "teacher", "_id": "cskaoyan002"}}
+{"doc": {"name": "shitou"}}
+{"delete": {"_index":"teacher", "_id": "cskaoyan001"}}
+
+GET teacher/_search
+
+
+PUT product
+{
+  "mappings": {
+    "properties": {
+      "id":{"type": "long"},
+      "image": {"type":  "keyword"},
+      "status": {"type": "integer"},
+      "sellPoint": {
+        "type": "text",
+        "analyzer": "ik_max_word"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "ik_max_word"
+      },
+      "num":{"type": "integer"},
+      "tmName": {"type": "keyword"},
+      "cid": {"type": "long"},
+      "price": {"type": "double"},
+      "limitNum": {"type": "integer"},
+      "created": {"type": "date"},
+      "updated": {"type": "date"}
+    }
+  }
+}
+
+GET product/_search
+
+# match_all查询
+# from: 指定从结果集中的第几条记录开始返回(第一条记录下标为0)
+# size：从from开始一共返回的文档数量
+GET product/_search
+{
+  "query": {
+    "match_all": {}
+  },
+  "from": 0,
+  "size": 50
+}
+
