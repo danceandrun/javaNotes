@@ -23,10 +23,6 @@
 传统的JDBC查询代码
 
 ```JAVA
-com.cskaoyan.QueryDemo
-```
-
-```JAVA
 public class QueryDemo {
     public static void main(String[] args) {
         // JDBC连接信息
@@ -86,7 +82,7 @@ public class QueryDemo {
 >    </dependency>
 > ```
 
-配置一: 配置一个Mybatis的**主配置文件**，用来获取`SqlSessionFactory`。（`mybatis-config.xml`）
+配置一：配置一个Mybatis的**主配置文件**，用来获取`SqlSessionFactory`。（`mybatis-config.xml`）
 
 >`SqlSessionFactory`：每一个Mybatis应用都是以`SqlSessionFactory`的**实例对象**为核心的。使用Mybatis必须以`SqlSessionFactory`的实例为核心，再以`SqlSessionFactory`的实例生产`SqlSession`实例对象的。
 >` SqlSession`：这个其实表示和数据库之间的一个**连接**，里面封装了` Connection`对象
@@ -2799,7 +2795,7 @@ MyBatis-Plus（简称 MP）是一个 MyBatis的增强工具，在 MyBatis 的基
 >
 > 我们的愿景是成为 MyBatis 最好的搭档，就像魂斗罗中的 1P、2P，基友搭配，效率翻倍。
 
-![](E:\0.王道训练营\3.我的Daily笔记\2.JavaSection2_byFengshang\week09\assets\relationship-with-mybatis.png)
+![](.\assets\relationship-with-mybatis.png)
 
 - **无侵入**：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑
 - **损耗小**：启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作

@@ -204,7 +204,7 @@ git commit -m "HashMap的练习"
 
 #### 处理冲突
 
-领先才能`push`,落后才能`pull`
+领先才能`push`，落后才能`pull`
 
 [冲突处理·流程图]
 
@@ -249,8 +249,6 @@ git commit -m "HashMap的练习"
 ```
 
 ### 后悔药
-
-
 
 Git给我们提供了一些可以回退的措施，也叫作后悔药。
 
@@ -300,8 +298,6 @@ xxx.txt
 
 target/*.class
 ```
-
-
 
 > 注意事项：
 >
@@ -403,8 +399,6 @@ git可以右键，然后add commit 提交信息。
 
 `http://localhost:8080/file?name=1`
 
-![image-20230306214641971](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\image-20230306214641971-1679974785452-1.png)
-
 ## 在淘宝页面输入手机，发生了什么事情
 
 <span style=color:red;background:yellow>**在淘宝上搜索手机，其实就是淘宝帮我们封装了一次请求。**</span>
@@ -413,27 +407,11 @@ git可以右键，然后add commit 提交信息。
 
 本质上和我们自己通过url来访问没有区别。
 
-
-
-![image-20230306203814183](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\image-20230306203814183-1679974785453-2.png)
-
-![image-20230306203955034](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\image-20230306203955034-1679974785453-4.png)
-
 ## 输入url，发生了什么
 
-> 面试可能会问：输入url之后发生了什么？
-
-前端发送了一个请求，给谁？
-
-给淘宝的服务器。  
+前端发送了一个请求，给谁？给淘宝的服务器。  
 
 `https://s.taobao.com/search?q=手机`
-
-![image-20230306215013391](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\image-20230306215013391-1679974785453-3.png)
-
-<span style=color:red;background:yellow>**大家一定要知道这个流程。**</span>
-
-
 
 ## url有几部分构成
 
@@ -472,7 +450,7 @@ http://localhost:8080/file?name=1.txt
 - 前端：又称web前端，网站的前台部分，运行在浏览器，<font color=red>**给客户浏览的网页。**</font>
 - 后端：管理和处理数据的。前端页面上展示的数据，都是后端给的。
 
-![image-20230205150835345](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\image-20230205150835345.png)
+
 前端：前端怎么布的局，能放几个商品，商品怎么展示。价格的颜色。图片的大小......
 
 后端：这个手机的图片，手机的价格。手机的型号参数......
@@ -491,8 +469,6 @@ http://localhost:8080/file?name=1.txt
 // 2， 作业会课上讲
 ```
 
-
-
 前端需要学习的东西
 
 ```` java
@@ -502,8 +478,6 @@ http://localhost:8080/file?name=1.txt
 // CSS：用于美化页面，布局页面
 // JavaScript：控制页面的元素，让页面有一些动态的效果
 ````
-
-
 
 为什么不用最新版本？
 
@@ -525,8 +499,6 @@ http://localhost:8080/file?name=1.txt
 # HTML
 
 ## HTML基本概念
-
-
 
 ``` JAVA
 HTML概念
@@ -840,8 +812,6 @@ select :size(size ="4"下拉可见数4)
 
 
 
-
-
 ```java
 <form>表单, 用来在浏览器的网页上, 通过用户输入或者点击, 生成一个url, 让浏览器根据这个url发起请求。
   用于采集用户输入的数据的，用于和服务器进行交互。比如登录页面，注册页面。
@@ -873,13 +843,12 @@ select :size(size ="4"下拉可见数4)
 
 ```
 
-#### http请求方式get和post的区别: 背会
+#### http请求方式get和post的区别: 
 
 get和post的区别:
-1, get请求'一般'把请求参数放到url之后, POST请求'一般'把参数放到请求正文里
-      url之后拼接参数最多1kb
+1, get请求'一般'把请求参数放到url之后，POST请求'一般'把参数放到请求正文里。url之后拼接参数最多1kb
 2, get请求不安全,  post请求相对安全一些
-3, 语义化区别,  get请求一般用来获取数据,  post请求一般用来提交数据
+3, 语义化区别： get请求一般用来获取数据,  post请求一般用来提交数据
 
 
 

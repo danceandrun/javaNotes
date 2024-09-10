@@ -6,7 +6,7 @@
 
 MyBatis-Plus（简称 MP）是一个 MyBatis的增强工具，在 MyBatis 的基础上**只做增强不做改变**，为简化开发、提高效率而生（[官方网址](http://mp.baomidou.com))，它具有如下特性：
 
-+ 增强在单表访问。不考虑逆向工程时，使用Mybatis需要定义mapper接口，mapper.xml文件中写sql语句,配置数据库
++ 增强在单表访问。不考虑逆向工程时，使用Mybatis需要定义mapper接口，`mapper.xml`文件中写sql语句，配置数据库
 + 效率的提高指的是开发效率不是运行效率
 
 > 愿景
@@ -367,7 +367,7 @@ public class User implements Serializable {
 
 AUTO：MybatisPlus不生成主键，**数据库生成**，MybatisPlus可以拿到生成后的主键。
 
-ASSIGN_ID：即雪花算法，生成一个长整型值。（雪花算法和当前时间和机房数据库有关）
+ASSIGN_ID：即雪花算法，生成一个长整型值。（雪花算法和当前时间，机房数据库有关）
 
 | 值          | 描述                                                         |
 | :---------- | :----------------------------------------------------------- |
@@ -1103,7 +1103,7 @@ public interface DoctorConverter {
 
 > 在微服务架构中一定有一个API网关。
 >
-> API网关最核心的功能，对外接收请求，对内请求路由。
+> API网关最核心的功能，**对外接收请求，对内请求路由**。
 >
 > API网关成为了外部请求的唯一入口。
 >
@@ -1136,7 +1136,7 @@ public interface DoctorConverter {
 >  🏷️网关的实现方式：
 >
 > 1. 从代理的角度，网关是一个反向代理。可以基于Nginx实现，但是Nginx只有简单功能。Tenginx,OpenResty。
-> 2. 基于通用的网关框架，SpringCloud提供的一代Zuuul, 二代Gateway等。（目前学习这种实现方式）
+> 2. 基于通用的网关框架，SpringCloud提供的一代Zuuul，二代Gateway等。（目前学习这种实现方式）
 > 3. 从web应用角度，网关本质是一个web应用。可以自己基于Web应用实现API网关的功能。
 
 ### 3.1 网关介绍
@@ -1176,7 +1176,24 @@ API网关方式的核心要点是，所有的客户端和消费端都通过统�
 
 Spring Cloud Gateway是一个基于Spring生态的API网关，基于WebFlux（类似于SpringMVC）框架实现。它旨在以简单高效的方式实现，请求路由，以及一些其他的边缘功能，比如，安全，监控等功能。
 
-> WebFlux框架是一个响应式编程的框架。基于异步非阻塞实现，性能好。完全等价于SpringMVC。但是引入依赖时两者互斥，不能同时引入。
+> WebFlux框架是一个**响应式编程的框架**。基于异步非阻塞实现，性能好。完全等价于SpringMVC。但是引入依赖时两者互斥，不能同时引入。
+>
+> > 响应式编程（Reactive Programming）是一种编程范式，主要用于处理异步数据流和变化。它强调数据流和变化传播的机制，使得程序能够在数据变化时自动响应。以下是响应式编程的关键概念和特点：
+> >
+> > ### 关键概念
+> >
+> > 1. **数据流**：
+> >    - 响应式编程将数据视作流，可以是时间序列、事件流或其他变化的值。
+> >
+> > 2. **观察者模式**：
+> >    - 采用观察者模式，允许对象（观察者）订阅数据流的变化，一旦数据改变，所有订阅者都会收到通知。
+> >
+> > 3. **异步编程**：
+> >    - 支持非阻塞操作，使得程序在等待某些事件发生时不会被阻塞，能够继续执行其他任务。
+> >
+> > 4. **背压**：
+> >    - 在处理数据流时，可以控制数据的流动速度，以防止消费者被淹没（例如，处理能力不足时不再发送数据）。
+> >
 
 通用的网关框架除了Gateway之外，还有Zuul，Zuul2等框架。其中，Zuul是由Netflix公司开发出的最早的通用网关框架，功能丰富，但是基于同步阻塞式Servlet API实现，性能不佳。Zuul2可以理解为Zuul的升级版，它基于异步非阻塞模式实现，但是由于zuul2在开发过程中一直延期，所以Spring Coud官方并未采用Zuul2最为自己的通用网关，而是自己推出了自己的基于异步非阻塞实现的第二代服务网关Gateway。
 
@@ -1592,11 +1609,11 @@ https://dl.min.io/server/minio/release/windows-amd64/minio.exe
 
 - 如果成功启动，minio会在控制台界面打印出如下信息
 
-![](E:\0.王道训练营\3.我的Daily笔记\4.MicroService\07_基础技术\assets\minio成功启动.png)
+![](.\assets\minio成功启动.png)
 
 MinIO Server启动启动后，我们可以通过浏览器访问控制台界面，但是需要登录，登录时默认的用户名是minioadmin，密码也是minioadmin
 
-![](E:\0.王道训练营\3.我的Daily笔记\4.MicroService\07_基础技术\assets\minio使用界面截图.png)
+![](.\assets\minio使用界面截图.png)
 
 要是用MinIo我们还必须了解两个基本概念：
 
@@ -1605,13 +1622,13 @@ MinIO Server启动启动后，我们可以通过浏览器访问控制台界面�
 
 所以，要是用MinIO必须首先创建桶，向桶中存取对象，同时还要注意，如果要想访问到桶中的数据，我们得把桶的权限设置为public
 
-![](E:\0.王道训练营\3.我的Daily笔记\4.MicroService\07_基础技术\assets\minio-manage.png)
+![](.\assets\minio-manage.png)
 
-![](E:\0.王道训练营\3.我的Daily笔记\4.MicroService\07_基础技术\assets\minio-修改通权限.png)
+![](.\assets\minio-修改通权限.png)
 
-![](E:\0.王道训练营\3.我的Daily笔记\4.MicroService\07_基础技术\assets\minio-查看桶中的数据.png)
+![](.\assets\minio-查看桶中的数据.png)
 
-![](E:\0.王道训练营\3.我的Daily笔记\4.MicroService\07_基础技术\assets\minio上传文件.png)
+![](.\assets\minio上传文件.png)
 
 ### MinIO的Java客户端
 

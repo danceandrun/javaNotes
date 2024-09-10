@@ -84,8 +84,6 @@ stuClass.getName();
 stuClass.simpleName();
 ```
 
-
-
 ## toString()
 
 Object类当中toString()方法
@@ -128,8 +126,6 @@ hashCode()也是Object类成员方法，会返回该对象的哈希值，在默�
 ##### 重写toString方法
 
 一般都会选择打印属性的取值，作为重写的规则。
-
-
 
 * 1.不要手写toString方法,没必要,如果就是希望toString简简单单打印属性的取值
 

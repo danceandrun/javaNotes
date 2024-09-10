@@ -40,7 +40,7 @@
 
 ## 为什么学习设计模式
 
-- 可以面对面试中的关于设计模式的问题，比如**单例模式**的几种实现方式；比如**懒汉式和饿汉式**你如何理解（**懒加载和立即加载**）
+- 可以面对关于设计模式的问题，比如**单例模式**的几种实现方式；比如**懒汉式和饿汉式**你如何理解（**懒加载和立即加载**）
 - 借助于设计模式可以编写出非常高效的代码，可复用性以及稳健性都会比较强。
 - 有助于阅读源码框架，后续进阶提升所必须要掌握的技能
   - 看源码的能力：
@@ -166,9 +166,9 @@ GoF（4人组）设计模式共有23种，根据用途的不同，设计模式�
 
   这类模式负责对象间的**高效沟通和职责委派**。常见的有观察者、模板、策略、责任链、迭代器、状态模式。
 
-  <img src="F:/projectforme/java-53-course-materials/03-JavaEE&SpringFramework/02-笔记/image/Content06-DesignPattern/image-20230226212028023.png" alt="image-20230226212028023" style="zoom:33%;" /><img src="F:/projectforme/java-53-course-materials/03-JavaEE&SpringFramework/02-笔记/image/Content06-DesignPattern/image-20230226212106641.png" alt="image-20230226212106641" style="zoom:33%;" /><img src="F:/projectforme/java-53-course-materials/03-JavaEE&SpringFramework/02-笔记/image/Content06-DesignPattern/image-20230226212047381.png" alt="image-20230226212047381" style="zoom:33%;" /><img src="F:/projectforme/java-53-course-materials/03-JavaEE&SpringFramework/02-笔记/image/Content06-DesignPattern/image-20230226212130009.png" alt="image-20230226212130009" style="zoom:33%;" /><img src=".\assets\image-20230226212221808.png" alt="image-20230226212221808" style="zoom:33%;" />
+  <img src=".\assets\image-20230226212028023.png" alt="image-20230226212028023" style="zoom:33%;" /><img src=".\assets\image-20230226212106641.png" alt="image-20230226212106641" style="zoom:33%;" /><img src=".\assets\image-20230226212047381.png" alt="image-20230226212047381" style="zoom:33%;" /><img src=".\assets\image-20230226212130009.png" alt="image-20230226212130009" style="zoom:33%;" /><img src=".\assets\image-20230226212221808.png" alt="image-20230226212221808" style="zoom:33%;" />
 
-  <img src=".\assets\image-20230226212530214.png" alt="image-20230226212530214" style="zoom:33%;" /><img src="F:/projectforme/java-53-course-materials/03-JavaEE&SpringFramework/02-笔记/image/Content06-DesignPattern/image-20230226212545672.png" alt="image-20230226212545672" style="zoom:33%;" /><img src=".\assets\image-20230226212601769-1694047584734-18.png" alt="image-20230226212601769" style="zoom:33%;" /><img src=".\assets\image-20230907084637424.png" alt="image-20230907084637424" style="zoom:33%;" />
+  <img src=".\assets\image-20230226212530214.png" alt="image-20230226212530214" style="zoom:33%;" /><img src=".\assets\image-20230226212545672.png" alt="image-20230226212545672" style="zoom:33%;" /><img src=".\assets\image-20230226212601769-1694047584734-18.png" alt="image-20230226212601769" style="zoom:33%;" /><img src=".\assets\image-20230907084637424.png" alt="image-20230907084637424" style="zoom:33%;" />
 
 
 

@@ -861,8 +861,6 @@ padding: 10px 20px 30px 40px
 </div>
 ```
 
-![image-20221114142201938](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\块级元素继承宽度.png)
-
 
 
 ### 行级元素
@@ -1210,7 +1208,7 @@ parseFloat("10.33"); // 返回 10.33
 >   - ```
 >     // 头一个China返回的下标
 >     str.indexOf("China");
->         
+>           
 >     // 从28开始，找往后的China的下标
 >     str.indexOf("China", 28);
 >     ```
@@ -1609,9 +1607,9 @@ vue2 。 vue3  。
 >
 >   - ```javascript
 >     {{ number + 1 }}
->             
+>                 
 >     {{ ok ? 'YES' : 'NO' }}
->             
+>                 
 >     {{ message.split('').reverse().join('') }} 
 >     ```
 >
@@ -1620,7 +1618,7 @@ vue2 。 vue3  。
 >     ```javascript
 >         <!-- 这是语句，不是表达式 -->
 >     {{ var a = 1 }}
->             
+>                 
 >     <!-- 流控制也不会生效，请使用三元表达式 -->
 >      {{ if (ok) { return message } }}
 >     ```
@@ -2256,10 +2254,6 @@ v-else-if
 
 上述步骤都属于环境配置, 不要重复进行: 除非安装失败, 或者某个东西崩溃了   
 
-
-
-
-
 ```JAVA
 项目的路径下，不要有中文，不要有特殊字符。比如空格  & * . 
 test file/
@@ -2298,8 +2292,6 @@ test" file
 >   npm run  dev
 >   ```
 
-![image-20221125153414251](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\image-20221125153414251.png)
-
 如果无法创建一个前端服务，没有问题。因为本质上是创建一个架子。可以直接使用提供好的架子
 
 ### <span style=color:red;background:yellow>**如何启动一个项目**</span>
@@ -2335,10 +2327,6 @@ node_modules里面是所有的依赖，文件太多太散，所以一般不建�
 
 - main.js  --> 怎么由index.html最终展示出来里层App.vue文件的。
 
-
-
-
-
 ```JAVA
 package.json中的东西
 // 这个是启动命令。如果底下写得是aaa。 那启动命令就是  npm run aaa
@@ -2362,8 +2350,6 @@ config/index.js里面的东西
 
 
 怎么从 index.html到这个页面的。
-
-
 
 怎么去写一个页面的布局。
 
@@ -2389,8 +2375,6 @@ axios: 是vue的一个插件,  可以在vue中, 写发起请求代码
 // 3, 具体使用
 ```
 
-
-
 ```JAVA
 怎么在一个vue项目中引入第三方工具
 
@@ -2408,12 +2392,6 @@ axios: 是vue的一个插件,  可以在vue中, 写发起请求代码
 前端主要负责页面的展示。
 
 后端负责提供数据。
-
-
-
-
-
-
 
 ```JSON
 JSON数据  

@@ -16,9 +16,7 @@
 
 
 
-我们在学习任何一个接口之前，会给大家讲 接口的特点。
-
-这个接口的特点，<span style=color:red;background:yellow>**是重点。**</span>大家了解了这个特点，基本对这个接口的一些基本行为有一个认知。
+我们在学习任何一个接口之前，会讲接口的特点。接口的特点，<span style=color:red;background:yellow>**是重点。**</span>大家了解了这个特点，基本对这个接口的一些基本行为有一个认知。
 
 ## 特点
 
@@ -26,8 +24,6 @@
 2. Collection的一些子实现有序，一些无序(指的是**存取顺序**)
 3. 一些子实现允许存储重复的数据，一些不允许
 4. 一些子实现允许存储null，一些不允许
-
-
 
 > 不能直接new Collection 这样只会得到一个匿名内部类
 >
@@ -57,9 +53,9 @@
 >
 > - 哪些允许存储null？
 >
-> 允许存储null: ArrayList,HashSet
+> 允许存储null：ArrayList，HashSet
 >
-> 不允许存储null: TreeSet
+> 不允许存储null：TreeSet
 
 ## `API`
 
@@ -135,8 +131,6 @@ Iterator<E> iterator()：
 就是直接拷贝一份数据，创建一个新的数组。
 
 *一张图片*
-
-
 
 ```java
 // 底层是数组的实现
