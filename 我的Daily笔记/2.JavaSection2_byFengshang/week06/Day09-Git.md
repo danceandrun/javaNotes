@@ -4,15 +4,11 @@
 
 Linus 的第二个伟大作品。2005年由于BitKeeper软件公司对Linux社区停止了免费使用权。Linus迫不得己自己开发了一个分布式版本控制工具，从而Git诞生了。 据说Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git。一个月之内，Linux系统的源码已经由Git管理了。
 
-
-
 Git 是一个版本控制工具。可以<span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'>**记录和追踪**</span> 某个文件 在某一个时刻的内容和状态。
 
 Git的使用有点像一个 网盘，这个网盘大家都可以来操作。只是Git比网盘要高级一点，体现在哪里呢？其实就是Git可以追踪这个`网盘` 中 文件的历史版本状态。
 
 > Git 可以 <span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'>**记录某个文件夹下的 不同文件 在不同时间节点的不同状态。Git可以去记录这些文件产生的变化**</span>
-
-
 
 发展历史：Linus，为了管理Linux的核心代码而开发的一个分布式的版本控制工具。
 
@@ -145,8 +141,6 @@ git add .
 - 只会把缓冲区中的变化提交到本地仓库，不会把工作区中的变化提交到本地仓库
 - `commit` 的时候需要指定提交的信息，提交的信息一般要去设置模板
 
-
-
 ```shell
 # 提交
 git commit -m "msg"
@@ -169,8 +163,6 @@ git commit -m "HashMap的练习"
 `push`这个命令可以帮助我们把本地仓库中的<span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'>**所有变化**</span> 推送到远程仓库。
 
 - 这一步在第一次操作的时候，需要去填写对应用户名和密码
-
-
 
 
 > `push`的时候，能不能指定文件去 `push`呢？ 不能
@@ -225,8 +217,6 @@ git commit -m "HashMap的练习"
 2.保存的时候，怎么保存呢？
  点击esc; 输入一个冒号  shift+: (英文状态下) ; 输入wq（保存并退出）
 ```
-
-
 
 冲突的处理
 
