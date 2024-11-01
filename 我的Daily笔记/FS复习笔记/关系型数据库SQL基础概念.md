@@ -1099,7 +1099,7 @@ SELECT list is not in GROUP BY clause and contains nonaggregated column 'test' w
 
 聚合函数只对组里的数据生效。
 
-聚合函数一般用来计算**列相关**的指定值. 通常和分组一起使用
+聚合函数一般用来计算**列相关**的指定值，通常和分组一起使用
 
 | 函数    | 作用   |
 | ------- | ------ |
