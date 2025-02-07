@@ -861,8 +861,6 @@ GET http://localhost:8080/demo7/register?username=root&password=123456&age=20&bi
    ObjectMapper objectMapper = new ObjectMapper();
    ```
 
-   
-
 3. 调用`ObjectMapper`的相关方法
 
    1. 将字符串转换为`java`对象
@@ -876,8 +874,6 @@ GET http://localhost:8080/demo7/register?username=root&password=123456&age=20&bi
       > ```JAVA
       > String s = objectMapper.writeValueAsString(Object);
       > ```
-
-
 
 ### `Post`请求参数乱码
 
@@ -1052,9 +1048,9 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 
 ## `Request`做请求转发（了解）
 
-实际开发过程中，基本不会再涉及到，当前基本上不再使用JSP技术，JSP技术使用过程中会做**请求转发**。
+实际开发过程中，基本不会再涉及到。因为JSP技术使用过程中会做**请求转发**，但是当前基本上不再使用JSP技术。
 
-`JSP:JavaServer Pages`,用来提供一个前端相关的内容。用起来和`html`类似，不过在里面可以写`JAVA`代码。`html`是一种静态资源。而`JSP`是一种特殊的`Servlet`，在编译时先成为`java`文件后成为字节码文件。之前使用该技术开发**单体应用**（前后端写在一起）。
+`JSP:JavaServer Pages`，用来提供一个前端相关的内容。用起来和`html`类似，不过在里面可以写`JAVA`代码。`html`是一种静态资源。而`JSP`是一种特殊的`Servlet`，在编译时先成为`java`文件后成为字节码文件。之前使用该技术开发**单体应用**（前后端写在一起）。
 
 但是jsp目前已经没有什么使用场景了。目前架构主要是前后端分离。所以关于转发了解即可。
 
@@ -1352,9 +1348,9 @@ public class LocationServlet extends HttpServlet {
 >
 > http://localhost:8080/user/info → 查看用户信息
 
-按照我们之前的写法，我们需要写3个Servlet，如果不想写3个Servlet，只写一个UserServlet可以不？
+按照我们之前的写法，我们需要写3个Servlet，如果不想写3个Servlet，**只写一个UserServlet可以不？**
 
-Servlet的url-pattern的合法写法 `/xxx/*`,我们在这个UserServlet上可否写一个`/user/*`
+`Servlet`的`url-pattern`的合法写法 `/xxx/*`,我们在这个UserServlet上可否写一个`/user/*`
 
 ```java
 @WebServlet("/user/*")
@@ -1512,7 +1508,7 @@ public class UserServlet extends HttpServlet {
 
 SQL语句，`order by`不进行预编译，不能使用`#{}`，要使用`${}`。
 
-`Vo`: view object 能看到的页面叫做视图，Vo即填充视图的对象
+`Vo`： view object 能看到的页面叫做视图，Vo即填充视图的对象
 
 
 
@@ -1643,7 +1639,7 @@ public class UserServlet extends BaseServlet {
 >    Content-Type: application/json;charset=UTF-8
 >    Date: Tue, 29 Aug 2023 06:58:59 GMT
 >    Content-Length: 9805
->                                  
+>                                     
 >    {"errno":0,"data":{"total":79,"pages":4,"limit":20,"page":1,"list":[{"id":80,"username":"user456","password":"$2a$10$KairBY9XjiT0IqTj10Fz3uUumKqlbSX0oVVhTpfhkis1eJV9VSjm2","gender":0,"lastLoginTime":"2023-08-14 21:09:29","lastLoginIp":"171.113.245.233","userLevel":0,"nickname":"user456","mobile":"15310888954","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-14 21:09:29","updateTime":"2023-08-29 11:42:24","deleted":false},{"id":79,"username":"wangshuai","password":"$2a$10$wpa0FmHqaE6aNWrGDtmh.O3/NiNhR3pxig38/WWDeuiQJbZL8teyy","gender":0,"lastLoginTime":"2023-08-13 21:43:30","lastLoginIp":"171.43.248.189","userLevel":0,"nickname":"wangshuai","mobile":"18839219012","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-13 21:43:30","updateTime":"2023-08-13 21:43:30","deleted":false},{"id":78,"username":"dsfnjdnc","password":"$2a$10$z1DC5UXeljtOECGST5Ht5un2UXYdHUY.zUoFVEuoU0Foqmg9KiET6","gender":0,"lastLoginTime":"2023-08-12 09:59:36","lastLoginIp":"171.43.248.189","userLevel":0,"nickname":"dsfnjdnc","mobile":"17889948070","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-12 09:59:36","updateTime":"2023-08-12 09:59:36","deleted":false},{"id":77,"username":"lipanl","password":"$2a$10$2e3ZiDI6yU/d9jDGh3ow2ubtBxAyVTaNUr5NrA2rw2coo/thKhkJO","gender":0,"lastLoginTime":"2023-08-12 09:26:55","lastLoginIp":"171.43.248.189","userLevel":0,"nickname":"lipanl","mobile":"15605215755","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-12 09:13:41","updateTime":"2023-08-12 09:26:55","deleted":false},{"id":76,"username":"abc123","password":"$2a$10$zJXzS2hqfwrwH9qBpEWf6reIaBOoBRsDON4aSAyVTaX3f.a7PXl18G","gender":1,"lastLoginTime":"2023-08-12 09:05:24","lastLoginIp":"171.43.248.95","userLevel":1,"nickname":"abc1232","mobile":"189649576691","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":1,"addTime":"2023-08-12 09:03:46","updateTime":"2023-08-19 20:41:06","deleted":false},{"id":75,"username":"userhhh","password":"$2a$10$EuMQSEIACrpFiXKX9D8CC./1tjqZZA7gcz7ruKc2D58n0gblIw2yq","gender":0,"lastLoginTime":"2023-08-12 08:52:56","lastLoginIp":"171.43.248.189","userLevel":0,"nickname":"userhhh","mobile":"18338708454","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-12 08:52:56","updateTime":"2023-08-12 08:52:56","deleted":false},{"id":74,"username":"11tong","password":"$2a$10$xiufPksECD4y7WudNGleae6MDNabNUSDiEH4xz63V94PANvVCvjsG","gender":0,"lastLoginTime":"2023-08-11 23:41:56","lastLoginIp":"37.128.243.180","userLevel":0,"nickname":"11tong","mobile":"18193408088","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 23:04:45","updateTime":"2023-08-11 23:41:56","deleted":false},{"id":73,"username":"6666666","password":"$2a$10$4DGAP3HtGGf9fiJAR5FsUe580LglFuc8AlkwbQRhiofVz.2cfu1hu","gender":0,"lastLoginTime":"2023-08-11 22:28:46","lastLoginIp":"171.113.246.131","userLevel":0,"nickname":"6666666","mobile":"19149355","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 22:28:46","updateTime":"2023-08-11 22:53:53","deleted":false},{"id":72,"username":"shibowen","password":"$2a$10$xDgPrbO8hR1XhQf4bXxrP.Ly/vwWjXGtDtnShDUWB2DsTodOV/HWe","gender":0,"lastLoginTime":"2023-08-11 22:20:15","lastLoginIp":"171.113.246.131","userLevel":0,"nickname":"shibowen","mobile":"15364314469","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 22:20:15","updateTime":"2023-08-11 22:21:27","deleted":false},{"id":71,"username":"cpj123","password":"$2a$10$1ilmyiwiIIE3mIW9HZPYfenJRaEWDUZzj7u0sYYL1fLcTW58tf5Vi","gender":0,"lastLoginTime":"2023-08-12 10:59:52","lastLoginIp":"171.43.248.189","userLevel":0,"nickname":"cpj123","mobile":"15213480588","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 16:54:45","updateTime":"2023-08-12 10:59:52","deleted":false},{"id":70,"username":"qianqian","password":"$2a$10$9lZkUEdw1GVcBwk03L47JOetj8SRZDOun74fQ25gSJCXbuDUpXT6q","gender":0,"lastLoginTime":"2023-08-11 15:55:18","lastLoginIp":"38.181.73.70","userLevel":0,"nickname":"qianqian","mobile":"17302213266","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 15:55:18","updateTime":"2023-08-11 17:09:03","deleted":false},{"id":69,"username":"13428689333","password":"$2a$10$Fl3B9m6dRAJ42.ZJw5Vbsucgd8a7WE7YEJbGq2NMrrDejqfeM6vVC","gender":0,"lastLoginTime":"2023-08-11 14:39:58","lastLoginIp":"171.113.246.131","userLevel":0,"nickname":"13428689333","mobile":"13428689333","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 14:39:58","updateTime":"2023-08-11 14:41:19","deleted":false},{"id":68,"username":"141d54","password":"$2a$10$39XcI1ZFVlZ./Q4/hk9U2.t/2XvwfWZWlqhuhxtAzPCpICO7DS9Ku","gender":0,"lastLoginTime":"2023-08-11 12:52:49","lastLoginIp":"171.113.246.131","userLevel":0,"nickname":"141d54","mobile":"18571475083","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 12:52:49","updateTime":"2023-08-11 12:52:49","deleted":false},{"id":67,"username":"haodene","password":"$2a$10$3wUuWJgmJrswpf7vMjyNKu2QaS7OcIWMoJIoZqeA.j2QxZX0hc3Gq","gender":0,"lastLoginTime":"2023-08-11 12:38:06","lastLoginIp":"210.3.159.237","userLevel":0,"nickname":"haodene","mobile":"17332885067","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 12:38:06","updateTime":"2023-08-11 12:38:54","deleted":false},{"id":66,"username":"xn1111","password":"$2a$10$6NYttr6pchyPDRN776peiuMqI.P.tk2Nexu/ExPF2zLrpdsw91.UW","gender":0,"lastLoginTime":"2023-08-12 13:01:41","lastLoginIp":"171.43.247.130","userLevel":0,"nickname":"xn1111","mobile":"15543400379","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 12:17:09","updateTime":"2023-08-12 13:01:41","deleted":false},{"id":65,"username":"999999","password":"$2a$10$IVMS2c3U94iwOiu9gRpM...zuO9AEmjvz3q7hqIqtcog..nKp4d06","gender":0,"lastLoginTime":"2023-08-11 12:01:34","lastLoginIp":"171.113.246.131","userLevel":0,"nickname":"999999","mobile":"17863013913","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 12:01:34","updateTime":"2023-08-11 17:54:15","deleted":false},{"id":64,"username":"uer123","password":"$2a$10$8iSnFilcnMLl0SxgCnnniuxsTCwSJB/toW9QTK3L7Z6/NMggZpzFS","gender":0,"lastLoginTime":"2023-08-11 11:44:41","lastLoginIp":"38.181.73.70","userLevel":0,"nickname":"uer123","mobile":"17353291393","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-11 11:44:41","updateTime":"2023-08-11 11:44:41","deleted":false},{"id":63,"username":"aaaaaa","password":"$2a$10$xz7HJbKtqb0r4eFTXZHZrufncjSL8TLypxrQf1RtY30O6J4NFDF.O","gender":0,"lastLoginTime":"2023-08-11 10:37:50","lastLoginIp":"210.3.159.237","userLevel":1,"nickname":"aaaaaa","mobile":"17332855555","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":2,"addTime":"2023-08-11 10:37:50","updateTime":"2023-08-11 11:38:32","deleted":false},{"id":62,"username":"czc123","password":"$2a$10$CDVT5W1oGx7VpmVbR/y3jeSuul3cK2fKHYgXO0RSoJEOIwLRl6NKy","gender":0,"lastLoginTime":"2023-08-12 09:04:19","lastLoginIp":"171.43.248.189","userLevel":0,"nickname":"czc123","mobile":"15374579055","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-10 21:36:07","updateTime":"2023-08-12 09:04:19","deleted":false},{"id":61,"username":"wangao4","password":"$2a$10$SNfWiy4zIB9EZx39y5aaHuWgI32gC7.6V67l1OlreBPpWQHim0exe","gender":0,"lastLoginTime":"2023-08-10 19:59:31","lastLoginIp":"171.113.241.66","userLevel":0,"nickname":"wangao4","mobile":"13593956279","avatar":"https://yanxuan.nosdn.127.net/80841d741d7fa3073e0ae27bf487339f.jpg?imageView&quality=90&thumbnail=64x64","weixinOpenid":"","sessionKey":"","status":0,"addTime":"2023-08-10 19:59:31","updateTime":"2023-08-10 19:59:31","deleted":false}]},"errmsg":"成功"}
 >    ```
 >
@@ -1672,7 +1668,7 @@ public class UserServlet extends BaseServlet {
 >        Integer total;
 >        Integer pages;
 >    }
->                            
+>                               
 >    ```
 > 
 >  ![image-20230829161617787](.\assets\image-20230829161617787.png)
@@ -1727,23 +1723,23 @@ public class UserServlet extends BaseServlet {
 >      //String order = request.getParameter("order");
 >      BaseParam baseParam = new BaseParam();
 >      BeanUtils.copyProperties(baseParam,request.getParameterMap());
->                                  
+>                                     
 >      UserMapper mapper = sqlSessionFactory.openSession(true).getMapper(UserMapper.class);
 >      baseParam.initOffset();
 >      List<MarketUser> userList = mapper.selectUserList(baseParam);
->                                  
+>                                     
 >      UserListVo userListVo = new UserListVo();
 >      userListVo.setErrno(0);
 >      userListVo.setErrmsg("成功");
 >      ListVo data = new ListVo();
->                                  
+>                                     
 >      data.setList(userList);
 >      data.setPage(baseParam.getPage());
 >      data.setLimit(baseParam.getLimit());
->                                  
+>                                     
 >      //data.setPages();
 >      //data.setTotal();
->                                  
+>                                     
 >      userListVo.setData(data);
 >      return userListVo;
 >    }

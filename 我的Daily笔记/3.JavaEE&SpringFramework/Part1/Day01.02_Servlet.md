@@ -358,7 +358,7 @@ public @interface WebServlet {
 >    5. 注解
 >    6. 以及上述类型的数组
 > 2. 注解使用时的一些语法
->    1. 定义注解属性时也可以通过关键字default设定该属性的默认值，这样在实例化注解时就不需要给定取值，可以直接去掉"()"。当然即便有默认值的注解属性，也仍然可以赋值，覆盖默认值。
+>    1. 定义注解属性时也可以通过关键字`default`设定该属性的默认值，这样在实例化注解时就不需要给定取值，可以直接去掉"`()`"。当然即便有默认值的注解属性，也仍然可以赋值，覆盖默认值。
 >    2. **如果注解体当中的属性只有1个，并且它就叫`value`的话，那么可以进行简化赋值。简化赋值可以直接给定取值，无需写"`属性名 = `"了。**
 >    3. **如果注解属性是一个引用数据类型，那么在给定默认值或者赋值时不能等于`null`，也不能`new`赋值，只能以给定常量的方式进行赋值。**
 >
@@ -368,7 +368,7 @@ public @interface WebServlet {
 >
 >    ```java
 >    import java.lang.annotation.Documented;
->       
+>          
 >    @Documented
 >    public @interface MyAnnotation {
 >        // 注解的属性和方法
@@ -461,7 +461,7 @@ public class HelloServlet extends HttpServlet {
 >
 > 路径匹配和类型匹配都没匹配上，只能找缺省匹配。
 >
-> `Tomcat` 有一个`DefaultServlet`,它是一个`Servlet`，它的`url-pattern`是`/`
+> `Tomcat` 有一个`DefaultServlet`，它是一个`Servlet`，它的`url-pattern`是`/`
 >
 > 在web资源根路径下去找**静态资源**，如果我们提供了自定义缺省`Servlet`，那么`Tomcat`就不会使用自己的`DefaultServlet`了
 >
