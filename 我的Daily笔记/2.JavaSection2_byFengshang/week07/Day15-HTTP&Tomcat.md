@@ -14,7 +14,7 @@
 
 **整体流程图**
 
-![image-20230116095331886](F:/projectforme/java-53-course-materials/02-DSDB/02-笔记/img-http&tomcat/image-20230116095331886.png)
+![浏览器服务器处理流程](.\assets\浏览器服务器处理流程.jpg)
 
 - 前端：负责获取数据，展示数据
 - 程序：负责监听端口，并对请求作出响应，这中间需要从数据库获取数据
@@ -42,7 +42,7 @@
 
 ### HTTP协议工作流程
 
-**1.域名解析**
+**1. 域名解析**
 
 域名：`jd.com`  ` taobao.com` 可以用来指代网络中的一台计算机主机，对应ip地址。
 
@@ -55,17 +55,17 @@ jd.com----------解析   xxx.xxx.xxx.xxx
 
 C:\Windows\System32\drivers\etc
 
-**2.建立TCP连接**
+**2. 建立TCP连接**
 
-**3.浏览器发送HTTP请求**
+**3. 浏览器发送HTTP请求**
 
-**4.HTTP请求经过中转到达服务器之后，被服务器接收到，服务器解析HTTP请求，并且做出HTTP响应。**
+**4. HTTP请求经过中转到达服务器之后，被服务器接收到，服务器解析HTTP请求，并且做出HTTP响应。**
 
-**5.HTTP响应经过中转再次返回给客户端，客户端接收到HTTP响应，并且加以解析、渲染**
+**5. HTTP响应经过中转再次返回给客户端，客户端接收到HTTP响应，并且加以解析、渲染**
 
-**6.如果解析的过程中，发现需要去加载其他的css、js、img等资源，那么会自行再次发送请求，整个过程同上**
+**6. 如果解析的过程中，发现需要去加载其他的css、js、img等资源，那么会自行再次发送请求，整个过程同上**
 
-**7.最终浏览器渲染出来页面，呈现页面给用户。**
+**7. 最终浏览器渲染出来页面，呈现页面给用户。**
 
 ### HTTP请求
 
@@ -73,7 +73,7 @@ C:\Windows\System32\drivers\etc
 
 客户端发送的HTTP请求信息，一般情况下也称作HTTP请求报文。
 
-![image-20230116120235895](F:/projectforme/java-53-course-materials/02-DSDB/02-笔记/img-http&tomcat/image-20230116120235895.png)
+![image-20230116120235895](.\assets\image-20230116120235895.png)
 
 #### 请求行
 
@@ -95,7 +95,7 @@ C:\Windows\System32\drivers\etc
 
 - <font color=red>**请求方法**</font>：使用何种方法向当前的请求资源地址发起请求。常见的请求方法 `GET`  `POST`
 
-   🏷️**`GET`和`POST`区别？**
+  🏷️**`GET`和`POST`区别？**
 
   本质的区别在于语义的不同。
 
@@ -140,9 +140,8 @@ C:\Windows\System32\drivers\etc
   <span style=color:red;background:yellow>**学会怎样发get请求和post请求。**</span>
 
   1. 使用浏览器发送
-2. 使用postman软件发送
+  2. 使用postman软件发送
   3. 后续学习使用JAVA代码
-
 - <font color=red>**请求资源**</font>：指的是访问服务器上面的哪个资源
 
   http://www.cskaoyan.com/forum-280-1.html
@@ -163,6 +162,7 @@ GET /thread-664595-1-1.html HTTP/1.1
   请求资源 或者 服务器内部路径不同。就相当于告诉服务器，我需要请求不同的资源
 
   /login   
+
   /search 
 
   Fiddler抓包，请求资源有点问题。它自己把url拼接上去了。 真实请求是没有这个url的。
@@ -221,11 +221,11 @@ Date: Mon, 22 Aug 2011 01:55:39 GMT请求时间GMT
 
 **1.直接访问A页面**
 
-![image-20230220173311923](F:/projectforme/java-53-course-materials/02-DSDB/02-笔记/img-http&tomcat/image-20230220173311923.png)
+![image-20230220173311923](.\assets\image-20230220173311923.png)
 
 **2.先访问B页面，通过B页面跳转到A页面**
 
-![image-20230220173210187](F:/projectforme/java-53-course-materials/02-DSDB/02-笔记/img-http&tomcat/image-20230220173210187.png)
+![image-20230220173210187](.\assets\image-20230220173210187.png)
 
 有没有技术手段可以区分这两种方式？利用**referer请求头**。
 
@@ -268,7 +268,7 @@ https://img-blog.csdnimg.cn/img_convert/0e449547f8e5354646f76af0d1b4800a.png
 
 服务器发送的HTTP响应一般称之为HTTP请求报文，分为<span style=color:red;background:yellow>**响应行、响应头、空行、响应体**</span>四部分.其中的一些消息头（响应）和正文都是可选的，消息头和正文内容之间要用空行(CRLF即\r\n)隔开.
 
-![image-20230116143613352](F:/projectforme/java-53-course-materials/02-DSDB/02-笔记/img-http&tomcat/image-20230116143613352.png)
+![image-20230116143613352](.\assets\image-20230116143613352.png)
 
 
 
@@ -782,7 +782,7 @@ webapps：部署资源
 
 2. **需要将资源文件放置在该目录下**
 
-![image-20221024174329344](F:/projectforme/java-53-course-materials/02-DSDB/02-笔记/img-http&tomcat/image-20221024174329344.png)
+![image-20221024174329344](.\assets\image-20221024174329344.png)
 
 🏷️ **如果希望访问该文件，应该如何访问？**
 

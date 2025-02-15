@@ -20,15 +20,11 @@
 <font color=red><b>数据库，是存储和管理数据的仓库。</b></font>
 什么是仓库，就是有效的组织物品的地方。所谓数据仓库，就是集中存放数据的地方，且可以有效的组织这些数据，利用这些数据。
 
-
-
 <font color=red>**存储数据**</font>
 
 txt也可以存储。excel也可以存储。为什么需要数据库呢？
 
 组织数据的效率不高。
-
-
 
 生活中excel，很多单位使用excel来存储一些数据，比如一些仓库，或者班主任让大家填写信息的时候。
 
@@ -167,8 +163,6 @@ Not only SQL
 >
 > C/S中很多数据存在client端，而B/S中数据都来自server
 
-
-
 ## MySQL的内部数据组织方式
 
 > 在MySQL中, 我们对数据的组织逻辑上是按照库/表/数据 这种结构组织的.
@@ -193,8 +187,6 @@ Not only SQL
 >SQL语言不是某个特定的数据库提供的语言, 它是一种数据库<u>标准语言</u>.(最初由美国国家标准局 ANSI于1986年完成第一版SQL标准的定义,即SQL-86).<font color=red><b>这也就意味着每个关系型数据库都支持SQL语言.</b></font>
 >SQL简单易学, 是由多个描述性很强的单词构成, 并且这些单词数量不多.
 >SQL尽管看上去很简单, 但是非常强有力; 灵活的使用SQL, 可以进行比较复杂的和高级的数据库操作.
-
-
 
 # SQL的基础操作
 ## 登录数据库
@@ -300,8 +292,6 @@ create database db_name character set utf8mb4 collate utf8mb4_bin;
 
 校对规则，是指排序的。比如有一些排序规则区分大小写，有一些排序规则不区分大小写.
 
-
-
 abc
 
 Abc
@@ -312,9 +302,9 @@ aBC
 
 
 
+```sql
 select * from table1  order by name; 
-
-
+```
 
 latin1: <font color=red>**不支持中文。**</font>
 
@@ -329,8 +319,6 @@ latin1_general_cs (case sensitive)
 ```
 
 <span style=color:red;background:yellow><b>注意：</b></span>如果不设置字符集，有可能会使用了默认的latin1，导致存储中文报错。
-
-
 
 
 
@@ -438,8 +426,6 @@ create table test1(id int);
 
 M代表的是允许存储的最大位数，D代表是小数位数。也就是留给整数的是 M-D位。如果整数超了，直接报错，如果小数超了，会四舍五入。
 
-
-
 ```JAVA
 float(M,D) 
     // M代表允许存储的最大位数，D代表小数位数。
@@ -481,8 +467,6 @@ double也是类似。
 	比如我现在有一个电影 3.8G。需要存怎么办？ 把电影，找个电脑存起来，存路径。 `D:/data1/学习.mp4`
 
 但是一般使用varchar。不会写太多。  varchar(500) varchar(1000) 这个都是可以的。但是如果要写varchar(5000)。不建议使用varchar。
-
-
 
 - <span style=color:red;background:yellow><b>举例：</b></span>
   - 现在有一个学生表，需要存储的信息包括，学生id，姓名，年龄，身高，体重，籍贯，身份证号，联系电话
@@ -582,8 +566,6 @@ alter table table_name modify column column_name column_type;
 我一执行SQL，SQL一直卡着。客户这边也卡着。内部的锁造成的。
 
 凌晨去执行。
-
-
 
 ## 关于字符集和校对规则的说明
 
@@ -754,8 +736,6 @@ update student1 set remark = '测试remark' ;
   <span style=color:red;background:yellow><b>举例：</b></span>
 
   - 更新湖北的人，地址变成湖北省。自我评价也变成湖北人，能吃辣
-  
-  
   
   ```SQL
   update student1 set address='湖北省',remark='湖北人，能吃辣' where address='湖北';
@@ -963,8 +943,6 @@ select distinct english,math from students;
 select english,math from students;
 ```
 
-
-
 ## limit-限制结果集
 
 一般用来做，比如限制最大的返回数目。或者是做分页上面。
@@ -1008,8 +986,6 @@ select * from students limit 5 offset 3;
 一般用它来做分页查询。
 ```
 
-
-
 ## as-别名
 ```sql
 <内容> AS <别名>
@@ -1032,8 +1008,6 @@ select s.name from students s;
 
 -- as 可以省略
 ```
-
-
 
 ## order by-排序
 
@@ -1325,19 +1299,13 @@ create table stu(
 show create table table_name;
 ```
 
-
-
 ## 域完整性
 
 域完整性是针对某一具体关系数据库的约束条件，<span style=color:red;background:yellow>**它保证表中某些列不能输入无效的值。**</span>
 
 比如这个人的姓名，不允许输入null这种值。
 
-
-
 比如有一张学生表。 id name  id_card。
-
-
 
 **null约束**
 
@@ -1361,8 +1329,6 @@ insert into test_null(column1) values (null);
 insert into test_null(column1) values ("null");
 ```
 
-
-
 **唯一值约束**
 
 - unique
@@ -1382,8 +1348,6 @@ create table teacher(
 > 1. 插入的值不能重复
 > 2. 可以插入null
 > 3. null可以重复
-
-
 
 unique和primary key的区别：
 
@@ -1530,15 +1494,11 @@ create table test_comment(
 
 - 用户和用户详情
 
-
-
 > 所有的一一对应的表，在逻辑上，都可以合并为一个表。
 
 <font color=red>**思考一下，为什么本来可以用一张表，却要拆成两张表？**</font>
 
 主要的原因是效率。如果一个表的列太多，比如有300列。最终数据量太大的时候，效率会很差。但是如果将其拆分成两个表，最终频繁查询的这个表，将其列弄得少一点，会提升查询效率。
-
-
 
 查询的效率的问题。1000w左右的大小的表，查询效率在1s之内。
 
@@ -1557,8 +1517,6 @@ create table test_comment(
 - 班级和学生
 - 省份和城市
 
-
-
 ## 多对多
 
 在关系型数据库中，多表设计中的多对多关系指的是两个表之间的关系，其中一个表的记录可以对应另一个表中的多条记录，而另一个表中的每条记录也可以对应另一个表中的多条记录。<span style=color:yellow;background:red>**这种关系通常需要通过中间表来实现。**</span>
@@ -1569,8 +1527,6 @@ create table test_comment(
 
 - 学生和课程
 - 订单和商品
-
-
 
 ## 数据库设计三大范式
 
@@ -1596,8 +1552,6 @@ create table test_comment(
 
 唯一性是指每一条记录都有唯一的标识。例如<span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'>**主键**</span>。表中必须得有一个 主键。
 
-
-
 ```SQL
 create table test1(
 	id int primary key auto_increment
@@ -1609,8 +1563,6 @@ create table test1(
 ### 第三范式
 
 数据不要冗余。
-
-
 
 在上表中，班主任名字重复存储了，冗余了
 
@@ -1672,8 +1624,6 @@ insert into user_detail values(null, 4, "东土大唐", "唐僧.jpg");
 select * from user_detail;
 ```
 
-
-
 #### 交叉连接
 
 交叉连接其实就是求多个表的笛卡尔积。
@@ -1689,8 +1639,6 @@ select * from user cross join user_detail;
 
 比如表A有3条数据，表B中有4条数据，最终会有3*4=12条数据。这个被称为笛卡尔积
 
-
-
 #### 内连接
 
 内连接（inner join）是一种SQL中的表连接操作，用于将两个或多个表中的数据进行合并匹配。<font color=red>**内连接只返回两个表中具有相同值的行，也就是说，只有在连接列中存在匹配值的行才会被返回。**</font>
@@ -1705,8 +1653,6 @@ ON table1.column = table2.column;
 
 -- 其中，columns是要返回的列，table1和table2是要连接的表，column是要连接的列。ON子句指定了连接条件，它指定了table1和table2之间的匹配条件。
 ```
-
-
 
 inner join
 
@@ -1740,8 +1686,6 @@ inner join
 
 outer可以省略掉。
 
-
-
 <font color=red>**左外连接**</font>
 
 左外连接返回左表中的所有行以及右表中与左表匹配的行，右表中没有匹配的行将被填充为NULL值。左外连接的语法如下：
@@ -1756,16 +1700,12 @@ ON table1.column = table2.column;
 
 ```
 
-
-
 ```SQL
 -- 左外连接
 select * from user left outer join user_detail on 
 user.id = user_detail.user_id;
 
 ```
-
-
 
 <font color=red>**右外连接**</font>
 
@@ -1783,8 +1723,6 @@ ON table1.column = table2.column;
 select * from user right outer join user_detail on 
 user.id = user_detail.user_id;
 ```
-
-
 
 > <span style='color:red;background:yellow;font-size:文字大小;font-family:字体;'>**连接查询最重要的，是找到连接的条件。**</span>
 
@@ -1879,51 +1817,6 @@ source c:/Users/zhoubing/test52th.sql
 
 备份和恢复有可能丢数据，所以我们需要检查数据是否完整，数据是否正确。
 
+```sql
 select count(*) from table_table;
-
-
-
-我们在公司中，一般不会让大家去备份。
-
-公司一般有专门，DBA 会干这个事情。
-
-会写一定定时脚本，在专门的时间来执行备份操作。
-
-DBA = Database Administrator
-
-
-
-如何去校验，数据库备份前和备份后的数据，是否一致。
-
-人眼校验。不太可能。
-
-一般会计算一个hash。然后比较hash。
-
-
-
-在公司里面，每个人各司其职。 
-
-图相关。图算法。
-
-算法工程师。 
-
-
-
-offer ： hr ,一面二面三面。 
-
-2w / 8h /21天 = 125一小时。 
-
-
-
-1000。 
-
-一个星期。 1个月。 
-
-出道即巅峰。
-
-
-
-
-
-
-
+```

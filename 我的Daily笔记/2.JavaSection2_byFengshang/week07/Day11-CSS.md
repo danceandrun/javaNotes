@@ -97,8 +97,6 @@ HTML概念
   
 ```
 
-
-
 **一些常见的特殊字符**
 
 | 显示结果 | `HTML`代码 | 描述     |
@@ -107,8 +105,6 @@ HTML概念
 | >        | `&gt;`     | 大于符号 |
 | <        | `&lt;`     | 小于符号 |
 | &        | `&amp;`    |          |
-
-
 
 ### h1-h6标签
 
@@ -150,7 +146,7 @@ div是个大容器。span是个小容器。
 注意: 段落一般用来描述大段文字, 很类似div的使用, 只不过段落会自动的在段前/段后加上一部分段落间距
 ```
 
-### ==a标签==
+### a标签
 
 ```html
 <a>超链接标签
@@ -196,8 +192,6 @@ iframe就是引用别的网站到这个网页上，但是有的网站是拒绝�
 
 相对路径是相对于当前html的。
 
-
-
 不能访问的
 
 `https://lmg.jj20.com/up/allimg/tp09/210Z614150050M-0-lp.jpg`
@@ -209,8 +203,6 @@ iframe就是引用别的网站到这个网页上，但是有的网站是拒绝�
 `https://img1.baidu.com/it/u=3573056321,2239143646&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500`
 
 ### <font color=red>**路径问题**</font>
-
-
 
 ````java
 // Java路径
@@ -276,8 +268,6 @@ ul属性:
             rowspan:横跨行数
 ```
 
-
-
 ### input标签:表单元素
 
 ```java
@@ -295,8 +285,6 @@ Type
         submit:提交  
 ```
 
-
-
 ### textarea标签: 表单元素
 
 ```java
@@ -307,8 +295,6 @@ Type
     rows:行
     placeholder:提示
 ```
-
-
 
 ### select标签: 表单元素
 
@@ -323,11 +309,9 @@ select :size(size ="4"下拉可见数4)
 
 
 
-### <font color=red>**==form标签==**</font>
+### form标签
 
 表单元素，都要通过form标签，把这些数据组织起来。
-
-
 
 ```java
 <form>表单, 用来在浏览器的网页上, 通过用户输入或者点击, 生成一个url, 让浏览器根据这个url发起请求。
@@ -341,8 +325,6 @@ select :size(size ="4"下拉可见数4)
 
  https://www.baidu.com/s?wd=java   
 ```
-
-
 
 ```java
 // 在一个form表单中可以生成一个url给浏览器, 让浏览器根据这个生成的url发起请求
@@ -360,19 +342,17 @@ select :size(size ="4"下拉可见数4)
 
 ```
 
+#### http请求方式get和post的区别
 
+`get`和`post`的区别:
 
-#### http请求方式get和post的区别: 背会
+1. `get`请求'一般'把请求参数放到url之后, `post`请求'一般'把参数放到请求正文里
 
-get和post的区别:
+   > url之后拼接参数最多1kb
 
-1,get请求'一般'把请求参数放到url之后, POST请求'一般'把参数放到请求正文里
+2. `get`请求不安全,  `post`请求相对安全一些
 
-> url之后拼接参数最多1kb
-
-2, get请求不安全,  post请求相对安全一些
-
-3, 语义化区别,  get请求一般用来获取数据,  post请求一般用来提交数据
+3. 语义化区别,  `get`请求一般用来获取数据,  `post`请求一般用来提交数据
 
 # `CSS`
 
@@ -827,8 +807,6 @@ padding: 10px 20px 30px 40px
 > - 常见的块级元素：
 >   div、p、h1、 h2、 h3、 h4、 h5、 h6，ol、ul、dl、li、form、table
 
-
-
 <span style=color:red;background:yellow>**块级元素宽度继承示例：**</span>
 
 ```HTML
@@ -1085,8 +1063,6 @@ f()// 调用上述方法
 >     console.log(num1 / num2) // 2
 >     ```
 
-
-
 #### 逻辑运算符
 
 > ```
@@ -1193,7 +1169,7 @@ parseFloat("10.33"); // 返回 10.33
 >   - ```
 >     // 头一个China返回的下标
 >     str.indexOf("China");
->                 
+>                   
 >     // 从28开始，找往后的China的下标
 >     str.indexOf("China", 28);
 >     ```
@@ -1306,8 +1282,6 @@ Math.min(x,y,z,...,n)	返回最低值
 > - getElementsByName():  根据name属性, 获取所有对应name结点的集合
 > - getElementsByTagName():  根据标签名, 获取所有对应标签结点的集合
 
-
-
 > <span style=color:red;background:yellow>**注意：**</span>
 >
 > - `getElementById()` 返回的是一个节点
@@ -1361,8 +1335,6 @@ Math.min(x,y,z,...,n)	返回最低值
 > `removeChild`:  给某个结点删除其一个孩子(注意,参数是要删除的孩子 )
 >
 > 注意输入的参数，是一个children类型的
-
-
 
 ```java
  <ul id="ul1"><li>zs</li><li>ls</li><li>wu</li><li>zl</li></ul>
@@ -1491,16 +1463,6 @@ http://192.168.8.100:8080/user/register?username=admin&password=admin&age=18
 >
 > <span style=color:red;background:yellow>**js库。**</span>让我们不用操作dom，也可以修改页面上的数据。
 
-
-
-vue2 。 vue3  。
-
-有一些软件，不必要追求最新。  Java8  最新Java20。
-
-企业追求 --》  稳定。
-
-
-
 ## 快速入门
 
 ### 准备工作
@@ -1530,8 +1492,6 @@ vue2 。 vue3  。
 >           })
 >       </script>
 >       ```
-
-
 
 <font color=red>**完整代码：**</font>
 
@@ -1592,9 +1552,9 @@ vue2 。 vue3  。
 >
 >   - ```javascript
 >     {{ number + 1 }}
->                             
+>                                 
 >     {{ ok ? 'YES' : 'NO' }}
->                             
+>                                 
 >     {{ message.split('').reverse().join('') }} 
 >     ```
 >
@@ -1603,7 +1563,7 @@ vue2 。 vue3  。
 >     ```javascript
 >         <!-- 这是语句，不是表达式 -->
 >     {{ var a = 1 }}
->                             
+>                                 
 >     <!-- 流控制也不会生效，请使用三元表达式 -->
 >      {{ if (ok) { return message } }}
 >     ```
@@ -1678,8 +1638,6 @@ vue2 。 vue3  。
 > v-model: <font color=red>**双向绑定**</font>, 可以把一个vue对象中的数据, 通过v-model双向绑定, 关联到对应html代码的表单元素的value上,  让两者相互影响, 相互改变
 >
 > input textarea select
-
-
 
 ```java
   <div id="root">
@@ -1788,8 +1746,6 @@ vue2 。 vue3  。
 
 ```
 
-
-
 #### v-text, v-html 等价于innerText和innerHTML
 
 ```java
@@ -1819,8 +1775,6 @@ v-html
     })
   </script>
 ```
-
-
 
 #### v-show: 隐藏和显示
 
@@ -1891,8 +1845,6 @@ v-else-if
   </script>
 ```
 
-
-
 #### v-once: 只加载一次
 
 ```java
@@ -1916,8 +1868,6 @@ v-else-if
 
   </script>
 ```
-
-
 
 #### v-pre: 阻止预编译
 
@@ -1945,8 +1895,6 @@ v-else-if
       })
     </script>
 ```
-
-
 
 #### v-cloak 延迟加载
 
@@ -2000,8 +1948,6 @@ v-else-if
 >
 > <span style=color:red;background:yellow>**template中，可以使用vue的所有语法，v指令，插值表达式**</span>
 
-
-
 ```java
   <div id="root"></div>
 
@@ -2021,11 +1967,7 @@ v-else-if
   </script>
 ```
 
-
-
 ### 组件
-
-
 
 >`component`：组件 一个vue对象就是一个vue组件
 >
@@ -2090,8 +2032,6 @@ v-else-if
 
 生命周期方法，一般用来初始化一些数据。
 
-
-
 > <font color=red>**什么是生命周期:**</font>  一个Vue对象从创建到销毁的过程，就是vue的生命周期
 >
 > > 与Java类似，Java对象从初始化，到被调用，到最终被销毁，这也是一个生命周期
@@ -2109,8 +2049,6 @@ v-else-if
 > - updated：更新后
 > - beforeDestroy：销毁前
 > - destoryed：销毁后
-
-
 
 ```java
  <div id="root">
@@ -2239,18 +2177,12 @@ v-else-if
 
 上述步骤都属于环境配置, 不要重复进行: 除非安装失败, 或者某个东西崩溃了   
 
-
-
-
-
 ```JAVA
 项目的路径下，不要有中文，不要有特殊字符。比如空格  & * . 
 test file/
     
 test" file
 ```
-
-
 
 > <span style=color:red;>**2.初始化项目**</span>
 >
@@ -2281,7 +2213,7 @@ test" file
 >   npm run  dev
 >   ```
 
-![image-20221125153414251](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\image-20221125153414251.png)
+
 
 如果无法创建一个前端服务，没有问题。因为本质上是创建一个架子。可以直接使用提供好的架子
 
@@ -2342,11 +2274,7 @@ config/index.js里面的东西
     从8080往上写，不要往下写
 ```
 
-
-
 怎么从 index.html到这个页面的。
-
-
 
 怎么去写一个页面的布局。
 
@@ -2372,8 +2300,6 @@ axios: 是vue的一个插件,  可以在vue中, 写发起请求代码
 // 3, 具体使用
 ```
 
-
-
 ```JAVA
 怎么在一个vue项目中引入第三方工具
 
@@ -2384,19 +2310,11 @@ axios: 是vue的一个插件,  可以在vue中, 写发起请求代码
 3, 使用
 ```
 
-
-
 前后端分离。
 
 前端主要负责页面的展示。
 
 后端负责提供数据。
-
-
-
-
-
-
 
 ```JSON
 JSON数据  
