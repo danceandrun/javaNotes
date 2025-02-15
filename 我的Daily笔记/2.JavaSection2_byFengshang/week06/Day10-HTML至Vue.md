@@ -4,8 +4,6 @@
 
 ## HTML基本概念
 
-
-
 ``` java
 HTML概念
     HTML(hyper text markup language)超文本标记语言
@@ -70,9 +68,9 @@ HTML概念
 
 ## 重要的body标签
 
-`html`是一个整体都是由标签描述的文本, 所以我们研究`html`就是研究`html`不同语法标签(body部分比较重要)
+🥏`html`是一个整体都是由标签描述的文本，所以我们研究`html`就是研究`html`不同语法标签(body部分比较重要)
 
-### hr标签
+### `hr`标签
 
 ```JAVA
 <hr>:是一个横线标签,  单标签
@@ -87,7 +85,7 @@ HTML概念
     候选值:center left right
 ```
 
-### br标签
+### `br`标签
 
 ```JAVA
 <br>： 换行符，单标签
@@ -96,8 +94,6 @@ HTML概念
   多个空格，也是没有效果的。						也只会变成一个空格。
   
 ```
-
-
 
 **一些常见的特殊字符**
 
@@ -108,9 +104,7 @@ HTML概念
 | <        | `&lt;`     | 小于符号 |
 | &        | `&amp;`    |          |
 
-
-
-### h1-h6标签
+### `h1-h6`标签
 
 ```java
 <h1><h2><h3><h4><h5><h6>: 标题标签
@@ -127,26 +121,22 @@ HTML概念
 注意2: h1在一个html页面上可以出现一次, h2-h6可以在一个html页面上出现多次   
 ```
 
-
-
-### div标签
+### `div`标签
 
 ```java
 <div>: 给页面进行分区或者节/块
     会自动换行。
 ```
 
-
-
-### span标签
+### `span`标签
 
 ```JAVA
 <span> ：行内进行分块的
 ```
 
-div是个大容器。span是个小容器。
+`div`是个大容器。`span`是个小容器。
 
-### p标签
+### `p`标签
 
 ```java
 <p>: 段落标签
@@ -154,7 +144,7 @@ div是个大容器。span是个小容器。
 注意: 段落一般用来描述大段文字, 很类似div的使用, 只不过段落会自动的在段前/段后加上一部分段落间距
 ```
 
-### ==a标签==
+### `a`标签
 
 ```java
 <a>超链接标签
@@ -187,7 +177,7 @@ _self:它使目标文档显示在超链接所在框架或者窗口中
 
 iframe就是引用别的网站到这个网页上，但是有的网站是拒绝被引用的
 
-### img标签
+### `img`标签
 
 ```java
 <img> 图片标签
@@ -198,7 +188,7 @@ iframe就是引用别的网站到这个网页上，但是有的网站是拒绝�
     有一些网站，不想你访问它的图片。
 ```
 
-相对路径是相对于当前html的。
+相对路径是相对于当前`html`的。
 
 
 
@@ -213,8 +203,6 @@ iframe就是引用别的网站到这个网页上，但是有的网站是拒绝�
 `https://img1.baidu.com/it/u=3573056321,2239143646&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500`
 
 ### <font color=red>**路径问题**</font>
-
-
 
 ````java
 // Java路径
@@ -238,7 +226,7 @@ iframe就是引用别的网站到这个网页上，但是有的网站是拒绝�
 本质: 前端代码是运行在用户的计算机上,后端代码是运行在我们自己的服务器上
 ````
 
-### ol和ul标签
+### `ol`和`ul`标签
 
 ```java
 <ol> 有序列表, 成套标签, 和<li>标签构成一套标签
@@ -256,7 +244,7 @@ ul属性:
         square :实心方块。
 ```
 
-### table标签
+### `table`标签
 
 ```java
 <table>表格标签, 成套标签,  tr, td
@@ -280,9 +268,7 @@ ul属性:
             rowspan:横跨行数
 ```
 
-
-
-### input标签:表单元素
+### `input`标签：表单元素
 
 ```java
 <input>输入框
@@ -299,9 +285,7 @@ Type
         submit:提交  
 ```
 
-
-
-### textarea标签: 表单元素
+### `textarea`标签：表单元素
 
 ```java
 < textarea > : 多行输入框
@@ -312,9 +296,7 @@ Type
     placeholder:提示
 ```
 
-
-
-### select标签: 表单元素
+### `select`标签：表单元素
 
 ```java
 < select >: 下拉选择, 和<option>是成套标签
@@ -325,13 +307,9 @@ select :multiple(multiple ="multiple" 允许多选)
 select :size(size ="4"下拉可见数4)
 ```
 
+### `form`标签
 
-
-### <font color=red>**==form标签==**</font>
-
-表单元素，都要通过form标签，把这些数据组织起来。
-
-
+表单元素，都要通过`form`标签，把这些数据组织起来。
 
 ```java
 <form>表单, 用来在浏览器的网页上, 通过用户输入或者点击, 生成一个url, 让浏览器根据这个url发起请求。
@@ -345,8 +323,6 @@ select :size(size ="4"下拉可见数4)
 
  https://www.baidu.com/s?wd=java   
 ```
-
-
 
 ```java
 // 在一个form表单中可以生成一个url给浏览器, 让浏览器根据这个生成的url发起请求
@@ -364,7 +340,7 @@ select :size(size ="4"下拉可见数4)
 
 ```
 
-#### http请求方式get和post的区别: 背会📌
+#### http请求方式`get`和`post`的区别
 
 ```java
 get和post的区别:
@@ -372,18 +348,15 @@ get和post的区别:
 //      url之后拼接参数最多1kb
 // 2, get请求不安全,  post请求相对安全一些
 // 3, 语义化区别,  get请求一般用来获取数据,  post请求一般用来提交数据
-
 ```
 
 # `CSS`
 
 ## `CSS`概念
 
-> `CSS`, 层叠样式表(英文全称：Cascading Style Sheets)
+> `CSS`：层叠样式表(英文全称：Cascading Style Sheets)
 >
 > 主要作用：设置HTML页面中的<span style=color:red;>**文本内容格式**</span>（字体、大小、对齐方式等）、<font color=red>**图片的外形**</font>（宽高、边框样式、边距等）以及<font color=red>**版面的布局**</font>等等外观显示样式。
->
-> 
 >
 > `CSS`以HTML为基础，提供了<font color=red>**丰富的样式功能**</font>。
 >
@@ -391,9 +364,9 @@ get和post的区别:
 
 ## 怎么在HTML中引入`CSS`
 
-### 方式一:内联样式
+### 方式一：内联样式
 
-> 写在一个`html`标签的属性位置，写在开始标签上; style
+> 写在一个`html`标签的属性位置，写在开始标签上：`style`
 >
 > 多个`css`样式以分号分割
 >
@@ -408,9 +381,9 @@ get和post的区别:
   </div>
 ```
 
-### 方式二: 内部样式
+### 方式二： 内部样式
 
-> 写在head标签内部的style标签内
+> 写在`head`标签内部的`style`标签内
 
 <font color=red>**示例：**</font>
 
@@ -438,17 +411,17 @@ get和post的区别:
   </div>
 ```
 
-### 方式三:外部样式
+### 方式三：外部样式
 
 > 把`css`样式写在一个单独的`css`文件中,  引入到`html`文件中。
 >
 > 引入方式： 
 >
 > 1. `<link rel="stylesheet" type="text/css" href="./01_css.css" />`
->
-> 2.`<style type="text/css">
->     @import url(./01_css.css);
->   </style>`
+>2. `<style type="text/css">
+>        @import url(./01_css.css);
+>      </style>`
+> 
 
 <font color=red>**示例：**</font>
 
@@ -472,12 +445,6 @@ get和post的区别:
 >
 > 解释：我们写的`css`，希望作用于某一个区域，这就是选择器，通过选择器来选择区域
 
-![image-20221110182550139](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\选择器是什么.png)
-
-
-
-
-
 > 有哪些引入方式需要选择器？
 >
 > - 内联样式(直接写在标签上)
@@ -491,8 +458,6 @@ get和post的区别:
 > <font color=red>**内部样式、外部样式，都需要使用选择器**</font>
 
 ### 标签选择器
-
-
 
 > 标签选择器, 就是通过HTML的标签名, 把`css`样式和对应的`html`标签关联起来
 >
@@ -531,8 +496,6 @@ get和post的区别:
   
 </body>
 ````
-
-
 
 ### 类选择器
 
@@ -613,7 +576,7 @@ get和post的区别:
 
 ### 其它选择器
 
-**1.复合选择器**
+**复合选择器**
 
 ``` java
 // 复合选择器是由两个或多个基础选择器，通过不同的方式组合而成的。
@@ -645,7 +608,7 @@ get和post的区别:
 // 选择元素1 元素2
 ```
 
-**2.伪类选择器**
+**伪类选择器**
 
 ```` java
 // 伪类选择器用于向某些选择器添加特殊的效果，比如给链接添加特殊效果，或选择第1个，第n个元素。
@@ -657,7 +620,7 @@ get和post的区别:
 // p:first-child{} p:nth-child(2){}
 ````
 
-**3.伪元素选择器**
+**伪元素选择器**
 
 ``` java
 // CSS 伪元素是用来添加一些选择器的特殊效果。
@@ -667,7 +630,7 @@ get和post的区别:
   }
 ```
 
-**4.属性选择器**
+**属性选择器**
 
 ```JAVA
 // 选择标签中带有某个属性的
@@ -690,10 +653,7 @@ get和post的区别:
 ```java
 所谓盒子模型: 就是一份html代码被浏览器解析之后显示,  在这个过程中, 每一个html标签, 在页面上实际占据的空间, 都可以看成一个矩形的盒子,  就是所谓的盒子模型
 // 注意: 每一个盒子模型它的大小都是由四部分构成:  内容,  内边距,  边框,  外边距
-    
 ```
-
-![盒子模型](E:\wangdao\java-53-course-materials\02-DSDB\02-笔记\img\盒子模型.png)
 
 **从内到外：**
 
@@ -703,15 +663,11 @@ get和post的区别:
 - 外边距 （margin）
 
 
-
-
 ```java
 // 注意1: 我们在一个html标签上设置的宽高属性, 描述的仅仅只是内容的大小
 //  
 // 注意2:  一个盒子模型的背景色 =   元素内容 +  内边距
 ```
-
-
 
 ### 边框写法
 
@@ -728,11 +684,7 @@ get和post的区别:
 // 如果不填写颜色，则默认为黑色
 ```
 
-
-
 ### 内外边距写法
-
-
 
 ```JAVA
 // 一起(上下左右均设置)的写法。
@@ -762,9 +714,7 @@ padding: 10px 20px 30px 40px
 // 情况2：父子紧相邻
 ```
 
-
-
-**1.兄弟紧相邻**
+**兄弟紧相邻**
 
 ```html
 <style>
@@ -793,9 +743,7 @@ padding: 10px 20px 30px 40px
 </div>
 ```
 
-
-
-**2.父子紧相邻**
+**父子紧相邻**
 
 ``` java
 <style>
@@ -838,8 +786,6 @@ padding: 10px 20px 30px 40px
 > - 常见的块级元素：
 >   div、p、h1、 h2、 h3、 h4、 h5、 h6，ol、ul、dl、li、form、table
 
-
-
 <span style=color:red;background:yellow>**块级元素宽度继承示例：**</span>
 
 ```HTML
@@ -860,8 +806,6 @@ padding: 10px 20px 30px 40px
     </div>
 </div>
 ```
-
-
 
 ### 行级元素
 
@@ -929,8 +873,6 @@ display: inline-block；（将元素变为行级块元素）
 4：浮动可实现模式转换
 ```
 
-
-
 清除浮动
 
 ```java
@@ -959,8 +901,6 @@ clear: 谁受影响谁清除
 > - 它的解释器被称为JavaScript引擎，为浏览器的一部分
 > - <font color=red>**主要用来向HTML页面添加交互行为**</font>
 > - 跨平台特性，在绝大多数浏览器的支持下。 Java的跨平台
-
-
 
 <span style=color:red;background:yellow>**学习JS目的：**</span>
 
@@ -1000,8 +940,6 @@ clear: 谁受影响谁清除
 </html>
 ```
 
-
-
 ### 方式二：外部引入
 
 > 创建js文件，在html页面上引入js文件
@@ -1032,11 +970,9 @@ clear: 谁受影响谁清除
 > JavaScript在声明时统一使用无类型（untyped）的"var"关键字
 >
 > - 举例：`var pi=3.14`
-> - var来声明一个变量,这是一个<font color=red>**固定的写法**</font>，是js的语法
+> - `var`来声明一个变量,这是一个<font color=red>**固定的写法**</font>，是js的语法
 > - JavaScript并没有避开数据类型，它的数据类型是根据所赋值的类型来确定的
 > - JavaScript 对大小写敏感
-
-
 
 命名规范：
 
@@ -1138,7 +1074,6 @@ f()// 调用上述方法
 
 break 语句用于跳出循环。
 continue 用于跳过循环中的一个迭代。
-    
 ```
 
 
@@ -1159,9 +1094,9 @@ for (let i = 0; i < array.length; i++) {
 }
 ```
 
-## 核心对象/类型
+## 🚀 核心对象/类型
 
-### Number
+### `Number`
 
 > - `toString()` 以字符串返回数值
 >
@@ -1173,9 +1108,7 @@ for (let i = 0; i < array.length; i++) {
 >   - "str1000" 返回的是`NaN`
 >   - "    100str" 返回的是100
 
-
-
-```java
+```javascript
 // toString() 以字符串返回数值
 var ii = 123
 console.log(typeof  ii)
@@ -1197,7 +1130,7 @@ parseFloat("10.33"); // 返回 10.33
 
 
 
-### String
+### `String`
 
 > - `length` 属性返回字符串的长度
 >
@@ -1208,7 +1141,7 @@ parseFloat("10.33"); // 返回 10.33
 >   - ```
 >     // 头一个China返回的下标
 >     str.indexOf("China");
->           
+>                 
 >     // 从28开始，找往后的China的下标
 >     str.indexOf("China", 28);
 >     ```
@@ -1217,7 +1150,7 @@ parseFloat("10.33"); // 返回 10.33
 >
 > - `split()` 将字符串转换为数组
 
-```java
+```javascript
 length 属性返回字符串的长度
 var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var sln = txt.length;
@@ -1240,18 +1173,18 @@ txt.split("|");          // 用竖线分隔
 如果分隔符是 ""，被返回的数组将是间隔单个字符的数组：
 ```
 
-### Array
+### `Array`
 
-> - toString() 返回数组转换的数组值（逗号分隔）的字符串。
-> - pop() 方法从数组中删除最后一个元素,返回删除的元素
-> - push() 方法（在数组结尾处）向数组添加一个新的元素,返回数组长度
-> - splice() 
+> - `toString()` 返回数组转换的数组值（逗号分隔）的字符串。
+> - `pop()` 方法从数组中删除最后一个元素,返回删除的元素
+> - `push()` 方法（在数组结尾处）向数组添加一个新的元素,返回数组长度
+> - `splice()` 
 >   - 删除指定位置开始的指定个元素。`fruits.splice(2, 2);`
 >   - 方法可用于向数组添加新项, 返回([])。`fruits.splice(2, 0, "Lemon", "Kiwi");`
-> - sort() 方法以字母顺序对数组进行排序,返回值和原数组是经过排序的数组
-> - reverse() 方法反转数组中的元素。返回值和原数组都变为经过反转数组
+> - `sort()` 方法以字母顺序对数组进行排序,返回值和原数组是经过排序的数组
+> - `reverse()` 方法反转数组中的元素。返回值和原数组都变为经过反转数组
 
-```java
+```javascript
 toString() 返回数组转换的数组值（逗号分隔）的字符串。
 var fruits = ["Banana", "Orange", "Apple", "Mango"];
 console.log(fruits.toString()); //Banana,Orange,Apple,Mango
@@ -1277,24 +1210,24 @@ fruits. reverse();            // 对 fruits 中的元素进行排序
 
 ```
 
-### Math
+### `Math`
 
-```java
-Math.ceil(x)返回大于等于x的最小整数
-Math.floor(x)返回小于等于x的最大整数
-Math.random() 返回 0 ~ 1 之间的随机数 
-Math.round(x) 把一个数四舍五入为最接近的整数
-Math.max(x,y,z,...,n)	返回最高值
-Math.min(x,y,z,...,n)	返回最低值
+```javascript
+Math.ceil(x) //返回大于等于x的最小整数
+Math.floor(x) //返回小于等于x的最大整数
+Math.random() //返回 0 ~ 1 之间的随机数 
+Math.round(x) //把一个数四舍五入为最接近的整数
+Math.max(x,y,z,...,n)	//返回最高值
+Math.min(x,y,z,...,n)	//返回最低值
 ```
 
 # DOM
 
 ## DOM的加载顺序
 
-> - DOM:文档对象模型（Document Object Model，简称DOM）
+> - DOM：文档对象模型（Document Object Model，简称DOM）
 >
-> - DOM的加载顺序: 指的就是浏览器获得了一份html代码之后, 从获得代码到显示的过程
+> - DOM的加载顺序： 指的就是浏览器获得了一份html代码之后, 从获得代码到显示的过程
 
 > - 解析HTML结构(<span style=color:red;background:yellow>**从上向下的过程**</span>)， 一边解析, 一边构建dom树结点/节点
 >   - 加载外部脚本和样式表文件，异步加载外部的css和js文件
@@ -1305,32 +1238,24 @@ Math.min(x,y,z,...,n)	返回最低值
 
 
 
-浏览器，解析完网页之后，在内存上生成了一棵树（DOM）对今后修改网页有什么好处？
+问：浏览器解析完网页之后，在内存上生成了一棵树（DOM）对今后修改网页有什么好处？
 
-就是浏览器会生成一份内存上的映射。
-
-
-
-一份HTML代码，最终在chrome上的内存映射。 
-
-我们今后需要修改HTML页面，就只用操作这个内存映射就可以了。
+答：就是浏览器会生成一份内存上的映射。一份HTML代码，最终在chrome上的内存映射。我们今后需要修改HTML页面，就只用操作这个内存映射就可以了。
 
 ## 在DOM树中获取结点
 
-> - getElementById():  根据id获取一个结点
-> - getElementsByName():  根据name属性, 获取所有对应name结点的集合
-> - getElementsByTagName():  根据标签名, 获取所有对应标签结点的集合
-
-
+- `getElementById()`:  根据id获取一个结点
+- `getElementsByName()`:  根据name属性, 获取所有对应name结点的集合
+- `getElementsByTagName()`:  根据标签名, 获取所有对应标签结点的集合
 
 > <span style=color:red;background:yellow>**注意：**</span>
 >
 > - `getElementById()` 返回的是一个节点
-> - `getElementsByName(),getElementsByTagName()` 返回的是一个集合
+> - `getElementsByName()`/`getElementsByTagName()` 返回的是一个集合
 
 ## 添加结点
 
-> - `appendChild`: 给某个结点添加一个孩子(孩子也应该是一个结点。<font color=red>**注意类型**</font> )
+> - `appendChild` 给某个结点添加一个孩子(孩子也应该是一个结点。<font color=red>**注意类型**</font> 
 > - 比如要添加一个li类型的节点，需要使用以下方式: `document.createElement("li")`
 > - 要添加文本类型的节点： `document.createTextNode("zs")`
 
@@ -1349,8 +1274,6 @@ Math.min(x,y,z,...,n)	返回最低值
     function addli(){
       var inputNode = document.getElementById("inputstr")
       var inputStr = inputNode.value
-
-
       var ulNode = document.getElementById("ul1")
 
       // 创建一个文本结点
@@ -1373,11 +1296,9 @@ Math.min(x,y,z,...,n)	返回最低值
 
 ## 删除结点
 
-> `removeChild`:  给某个结点删除其一个孩子(注意,参数是要删除的孩子 )
+> `removeChild`:  给某个结点删除其一个孩子(注意参数是要删除的孩子 )
 >
 > 注意输入的参数，是一个children类型的
-
-
 
 ```java
  <ul id="ul1"><li>zs</li><li>ls</li><li>wu</li><li>zl</li></ul>
@@ -1402,11 +1323,9 @@ Math.min(x,y,z,...,n)	返回最低值
     </script>
 ```
 
-
-
 ## 修改结点
 
-> - replaceChild: 给某个结点替换孩子结点
+> - `replaceChild`: 给某个结点替换孩子结点
 >
 >   第一个参数:  新孩子；第二个参数:  旧孩子
 
@@ -1439,7 +1358,7 @@ Math.min(x,y,z,...,n)	返回最低值
       }
 ```
 
-## inner
+## `inner`
 
 > - `innerText`: 会按照text全部放入
 >
@@ -1480,7 +1399,11 @@ Math.min(x,y,z,...,n)	返回最低值
 >
 > - 背景：我们想完成一个注册的功能
 >
-> - 准备知识：电脑ip和端口,`192.168.8.100:8000`,请求地址(服务器内部路径)：`/user/register` 
+> - 准备知识：
+>
+>   - 电脑ip和端口：`192.168.8.100:8000`
+>
+>   - 请求地址(服务器内部路径)：`/user/register` 
 >
 > - 流程：
 >
@@ -1505,16 +1428,6 @@ http://192.168.8.100:8080/user/register?username=admin&password=admin&age=18
 > - 单页应用: 经过打包生成一个单页的html文件和一些js文件
 >
 > <span style=color:red;background:yellow>**js库。**</span>让我们不用操作dom，也可以修改页面上的数据。
-
-
-
-vue2 。 vue3  。
-
-有一些软件，不必要追求最新。  Java8  最新Java20。
-
-企业追求 --》  稳定。
-
-
 
 ## 快速入门
 
@@ -1546,8 +1459,6 @@ vue2 。 vue3  。
 >       </script>
 >       ```
 
-
-
 <font color=red>**完整代码：**</font>
 
 ```HTml
@@ -1574,8 +1485,6 @@ vue2 。 vue3  。
 </body>
 </html>
 ```
-
-
 
 ### 解释
 
@@ -1607,9 +1516,9 @@ vue2 。 vue3  。
 >
 >   - ```javascript
 >     {{ number + 1 }}
->                 
+>                             
 >     {{ ok ? 'YES' : 'NO' }}
->                 
+>                             
 >     {{ message.split('').reverse().join('') }} 
 >     ```
 >
@@ -1618,7 +1527,7 @@ vue2 。 vue3  。
 >     ```javascript
 >         <!-- 这是语句，不是表达式 -->
 >     {{ var a = 1 }}
->                 
+>                             
 >     <!-- 流控制也不会生效，请使用三元表达式 -->
 >      {{ if (ok) { return message } }}
 >     ```
@@ -1693,8 +1602,6 @@ vue2 。 vue3  。
 > v-model: <font color=red>**双向绑定**</font>, 可以把一个vue对象中的数据, 通过v-model双向绑定, 关联到对应html代码的表单元素的value上,  让两者相互影响, 相互改变
 >
 > input textarea select
-
-
 
 ```java
   <div id="root">
@@ -1803,8 +1710,6 @@ vue2 。 vue3  。
 
 ```
 
-
-
 #### v-text, v-html 等价于innerText和innerHTML
 
 ```java
@@ -1834,8 +1739,6 @@ v-html
     })
   </script>
 ```
-
-
 
 #### v-show: 隐藏和显示
 
@@ -1906,8 +1809,6 @@ v-else-if
   </script>
 ```
 
-
-
 #### v-once: 只加载一次
 
 ```java
@@ -1931,8 +1832,6 @@ v-else-if
 
   </script>
 ```
-
-
 
 #### v-pre: 阻止预编译
 
@@ -1960,8 +1859,6 @@ v-else-if
       })
     </script>
 ```
-
-
 
 #### v-cloak 延迟加载
 
@@ -2005,8 +1902,6 @@ v-else-if
     </script>
 ```
 
-
-
 ## 模板和组件
 
 ### 模板
@@ -2014,8 +1909,6 @@ v-else-if
 > `template`:一个字符串模板作为 Vue 实例的标识使用。模板将会 替换 挂载的元素。挂载元素的内容都将被忽略.
 >
 > <span style=color:red;background:yellow>**template中，可以使用vue的所有语法，v指令，插值表达式**</span>
-
-
 
 ```java
   <div id="root"></div>
@@ -2036,11 +1929,7 @@ v-else-if
   </script>
 ```
 
-
-
 ### 组件
-
-
 
 >`component`：组件 一个vue对象就是一个vue组件
 >
@@ -2095,17 +1984,13 @@ v-else-if
     </script>
 ```
 
-
-
 ## 生命周期
 
-生命周期：finalize()
+生命周期：`finalize()`
 
 从一个对象被创建，到销毁，有一些特定过程，这个就是生命周期。
 
 生命周期方法，一般用来初始化一些数据。
-
-
 
 > <font color=red>**什么是生命周期:**</font>  一个Vue对象从创建到销毁的过程，就是vue的生命周期
 >
@@ -2124,8 +2009,6 @@ v-else-if
 > - updated：更新后
 > - beforeDestroy：销毁前
 > - destoryed：销毁后
-
-
 
 ```java
  <div id="root">
@@ -2172,8 +2055,6 @@ v-else-if
     // root.$destroy()
   </script>
 ```
-
-
 
 ## 创建和实现Vue项目
 
@@ -2319,13 +2200,13 @@ node_modules里面是所有的依赖，文件太多太散，所以一般不建�
 
 <font color=red>**最重要的几个文件。**</font>
 
-- package.json -->依赖的文件   依赖，启动的脚本
+- `package.json` --> 依赖的文件   依赖，启动的脚本
 
 
-- config/index.js  --> port
+- `config/index.js`  --> port
 
 
-- main.js  --> 怎么由index.html最终展示出来里层App.vue文件的。
+- `main.js`  --> 怎么由index.html最终展示出来里层App.vue文件的。
 
 ```JAVA
 package.json中的东西
@@ -2347,15 +2228,13 @@ config/index.js里面的东西
     从8080往上写，不要往下写
 ```
 
-
-
 怎么从 index.html到这个页面的。
 
 怎么去写一个页面的布局。
 
 大组件套小组件的思想。
 
-## axios
+## `axios`
 
 ```java
 axios: 是vue的一个插件,  可以在vue中, 写发起请求代码
@@ -2395,7 +2274,6 @@ axios: 是vue的一个插件,  可以在vue中, 写发起请求代码
 
 ```JSON
 JSON数据  
-
 
 JavaScript Object 
 
