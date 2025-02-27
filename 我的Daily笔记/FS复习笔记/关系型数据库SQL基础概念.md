@@ -698,7 +698,7 @@ select * from table_name where age > 18;
 
 <span style=color:red;background:yellow><b>举例：</b></span>：我想找出一些数据
 
-- 名字叫做阿妈粽的
+- 名字叫做啊吗粽的
 - 年龄大于18的
 - 是湖北人的
 

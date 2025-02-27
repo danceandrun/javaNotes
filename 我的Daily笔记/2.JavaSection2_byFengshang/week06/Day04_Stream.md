@@ -136,8 +136,6 @@ public void testWithStream() {
   }
 ```
 
-
-
 ## 流的概述
 
 ### 什么是流
@@ -147,10 +145,6 @@ public void testWithStream() {
 > 这种风格将要处理的元素集合看作一种流， 流在管道中传输， 并且可以在管道的节点上进行处理， 比如筛选， 排序，聚合等。
 
 通俗的讲: 也就是说, `Stream`流是Java在`JDK1.8`提供的对<span style="font-size:20px;color:red;">集合数据进行优化/简化操作</span>的一种数据处理方式。
-
-
-
-流  IO流。   
 
 
 
@@ -171,7 +165,7 @@ Stream流一般用来处理Java中的集合类数据, 进以避免在日常代�
 
 ## 创建流
 
-​	1.<span style="color:red"> 调用集合类的stream方法,生成一个流</span>(最常用/常见)
+​	1. <span style="color:red"> 调用集合类的stream方法,生成一个流</span>(最常用/常见)
 
 ```java
 Collection collection = new ArrayList();
@@ -184,7 +178,7 @@ Stream stream = collection.stream();
 Stream<String> zs = Stream.of("zs", "ls", "wu", "zl");
 ```
 
-​	3.由数组创建
+​	3. 由数组创建
 
 ```java
 String [] strs = {"zs", "ls", "wu"};
@@ -195,9 +189,9 @@ Stream<String> stream = Arrays.stream(strs);
 
 两个简单的中止操作：
 
-count(): 流里面有多少元素，最终会返回Long类型。
+`count()`: 流里面有多少元素，最终会返回Long类型。
 
-collect(Collectors.toList())： 将流里面的元素，存储为一个List;
+`collect(Collectors.toList())`： 将流里面的元素，存储为一个List;
 
 
 
@@ -220,8 +214,6 @@ System.out.println(collect);
 
 注意: 每次中间操作会返回一个 Stream (可以有多次中间操作),这就允许对其操作可以像链条一样排列,变成一个管道。
 
-
-
 ```JAVA
 // Stream<T> filter(Predicate<? super T> predicate); 
 // public interface Predicate{}
@@ -240,8 +232,6 @@ distinct方法用于筛选元素(相当于去除重复元素)
 
 所以需要注意：如果使用自定义的类，调用distinct，需要重写hashCode和equals方法
 
-
-
 ```java
 //  Stream<T> distinct();
 //  distinct方法----筛选元素, 筛选的机制是根据元素的hashCode和equals判断重复
@@ -259,8 +249,6 @@ long distinctBeijingCount = studentList.stream()
 System.out.println(beijingCount);
 System.out.println(distinctBeijingCount);
 ```
-
-
 
 ### limit(截取)
 
@@ -290,8 +278,6 @@ limit 方法用于获取指定数量(最大)的流。
 
     System.out.println(normalPeople);
 ```
-
-
 
 ### skip(跳过)
 
@@ -361,8 +347,6 @@ class SuperPerson{
     int height;
 }
 ```
-
-
 
 ```JAVA
 // 只需要人是什么类型的  
@@ -574,8 +558,6 @@ count: 返回元素中数量
     System.out.println(count);
 ```
 
-
-
 ### reduce
 
 reduce: 计算元素
@@ -585,8 +567,6 @@ reduce: 将参加计算的元素按照某种方式减少。
 - 比如，两个元素比较，返回大的； 按照这个方式，最终会拿到最大的
 
 - 两个元素，返回和； 按照这个方式，最终会拿到所有的和
-
-
 
 ```java
  List<Person> personList = StudentList.personList;
@@ -640,13 +620,9 @@ List<Student> studentList = new StudentList().studentList;
     System.out.println(reduce4 + "==" + reduce5);
 ```
 
-
-
 ### <span style="color:red;">==collect==</span>
 
 collect: 收集器, 用于收集数据经过流计算的结果
-
-
 
 #### 收集
 
@@ -696,8 +672,6 @@ collect: 收集器, 用于收集数据经过流计算的结果
 
 ## 使用案例
 
-
-
 ```JAVA
 // 1.找出一个集合中来自北京的人
 // filter 
@@ -708,8 +682,6 @@ collect: 收集器, 用于收集数据经过流计算的结果
 // 3.给一个集合，需要一个根据名字到对应对象的Map
 // toMap()
 ```
-
-
 
 
 

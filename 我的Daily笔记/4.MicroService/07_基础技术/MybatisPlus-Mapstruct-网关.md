@@ -737,7 +737,7 @@ public void testPage(){
 
 ## 2. Mapstruct
 
-> BeanUtils是运行时的框架，基于反射实现，缺点是会消耗运行时的资源，而Mapstruct是在编译时执行。
+> `BeanUtils`是运行时的框架，基于反射实现，缺点是会消耗运行时的资源，而`Mapstruct`是在编译时执行。
 
 ### 2.1 引入
 
@@ -769,7 +769,7 @@ DO→DTO→VO
 
 对于这种没有技术含量的活，有追求的程序员是不屑做的，但是在项目中我们又必须要完成，怎么办呢？于是就有了Mapstruct来帮我们完成对象转化的工作。
 
-> 可以调用编译器接口实现字节码的生成。Mapstruct就是利用这一点，在编译时生效，查看target/classes文件夹会发现有实现类。
+> **可以调用编译器接口实现字节码的生成**。Mapstruct就是利用这一点，在编译时生效，查看`target/classes`文件夹会发现有实现类。
 
 ### 2.2 使用
 
@@ -828,7 +828,7 @@ public class DoctorDTO {
 }
 ```
 
-在源对象(Doctor)和目标对象(DoctorDTO)的属性完全相同，我们可以简单定义转化器接口如下
+在源对象(`Doctor`)和目标对象(`DoctorDTO`)的属性完全相同，我们可以简单定义转化器接口如下
 
 ```java
 @Mapper(componentModel = "spring")
@@ -837,7 +837,7 @@ public interface DoctorConverter {
 }
 ```
 
-然后再需要的地方注入Converter对象，调用转化方法即可
+然后在需要的地方注入`Converter`对象，调用转化方法即可
 
 ```java
 @Autowired
@@ -894,15 +894,15 @@ public interface DoctorConverter {
 ```
 
 ```java
-   @Autowired
-   DocterConverter docterConverter;
+ @Autowired
+ DocterConverter docterConverter;
 
-    @Test
-    public void testFieldMappingObj() {
-     Doctor doctor = ...
+ @Test
+ public void testFieldMappingObj() {
+	 Doctor doctor = ...
      // 完成转化
      DoctorDTO destDTO = docterConverter.doctorPO2DTO(docter);
-    }
+ }
 ```
 
 #### 2.2.3 多个不同类型源对象的转化
@@ -922,7 +922,6 @@ public class Education {
 ```
 
 ```java
-
 @Data
 public class Doctor {
     private int id;
@@ -956,16 +955,16 @@ public interface DoctorConverter {
 ```
 
 ```java
-   @Autowired
-   DocterConverter docterConverter;
+@Autowired
+DocterConverter docterConverter;
 
-    @Test
-    public void testFieldMappingObj() {
-     Doctor doctor = ...
-     Education education = ...
-     // 完成转化
-     DoctorDTO destDTO = docterConverter.doctorPO2DTO(docter, education);
-    }
+@Test
+public void testFieldMappingObj() {
+	Doctor doctor = ...
+	Education education = ...
+	// 完成转化
+	DoctorDTO destDTO = docterConverter.doctorPO2DTO(docter, education);
+}
 ```
 
 #### 2.2.4 转化复杂对象
@@ -1026,20 +1025,20 @@ public interface DoctorConverter {
 ```
 
 ```java
-   @Autowired
-   DocterConverter docterConverter;
+@Autowired
+DocterConverter docterConverter;
 
-    @Test
-    public void testComplicatedObj() {
-     Doctor doctor = ...
-     Patient patient = ...
-     doctor.setPatient(patient);
-     // 完成转化
-     DoctorDTO destDTO = docterConverter.doctorPO2DTO(docter);
-    }
+@Test
+public void testComplicatedObj() {
+	Doctor doctor = ...
+	Patient patient = ...
+	doctor.setPatient(patient);
+	// 完成转化
+	DoctorDTO destDTO = docterConverter.doctorPO2DTO(docter);
+}
 ```
 
-这里要注意的是，在Doctor对象持有了一个Patient，但是当我们调用Converter转化器的doctorPO2DTO方法时，Mapstruct在转化Doctor对象的时候，也会把Patient对象转化为PatientDTO对象。原因是：
+这里要注意的是，在`Doctor`对象持有了一个`Patient`，但是当我们调用`Converter`转化器的`doctorPO2DTO()`方法时，Mapstruct在转化`Doctor`对象的时候，也会把`Patient`对象转化为`PatientDTO`对象。原因是：
 
 - 我们在Converter转化器中定义了如下转化方法
 
@@ -1047,13 +1046,13 @@ public interface DoctorConverter {
  PatientDTO patientPO2DTO(Patient patient);
 ```
 
-- 当转化器在Converter在执行complicatedDoctorPO2DTO方法转化Doctor对象的过程中，遇到Patient patient属性时，Converter会“自动发现”patientPO2DTO方法，将源对象中的Patient 对象转化为PatientDTO对象
+- 当转化器在Converter在执行complicatedDoctorPO2DTO方法转化Doctor对象的过程中，遇到Patient patient属性时，Converter会“**自动发现**”patientPO2DTO方法，将源对象中的Patient 对象转化为PatientDTO对象
 -  🍃“自动发现”其实就是用Doctor的源对象目标属性patient的类型，**和某个Converter转化器中方法的入参做类型匹配**，同时，**用目标对象的目标属性patientDTO和该方法的返回值类型做类型匹配**
 - 如果类型都匹配上了，就会自动使用这个转化器方法来完成源对象属性和目标对象属性之间的转化
 
 ![](基础技术.assets/mapstruct复杂对象映射.png)
 
-其实，当Doctor对象中有属性`List<Patient> patientList` ， DoctorDTO对象中有属性`List<PatientDTO> `的时候Mapstrut也会对List中的对象类型和转化器方法的入参和返回值类型，做类型匹配，从而使用`patientPO2DTO`方法，完成将`List<Patient> patientList`转化为`List<PatientDTO>`的工作。
+其实，当Doctor对象中有属性`List<Patient> patientList` ， DoctorDTO对象中有属性`List<PatientDTO> `的时候Mapstrut也会对`List`中的对象类型和转化器方法的入参和返回值类型，做类型匹配，从而使用`patientPO2DTO`方法，完成将`List<Patient> patientList`转化为`List<PatientDTO>`的工作。
 
 #### 2.2.5 转化List
 
@@ -1088,15 +1087,15 @@ public interface DoctorConverter {
 ```
 
 ```java
-   @Autowired
-   DocterConverter docterConverter;
+@Autowired
+DocterConverter docterConverter;
 
-    @Test
-    public void testFieldMappingObj() {
-     List<Doctor> doctor = ...
-     // 完成转化
-     List<DoctorDTO> destDTOs = docterConverter.doctorPOs2DTOs(docter);
-    }
+@Test
+public void testFieldMappingObj() {
+	List<Doctor> doctor = ...
+	// 完成转化
+	List<DoctorDTO> destDTOs = docterConverter.doctorPOs2DTOs(docter);
+}
 ```
 
 ## 3  Gateway
