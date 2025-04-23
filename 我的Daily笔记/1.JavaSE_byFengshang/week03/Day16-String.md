@@ -1,24 +1,24 @@
-# Object类
+# `Object`类
 
-Object类是没有成员变量定义的，并且由于子类对象的隐式初始化，Object类有且仅有一个默认提供的无参构造方法。
+`Object`类是没有成员变量定义的，并且由于子类对象的隐式初始化，`Object`类有且仅有一个默认提供的无参构造方法。
 
 ```Java
 getClass()
 toString()
-⭐equals(Object obj):用判断对象相等，String类有对它的重写
+⭐equals(`Object` obj):用判断对象相等，String类有对它的重写
 ⭐hashCode():用于获取对象的哈希码值
 finalize():Java9中用"@Deprecated"标记了该方法
 clone():克隆对象，开发中很少用；但提供了一种全新不同于new对象的创建对象的方式
     
 1.public final Class getClass()    
 2.public String toString()
-3.public boolean equals(Object obj)    
+3.public boolean equals(`Object` obj)    
 4.public int hashCode()
 5.protected void finalize()   
-6.protected Object clone()    
+6.protected `Object` clone()    
 ```
 
-## getClass()
+## `getClass()`
 
 ##### 方法声明
 
@@ -30,18 +30,18 @@ public final native Class<?> getClass();
 
 学习该方法的主要问题：
 
-**1.什么是Class对象**,Class对象是怎么来的？
+**1.什么是Class对象**，Class对象是怎么来的？
 
 Class指的是java.lang.Class类
 
 **2.Class对象有啥用**
 
 ```Java
-在类加载阶段,JVM认识了解了该类型,同时JVM为了能够让程序员也能够在程序的运行期间,了解认识该类型
+在类加载阶段，JVM认识了解了该类型，同时JVM为了能够让程序员也能够在程序的运行期间，了解认识该类型
 * 并动态执行一些操作
-* 所以JVM在类加载某个类型的过程中(严格来说,是加载的阶段),会在堆上创建该类型的Class对象
-* Class对象当中,封装了该类的类型信息
-* 然后程序员只需要获取该类型的Class对象,就可以在运行期间获取该类型的类型信息,从而执行一些相关操作!
+* 所以JVM在类加载某个类型的过程中(严格来说，是加载的阶段)，会在堆上创建该类型的Class对象
+* Class对象当中，封装了该类的类型信息
+* 然后程序员只需要获取该类型的Class对象，就可以在运行期间获取该类型的类型信息，从而执行一些相关操作!
 ```
 
 > 解决此问题需要“类加载”
@@ -52,18 +52,18 @@ Class指的是java.lang.Class类
 >
 > 所以只要有该类型的Class对象就可以动态地访问信息，操作对象。可以在不事先知道该类内容地前提下，直接在程序运行期间，对该类进行一些操作。（Class对象向上推是反射，反射向上是框架）。
 
-**关于getClass方法，要注意下面两点：**
+**关于`getClass()`方法，要注意下面两点：**
 
-1.getClass方法只不过是获取堆上的class对象，返回它的引用，但实际上Class对象是类加载过程中，JVM创建的，不是getClass方法创建的
+1. getClass方法只不过是获取堆上的class对象，返回它的引用，但实际上Class对象是类加载过程中，JVM创建的，不是getClass方法创建的
 
-2.<u>（重点）类加载只有一次，那么某个类型的Class对象必然也是唯一的。如果用两个同类型的对象，调用getClass方法，</u>然后用“==”连接，返回true.
+2. <u>（重点）类加载只有一次，那么某个类型的Class对象必然也是唯一的。如果用两个同类型的对象，调用getClass方法，</u>然后用“==”连接，返回true.
 
-基于以上特点，getClass方法在实际开发中最重要的用途是：
+基于以上特点，`getClass`方法在实际开发中最重要的用途是：
 
 **判断两个引用指向的对象，是否是同类型的对象。**
 
 ```java
-public static void judgeClassType(Object o1,Object o2){
+public static void judgeClassType(`Object` o1，`Object` o2){
 if(o1.getClass() == o2.getClass()){
     System.out.println("是同种类型对象");
 }else {
@@ -72,9 +72,9 @@ if(o1.getClass() == o2.getClass()){
 }    
 ```
 
-3.可以操作Class对象获取类型信息
+3. 可以操作`Class`对象获取类型信息
 
-Class用的API,实际上是反射的基本原理
+`Class`用的API，实际上是反射的基本原理
 
 ```java
 String getName() 获取全限定类名
@@ -84,9 +84,9 @@ stuClass.getName();
 stuClass.simpleName();
 ```
 
-## toString()
+## `toString()`
 
-Object类当中toString()方法
+`Object`类当中`toString()`方法
 
 #### 方法的声明
 
@@ -96,104 +96,75 @@ public String toString();
 
 ##### 作用，官方文档4点：
 
-1.返回该对象（调用toString方法的对象）的字符串表示。
+1. 返回该对象（调用`toString()`方法的对象）的字符串表示。
 
-2.通常，toString()方法会返回一个"以文本方式表示"此对象的字符串。
+2. 通常，`toString()`方法会返回一个"以文本方式表示"此对象的字符串。
 
-3.结果应是一个简明但易于读懂的信息表达式。
+3. 结果应是一个简明但易于读懂的信息表达式。
 
-4.建议所有子类都重写此方法
+4. 建议所有子类都重写此方法
 
-
-
-##### Object类当中的toString默认实现
+##### `Object`类当中的`toString()`默认实现
 
 ```java
 return this.getClass().getName() + "@" + Integer.toHexString(hashCode());
 ```
 
-hashCode()也是Object类成员方法，会返回该对象的哈希值，在默认情况下，这个哈希值会根据此对象的内存地址来计算，所以一般可以把该方法的返回值看成该对象的十进制内存地址值（int整数）。
+`hashCode()`也是`Object`类成员方法，会返回该对象的哈希值，在默认情况下，这个哈希值会根据此对象的内存地址来计算，所以一般可以把该方法的返回值看成该对象的十进制内存地址值（`int`整数）。
 
-（⭐重点）在Java中，<u>直接打印输出一个引用 或者 该引用参与字符串的拼接运算</u>，会<u>**隐式调用**</u>该对象的toString方法
-
-
+（⭐重点）在Java中，<u>直接打印输出一个引用 或者 该引用参与字符串的拼接运算</u>，会<u>**隐式调用**</u>该对象的`toString()`方法
 
 
-* 一般来说,全限定类名和地址值没太大用,普遍我们会希望看到对象的属性取值以描述一个对象
-* 所以一般来说,应该在子类中重写toString方法
-* 重写toString方法,一般都会选择打印属性的取值,作为重写的规则
+* 一般来说，全限定类名和地址值没太大用，普遍我们会希望看到对象的属性取值以描述一个对象
+* 所以一般来说，应该在子类中重写`toString()`方法
+* 重写`toString()`方法，一般都会选择打印属性的取值，作为重写的规则
 
-##### 重写toString方法
+##### 重写`toString()`方法
 
 一般都会选择打印属性的取值，作为重写的规则。
 
-* 1.不要手写toString方法,没必要,如果就是希望toString简简单单打印属性的取值
+* 不要手写`toString`方法，没必要，如果就是希望`toString`简简单单打印属性的取值那么就直接alt + insert快捷键生成
 
-  那么就直接alt + insert快捷键生成
+* `toString`方法就是简简单单用于打印属性取值的，不要轻易改变它的实现尤其是不要在`toString`方法中增加业务代码，容易引起bug。debug模式下，idea会自动调用该类型的toString方法打印该对象
 
-* 2.toString方法就是简简单单用于打印属性取值的,不要轻易改变它的实现
+* 3.如果有引用数据类型的成员变量需要参与toString方法那么一般也需要重写这个类型的`toString`方法
 
-  尤其是不要在toString方法中增加业务代码
-
-  容易引起bug
-
-  debug模式下,idea会自动调用该类型的toString方法打印该对象
-
-* 3.如果有引用数据类型的成员变量需要参与toString方法
-
-  那么一般也需要重写这个类型的toString方法
-
-* 4.(重点)
-
-  不要画蛇添足
-
-  不要将隐式调用toString方法写出来
-
-  因为要避免空指针异常
+* 4.(重点)不要画蛇添足，不要将隐式调用`toString`方法写出来，因为要避免空指针异常
 
 ##### 小细节
 
-1.快捷键：alt + insert;
+1. 快捷键：alt + insert;
+2. StringBuffer，StringBuilder比起String在做拼接时效率更高，它们是可变的字符串
+3. toString方法就是简简单单用于打印属性取值的，不要加上业务代码，容易引起bug
+4. debug模式下，idea会自动调用toString
+5. 如果有引用数据类型的成员变量需要参与toString方法，那么一般也需要重写这个类型的toString方法
+6. (重点)  不要画蛇添足，不要将toString方法写出来，要避免空指针异常。
 
-StringBuffer，StringBuilder比起String在做拼接时效率更高，它们是可变的字符串
-
-2.toString方法就是简简单单用于打印属性取值的，不要加上业务代码，容易引起bug
-
-debug模式下，idea会自动调用toString
-
-
-
-3.如果有引用数据类型的成员变量需要参与toString方法，那么一般也需要重写这个类型的toString方法
-
-4.(重点)  不要画蛇添足，不要将toString方法写出来，要避免空指针异常。
-
-
-
-## equals方法⭐⭐⭐最重要的方法
+## `equals()`方法⭐⭐⭐最重要的方法
 
 ##### 方法的声明
 
 ```Java
-public boolean equals(Object obj)
+public boolean equals(`Object` obj)
 ```
 
 注意两点
 
-1.该方法时有参数的，需要传入一个对象（任意一个对象就行）
+1. 该方法时有参数的，需要传入一个对象（任意一个对象就行）
 
-2.方法是有返回值的，返回一个布尔类型的值，真或假
+2. 方法是有返回值的，返回一个布尔类型的值，真或假
 
 ##### 方法的作用
 
-此对象.equals(其它对象)
+`此对象.equals(其它对象)`
 
 <u>用于指示/判读其它某个对象是否与此对象“相等”</u>。
 
-相等返回true,不相等返回false.
+相等返回`true`，不相等返回`false`.
 
 ##### 比较对象相等！！！⭐比较规则⭐
 
-equals方法体具体实现就是比较规则
+`equals`方法体具体实现就是比较规则
 
 默认规则即默认的方法实现
 
@@ -207,23 +178,26 @@ return(this == obj);
 >
 > 比较的是引用中存储的地址 -->实际上比较的是两个引用是否指向同一个对象
 
-（这种规则只有自己才和自己相等，没有比较的必要性;新的规则应是：1.如果两个对象类型完全不一样，没有可比性，直接就是不相等对象；2.如果两个对象类型是一致的，具有可比性，那么比较它们属性的取值，如果属性取值一致，就是相等的对象）
+（这种规则只有自己才和自己相等，没有比较的必要性;新的规则应是：
 
-所以要重写equals方法，JDK文档中有规则：重写协定
+1. 如果两个对象类型完全不一样，没有可比性，直接就是不相等对象；
+2. 如果两个对象类型是一致的，具有可比性，那么比较它们属性的取值，如果属性取值一致，就是相等的对象）
+
+✨所以要重写`equals()`方法，JDK文档中有规则：**重写协定**
 
 ##### 重写的常规协定
 
 源码中的类一定符合以下规则
 
-1.自反性
+1. 自反性
 
-2.排他性
+2. 排他性
 
-3.对称性：对称性如何写代码实现？
+3. 对称性：对称性如何写代码实现？
 
-4.传递性
+4. 传递性
 
-5.一致性
+5. 一致性
 
 3，4，5三个要求，只需要**<u>通过比较属性的取值</u>**来判断对象相等，就可以直接满足了，不需要额外操作
 
@@ -240,9 +214,9 @@ if(obj == null || this.getClass() != obj.getClass()){
     return false;
 }
 //3.对称性
-//传参是Object obj，是父类引用，需要强转
+//传参是`Object` obj，是父类引用，需要强转
 Student stu = (Student) obj;
-//先判断age,为了不嵌套，要先判断不等
+//先判断age，为了不嵌套，要先判断不等
 if(age != stu.age){
     return false;
 }
@@ -264,7 +238,7 @@ return score == stu.score;
 
 2.如果引用指向的对象，是后面的抽象类/接口的子类对象，返回true
 
-3.如果左边的引用本身没有指向对象，等于null, 那么该结构固定返回false，该结构没有空指针异常的风险
+3.如果左边的引用本身没有指向对象，等于null， 那么该结构固定返回false，该结构没有空指针异常的风险
 
 ```Java
 //用instanceof做排他性校验，允许传入子类对象
@@ -302,13 +276,13 @@ Teacher t = (Teacher) obj;
 >
 > 所以为了更准确，更规范地比较浮点数大小，推荐一律采用以下方式：
 >
-> int Float.compare(float v1, float v2);
+> int Float.compare(float v1， float v2);
 >
-> int Double.compare(double v1, double v2)
+> int Double.compare(double v1， double v2)
 >
 > 上述方法返回值是整数，"v1 - v2"：
 >
-> 是负数，v1 < v2;是正数,v1>v2;是0，两者相等
+> 是负数，v1 < v2;是正数，v1>v2;是0，两者相等
 
 > 浮点数具有精度问题，不能用于财务系统等要求高地运算。
 >
@@ -320,7 +294,7 @@ Teacher t = (Teacher) obj;
 >
 > 构造方法摘要：使用的时候注意使用String不用double传入
 
-## hashCode()
+## `hashCode()`
 
 #### 方法的声明
 
@@ -328,7 +302,7 @@ Teacher t = (Teacher) obj;
 public native int hashCode(); 
 ```
 
-是一个本地方法，没有任何参数,返回值是一个int类型整数
+是一个本地方法，没有任何参数，返回值是一个int类型整数
 
 #### 方法的作用
 
@@ -354,7 +328,7 @@ public native int hashCode();
 
 1.Java当中的哈希算法是？集合A和集合B是？
 
-Object类当中的hashCode方法就是java当中的哈希算法；
+`Object`类当中的hashCode方法就是java当中的哈希算法；
 
 集合A是一个无限的集合：由于hashCode方法需要对象来调用，<u>所以集合A就是该类型对象的全体集合</u>，理论上是无限大
 
@@ -374,12 +348,12 @@ Object类当中的hashCode方法就是java当中的哈希算法；
 >
 > 哈希表前提：key是唯一的；根据key来计算hash值
 >
-> Java中，key value都是对象，Entry对象封装key,value
+> Java中，key value都是对象，Entry对象封装key，value
 >
 > ```Java
 > class Entry{
->     Object key
->     Object value
+>     `Object` key
+>     `Object` value
 >     int hash
 >     ....
 > }
@@ -397,17 +371,13 @@ Java中哈希表的实现：
 
 >hash table hashmap的源码要找时间看看
 
-#### Object中的hashCode方法的默认实现
+#### `Object`中的hashCode方法的默认实现
 
 一般而言，内存中的不同对象，它们的哈希值是不同的，但是哈希冲突是可能的，所以不同对象完全可以有相同的哈希值。
-
-
 
 #### 如何重写hashCode方法
 
 涉及到设计哈希算法，一般而言如无特殊需求，不用自己考虑它的实现，自动生成alt + insert
-
-
 
 #### 为什么equals 和hashCode要一起重写呢？⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
@@ -427,7 +397,7 @@ Java中哈希表的实现：
 
 2.要么**<u>同时重写，而且重写的依据必须一样</u>**
 
-例如一个Student类，它有成员变量id,age,score...
+例如一个Student类，它有成员变量id，age，score...
 
 假设重写equals方法根据id判断对象相等，那么hashCode方法也必须根据id来计算哈希值。
 
@@ -449,7 +419,7 @@ Java中哈希表的实现：
 
 #### java8中的String = 字符数组
 
-比如"abc" 是['a','b','c']
+比如"abc" 是['a'，'b'，'c']
 
 String是final修饰的没有子类类型
 
@@ -486,7 +456,7 @@ protected
 #### 方法的声明
 
 ```Java
-protected native Object clone() throws CloneNotSupportedException；
+protected native `Object` clone() throws CloneNotSupportedException；
 ```
 
 `protected`：在子类当中创建子类自身对象
@@ -503,9 +473,9 @@ protected native Object clone() throws CloneNotSupportedException；
 
 1. （重要必须做）如果不是自己克隆自己，首先需要在子类中重写`clone`方法的<u>访问权限。</u>
 
-2. `clone`方法在`Object`类当中的默认实现，就会得到一个独立的和原先对象一样的新对象。
+2. `clone`方法在``Object``类当中的默认实现，就会得到一个独立的和原先对象一样的新对象。
 
-3. （重要）Object类的clone方法不会改变对象类型，所以为了调用方法的方便，建议重写返回值为<u>自身类型</u>。
+3. （重要）`Object`类的clone方法不会改变对象类型，所以为了调用方法的方便，建议重写返回值为<u>自身类型</u>。
 
 4. （重要）如果想要对某个类型的对象做克隆操作。那么该类型必须实现接口"java.lang.Cloneable"否则会报错“`CloneNotSupportedException`”
 
@@ -513,9 +483,9 @@ protected native Object clone() throws CloneNotSupportedException；
 
 1. `clone`方法是通过本地方法创建对象，创建对象过程中不会执行构造器！它和`new`创建对象是平行的关系。
 
-2. `clone`方法得到的新对象和老对象是独立的，但类型以及成员都是一致的，这是`Object`类的默认实现。假如真的有需求，可以考虑重写`clone`方法，文档中，也给出了重写的常规协定：
+2. `clone`方法得到的新对象和老对象是独立的，但类型以及成员都是一致的，这是``Object``类的默认实现。假如真的有需求，可以考虑重写`clone`方法，文档中，也给出了重写的常规协定：
 
-*          在进行克隆操作时，正常情况下，我们使用Object类当中的默认实现就足够了，不需要重写实现。
+*          在进行克隆操作时，正常情况下，我们使用`Object`类当中的默认实现就足够了，不需要重写实现。
 *          但假如你真的有需求，对于某个对象的引用x，JDK文档中也规定了一些重写的原则：
 *          a.x.clone() != x 为 true
 *          b.x.clone().getClass() == x.getClass() 一般也为true
@@ -527,7 +497,7 @@ protected native Object clone() throws CloneNotSupportedException；
 
 
 
-#### ⭐Cloneable接口
+#### ⭐`Cloneable`接口
 
 该接口是一个空接口，没有定义任何抽象方法，接口体是空的。
 
@@ -547,7 +517,7 @@ protected native Object clone() throws CloneNotSupportedException；
 
 1. 浅克隆/浅拷贝
 
-​	Object类当中的clone方法的默认实现，就是浅克隆。对于引用数据类型的克隆，导致克隆对象和原先对象不是独立的，克隆的对象里有引用数据类型，只克隆了引用。
+​	`Object`类当中的clone方法的默认实现，就是浅克隆。对于引用数据类型的克隆，导致克隆对象和原先对象不是独立的，克隆的对象里有引用数据类型，只克隆了引用。
 
 2. 深克隆/深拷贝
 
@@ -559,9 +529,9 @@ protected native Object clone() throws CloneNotSupportedException；
 
 + c.将拷贝对象中的拷贝引用，指向克隆后的新对象
 
-# String类
+# `String`类
 
-## String类自身特点⭐⭐
+## `String`类自身特点⭐⭐
 
 String类在java.lang包下
 
@@ -586,24 +556,24 @@ String类在给引用赋值时，普通情况选择直接用字面值赋值，�
 String类的常用构造器：
 
 ```Java
-// 创建一个空的,长度为0的字符串对象，而不是null
+// 创建一个空的，长度为0的字符串对象，而不是null
 public String()
 
 //将一个字符串的十进制编码值表示，转换成对应的字符串（这个过程中要有编码集参与）
 //offset 指偏移量，下标为0开始时，偏移量就是index
 public String(byte[] bytes)
-public String(byte[] bytes,int offset,int length)
+public String(byte[] bytes，int offset，int length)
 
 // 同字节数组
 public String(char[] value)
 // 同上，不过指定了开始下标和长度
-public String(char[] value,int offset,int count)
+public String(char[] value，int offset，int count)
   
 // 套娃
 public String(String original)
 ```
 
-## String对象不可变
+## `String`对象不可变
 
 > 什么是不可变对象？
 >
@@ -673,23 +643,21 @@ String的不可变特性，给String类本身带来了很多优点，比如：
 
 >请简要描述一下字符串常量池的概念。
 
-[+] 参考回答
-
-字符串常量池（String Constant Pool）是JVM的一部分，在Java8的环境下，字符串常量池在堆上。
-
-字符串常量池用于存储所有的字符串字面量对象，每当代码中出现一个字符串字面量，JVM就会检查字符串常量池：
-
-如果字符串常量池中已经存在相同内容的字符串，则不会创建新的对象，而是返回指向已有对象的引用。
-
-如果不存在相同的字符串，则创建新的String对象并放入字符串常量池。
-
-加之String对象是一个不可变对象，Java就通过字符串常量池实现了对String字面值对象的复用。
-
-这样的设计，减少了String对象的创建频率，避免了不必要的对象创建，从而减少内存开销，提升程序的性能。
-
-但是要注意，字符串常量池这种实现String对象共享的机制，仅适用于字面值String对象，任何通过new创建（构造器赋值）的String对象都不会自动将引用存储在字符串常量池中，因此不会被共享。
-
- 
+> [+] 参考回答
+>
+> 字符串常量池（String Constant Pool）是JVM的一部分，在Java8的环境下，字符串常量池在堆上。
+>
+> 字符串常量池用于存储所有的字符串字面量对象，每当代码中出现一个字符串字面量，JVM就会检查字符串常量池：
+>
+> 如果字符串常量池中已经存在相同内容的字符串，则不会创建新的对象，而是返回指向已有对象的引用。
+>
+> 如果不存在相同的字符串，则创建新的String对象并放入字符串常量池。
+>
+> 加之String对象是一个不可变对象，Java就通过字符串常量池实现了对String字面值对象的复用。
+>
+> 这样的设计，减少了String对象的创建频率，避免了不必要的对象创建，从而减少内存开销，提升程序的性能。
+>
+> 但是要注意，字符串常量池这种实现String对象共享的机制，仅适用于字面值String对象，任何通过new创建（构造器赋值）的String对象都不会自动将引用存储在字符串常量池中，因此不会被共享。
 
 
 
