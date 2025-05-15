@@ -14,7 +14,7 @@
 
 # Web组件
 
-JavaEE的话Web组件 三大Web组件
+JavaEE的 三大Web组件
 
 1. `Servlet ` → 处理请求对应的业务
 2. `Listener`  → 监听器
@@ -112,21 +112,17 @@ public class HelloServlet extends HttpServlet {
 
 ![image-20230220180052194](.\assets\image-20230220180052194.png)
 
-提供`Listener`，其实主要就是去初始化这个`ServletContext`
-
-后面的话`SpringMVC`就是基于这样的特点去实现的
+提供`Listener`，其实主要就是去初始化这个`ServletContext`，后面的`SpringMVC`就是基于这样的特点去实现的
 
 # `Filter`
 
-`Filter`是一个执行过滤任务的一个对象。它既可以作用于`Request`对象，也可以作用于`Response`对象,或者两者均作用。
-
-也就是`Servlet`中获取请求之前，`Servlet`响应之后
+`Filter`是一个执行过滤任务的一个对象。它既可以作用于`Request`对象，也可以作用于`Response`对象，或者两者均作用。也就是`Servlet`中获取请求之前，`Servlet`处理响应之后。
 
 ![image-20230313175734907](.\assets\image-20230313175734907.png)
 
-使用`Filter`做通用性的`request`,`response`设置。
+使用`Filter`做通用性的`request`，`response`设置。
 
-比如每个servlet都需要设置解决乱码问题的代码：
+比如每个`servlet`都需要设置解决乱码问题的代码：
 
 + `request.setCharacterEncoding("utf-8")`
 
@@ -144,7 +140,7 @@ filterChain.doFilter(servletRequest,servletResponse);
 >
 >    （`ServletRequest` \ `ServletResponse`是`HttpServletRequest` \ `HttpServletResponse`的父类）
 > 2. `@WebFilter`注解决定作用范围
-> 3. 版本兼容性问题，手写的Filter里要加上`init` `destory`
+> 3. 版本兼容性问题，手写的`Filter`里要加上`init` `destory`
 
 ## `Filter` 和 `Servlet` 的执行
 
@@ -242,8 +238,6 @@ Post请求中文乱码
 
 `response.setContentType("text/html;charset=utf-8")`
 
-
-
 ```java
 @WebFilter("/*")
 public class CharacterEncodingFilter implements Filter {
@@ -269,8 +263,6 @@ public class CharacterEncodingFilter implements Filter {
     }
 }
 ```
-
-
 
 ### 登录案例
 
