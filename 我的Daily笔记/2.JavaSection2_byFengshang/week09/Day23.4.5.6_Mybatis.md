@@ -6,7 +6,7 @@
 
 # 介绍
 
->MyBatis本是apache基金会的一个开源项目ibatis ，2010年这个项目由apache迁移到了google code（代码管理仓库，类似GitHub）， 并且改名为Mybatis。2013年11月代码迁移到了github. Mybatis是一个基于Java的持久层框架。（DAO 或者Mapper）
+>MyBatis本是apache基金会的一个开源项目ibatis ，2010年这个项目由apache迁移到了google code（代码管理仓库，类似GitHub）， 并且改名为Mybatis。2013年11月代码迁移到了github。 Mybatis是一个基于Java的持久层框架。（DAO 或者Mapper）
 >
 >**Mybatis是一个ORM框架。**MyBatis是一种流行的Java持久化框架，用于简化数据库访问和操作。它提供了一种将数据库查询、插入、更新和删除操作与Java对象之间的映射的方式。
 >
@@ -121,38 +121,37 @@ public class QueryDemo {
 
 配置二:  配置一个专门用来存放SQL语句的配置文件，`UserMapper.xml` 
 
->在Mybatis中，这样的文件可以有多个。我们**使用一个`xml`文件来存放一组SQL**， 比如对学生的SQL，对订单的SQL。
->这些文件，都必须在Mybatis的主配置文件中，声明进来。
+>在Mybatis中，这样的文件可以有多个。我们**使用一个`xml`文件来存放一组SQL**， 比如对学生的SQL，对订单的SQL。这些文件，都必须在Mybatis的主配置文件中声明进来。
 >
 >```xml
 ><?xml version="1.0" encoding="UTF-8" ?>
 ><!DOCTYPE mapper
 >PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 >"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
->   
+>
 >   <!-- namespace: 命名空间，整个项目中必须唯一，暂时可以任意取名(后面再进行标准化) -->
->     <mapper namespace="AccountMapper">
+>   <mapper namespace="AccountMapper">
 >     
-><!-- 每个标签都需要一个唯一的id属性: 
+>     <!-- 每个标签都需要一个唯一的id属性: 
 >		每一个标签的id不能重复(本Mapper文件中), 用来标识一条SQL  -->
 ><!-- 在这个Mapper文件中, 怎么唯一表示SQL语句?
->  namespace.id (命名空间.标签的id ) 是这个SQL语句的坐标  -->
->    <!-- <insert> 插入标签 -->
->     <!-- <delete> 删除标签 -->
-><!-- <update> 修改标签 -->
->     <!-- <select> 查询标签 -->
+>namespace.id (命名空间.标签的id ) 是这个SQL语句的坐标  -->
+>  <!-- <insert> 插入标签 -->
+>    <!-- <delete> 删除标签 -->
+>     <!-- <update> 修改标签 -->
+><!-- <select> 查询标签 -->
 >     
->    <!-- parameterType：参数的类型(可以省略,标准语法要指明 ) -->
+>     <!-- parameterType：参数的类型(可以省略,标准语法要指明 ) -->
 >    <!-- resultType：返回的结果集的类型(不能省略) -->
 >    <select id="selectAccountById"  parameterType="java.lang.Integer" resultType="com.snow.www.bean.Account">
->      select * from account where id = #{id}
-></select>
->     <select id="selectAccountList" resultType="com.snow.www.bean.Account">
+>     select * from account where id = #{id}
+>     </select>
+><select id="selectAccountList" resultType="com.snow.www.bean.Account">
 >      select * from account
 >     </select>
 >     
->    </mapper>
->     ```
+>     </mapper>
+>    ```
 
 >使用
 >
@@ -229,7 +228,7 @@ public class QueryDemo {
 
 > 什么是代理？
 >
-> 你不方便做这个事情。别人方便，它可以帮你做。代理在Java中有两类实现。静态代理，动态代理。
+> 你不方便做这个事情，别人方便，它可以帮你做。代理在Java中有两类实现：静态代理，动态代理。
 >
 > 静态代理：直接`new` 一个类出来
 >
@@ -243,7 +242,7 @@ public class QueryDemo {
 
 1. 接口的全限定名称和 `mapper.xml`中的`namespace`的值保持一致。
 2. 接口中的方法和 xml文件中的 `<select>` `<insert>` ` <update> ` `<delete> `标签 一一对应，并且方法名要和标签的`id`值保持一致，不允许方法重载出现同名方法。
-3. 方法的返回值类型和标签中的`resultType`保持一致(注意:添加/删除/修改不需要返回值类型)
+3. 方法的返回值类型和标签中的`resultType`保持一致(注意：添加/删除/修改不需要返回值类型)
 
 4. 参数保持一致(暂时可以不写)
 
@@ -273,7 +272,7 @@ public void test1() {
 
 ## 增删改查示例
 
-主要是知道增删改查对应的标签，其中增删改时是有一个事务的，注意事务提交的3种方式，查时写`resultType`
+主要是知道增删改查对应的标签，其中增删改时是有一个事务的，注意事务提交的3种方式，查时写`resultType`。
 
 ### 添加
 
@@ -349,7 +348,7 @@ public void testDeleteById() {
 
 ### 修改
 
-在UserMapper.xml中的内容
+在`UserMapper.xml`中的内容
 
 ```XML
 <update id="updateUser">
@@ -357,7 +356,7 @@ public void testDeleteById() {
 </update>
 ```
 
-在UserMapper接口
+在`UserMapper`接口
 
 ```JAVA
 int updateUser(User user);
@@ -379,7 +378,7 @@ public void testDeleteById() {
 
 ### 查询
 
-在UserMapper.xml中的内容
+在`UserMapper.xml`中的内容
 
 ```XML
 <select id="queryUserById" resultType="com.cskaoyan.bean.User">
@@ -414,7 +413,7 @@ public void testQueryById() {
 
 ## 事务
 
->在使用Mybatis的时候, 自带事务，而且事务默认情况下是不会自动提交的。
+>在使用Mybatis的时候自带事务，而且事务默认情况下是**不会自动提交**的。
 
 ### 解决方案一
 
@@ -427,17 +426,17 @@ sqlSession.commit();
 
 ### 解决方案二
 
-执行完SQL语句之后, 使用`sqlSession` 内部封装的`Connection` 提交事务
+执行完SQL语句之后，使用`sqlSession` 内部封装的`Connection` 提交事务
 
 ```JAVA
 // 解决办法二:  执行完SQL语句之后, 使用sqlSession内部封装的Connection 提交事务
-Connection conn  = sqlSession.getConnection();
+Connection conn = sqlSession.getConnection();
 conn.commit();
 ```
 
 ### 解决方案三
 
-(自动提交) 在获得`SqlSession` 的时候, 给`sqlSessionFactory.openSession` 设置为真
+(自动提交) 在获得`SqlSession` 的时候，给`sqlSessionFactory.openSession` 设置为真
 
 ```JAVA
 // 解决办法三:(自动提交) 在获得SqlSession的时候, 给sqlSessionFactory.openSession设置为真
@@ -698,7 +697,7 @@ SqlSession session = sqlSessionFactory.openSession(true);
 >
 > ```java
 > // 值得注意的是下面是一些为常见的 Java 类型内建的类型别名。它们都是不区分大小写的，而且为了应对原始类型的命名重复，采取了特殊的命名风格。
-> // 注意: 除了内置别名, 不要乱起别名
+> // 注意: 除了内置别名，不要乱起别名
 > ```
 >
 > ```xml
@@ -756,12 +755,12 @@ SqlSession session = sqlSessionFactory.openSession(true);
 
 >注意: 
 >
->1. `typeHandlers`: MyBatis 对我们SQL参数或从结果集中取出一个值时， 都会用**类型处理器**将获取到的值以合适的方式转换成 Java 类型。(而在我们使用的时候是无法感知这个问题的, 属于MyBatis的底层处理).
->2. `ObjectFactory`: MyBatis 使用一个对象工厂实例来完成实例化工作。 默认的对象工厂要么通过默认无参构造方法，要么通过有参数的构造方法实例化对象。如果想覆盖对象工厂的默认行为，可以通过创建自己的对象工厂来实现。(不要使用)
+>1. `typeHandlers`：MyBatis 对我们SQL参数或从结果集中取出一个值时， 都会用**类型处理器**将获取到的值以合适的方式转换成 Java 类型。(而在我们使用的时候是无法感知这个问题的，属于MyBatis的底层处理).
+>2. `ObjectFactory`：MyBatis 使用一个对象工厂实例来完成实例化工作。 默认的对象工厂要么通过默认无参构造方法，要么通过有参数的构造方法实例化对象。如果想覆盖对象工厂的默认行为，可以通过创建自己的对象工厂来实现。(不要使用)
 
 ## `environments`
 
->`environments`: 可以配置成适应多种环境。比如开发环境、测试环境和生产环境等可能需要有不同的配置。
+>`environments`：可以配置成适应多种环境。比如开发环境、测试环境和生产环境等可能需要有不同的配置。
 
 ```XML
 <!-- 环境的配置，其实就是去配置数据库连接-->
@@ -815,14 +814,14 @@ SqlSession session = sqlSessionFactory.openSession(true);
 
 > 这个是映射器的配置。配置`mapper.xml`配置文件。
 
-- 配置方式一: 直接以对应mapper文件的相对路径(**相对target/classess路径**)
+- 配置方式一：直接以对应mapper文件的相对路径(**相对target/classess路径**)
   - 如果xml找不到，怎么办？
   - 1. 去`target/classes`里面去找，IDEA工具栏build选项里的rebuild project 或者手动copy
   - 2. 最易错的点是路径多级目录写成了`.`应该用`/`
 
 
 ```xml
-<configuration>    
+<configuration>
 	<mappers>
       <mapper resource="com/snow/mapper/AccountMapper.xml"/>
       <mapper resource="com/snow/mapper/User.xml"/>
@@ -842,7 +841,7 @@ SqlSession session = sqlSessionFactory.openSession(true);
 
 
 ```XML
-<configuration>    
+<configuration>
 	<mappers>
        <package name="com.cskaoyan.demo5.mapper"/>
     </mappers>
@@ -867,9 +866,9 @@ SqlSession session = sqlSessionFactory.openSession(true);
 
 ## 一个参数
 
-建议使用`@Param注解`，注解怎么写，xml 中就怎么写。
+建议使用`@Param注解`，注解怎么写xml 中就怎么写。
 
-1. <span style='color:red;background:yellow;'>#{任意值}</span> 来取值:  不建议使用(显得不标准), 建议使用注解写法
+1. <span style='color:red;background:yellow;'>#{任意值}</span> 来取值:  不建议使用(显得不标准)，建议使用注解写法
 
  ```java
  // 参数不写注解。 -->  xml中随意写。
@@ -965,7 +964,7 @@ Map传值: 不建议使用
 {"name":"zhangsan","age":18}
 ```
 
-方式一: SQL使用的参数命名要和Map中存储数据的key保持一致 (<span style='color:red;background:yellow;'>#{key}</span> 来取值)
+方式一：SQL使用的参数命名要和Map中存储数据的key保持一致 (<span style='color:red;background:yellow;'>#{key}</span> 来取值)
 
 ```java
 // 使用map传值， --》 在xml中，使用 #{key}
@@ -979,7 +978,7 @@ int insertUser4(Map<String, String> map);
 </insert>
 ```
 
-方式二: Map对象有注解, 必须通过 <span style='color:red;background:yellow;'>#{注解值 . key} </span>来取值
+方式二：Map对象有注解, 必须通过 <span style='color:red;background:yellow;'>#{注解值 . key} </span>来取值
 
 ```JAVA
 // 使用map传值， 加上注解之后。  --> 在xml中，应该怎样写？
@@ -995,7 +994,7 @@ int insertUser5(@Param("map") Map<String, String> map);
 
 ## 按位置传值
 
-按位传值: 完全不建议(容易因为程序员的记忆和修改导致bug产生, 除非除了按位传值没办法了)
+按位传值：完全不建议(容易因为程序员的记忆和修改导致bug产生，除非除了按位传值没办法了)
 
 方式一: arg0、arg1、arg2...
 
@@ -1045,7 +1044,7 @@ List<User> queryUsrByNameOrEmail(String name, String email);
 
 两者主要区别在于预编译时。
 
->`#{参数}`使用:  预编译占位 (尽量使用 `#{} `) PreparedStatement
+>`#{参数}`使用:  预编译占位 (尽量使用 `#{} `) `PreparedStatement`
 >
 >```JAVA
 >int insertUser6(@Param("name") String name, @Param("email") String email);
@@ -1062,19 +1061,18 @@ List<User> queryUsrByNameOrEmail(String name, String email);
 >
 >![image-20230721150409664](.\assets\image-20230721150409664.png)
 >
->`${参数}`使用: 字符串拼接, Statement  (存在SQL注入问题)
+>`${参数}`使用: 字符串拼接，`Statement`  (存在SQL注入问题)
 >
 >```java
 >int insertUser7(@Param("name") String name, @Param("email") String email);
->
 >mapper.insertUser7("zhangsan", "aaaaa");
 >```
 >
 >```xml
 ><insert id="insertUser7">
->    insert into user(name, email)
+>insert into user(name, email)
 >    values ('${name}', '${email}')
-></insert>
+>    </insert>
 >```
 >
 >![image-20230721150521057](.\assets\image-20230721150521057.png)
@@ -1088,7 +1086,7 @@ List<User> queryUsrByNameOrEmail(String name, String email);
 1. 我们以后开发的时候，应该尽量使用 `#{}` 去接收传递过来的参数值
 2. 🏷️ 当我们传递给SQL语句表名或者是列名的时候，就**必须得使用 `${}` 来取值。**
 
->分表问题: 动态表名 
+>分表问题：动态表名 
 >
 >```java
 >// userMapper.dynamicTableName("user2");
@@ -1420,7 +1418,7 @@ Order order = Order.builer().id(1).name("name").build();
 
 ## MybatisCodeHelperPro
 
-> MybatisCodeHelperPro: 这个是Mybatis的一个插件(提高开发Mybatis应用程序的效率)。
+> MybatisCodeHelperPro：这个是Mybatis的一个插件(提高开发Mybatis应用程序的效率)。
 >
 > ```java
 > // 帮助我们在mapper和mapper.xml 之前来回跳转
@@ -3196,7 +3194,7 @@ public class User implements Serializable {
 
 为了实现**逻辑删除**，我们可以在表示删除状态的实体类属性上添加`@TableLogic`注解，从而实现逻辑删除的功能。当然，在使用之前，我们要先给数据库user表增加is_deleted属性并给该字段赋默认初值0表示未删除，以及在实体类中添加isDeleted属性。
 
-![image-20230301005215922](E:\0.王道训练营\3.我的Daily笔记\2.JavaSection2_byFengshang\week09\assets\image-20230301005215922.png)
+![image-20230301005215922](.\assets\image-20230301005215922.png)
 
 ```java
 @Data
@@ -3237,7 +3235,7 @@ SELECT id,name,age,email,is_deleted FROM user WHERE is_deleted=0
 
 在我们对数据库做增删改查操作的时候需要条件即`where`条件，这些条件就是用条件构造器`Wrapper`来构造和表示的。
 
-![](E:\0.王道训练营\3.我的Daily笔记\2.JavaSection2_byFengshang\week09\assets\wrapper.png)
+![](.\assets\wrapper.png)
 
 `Wrapper` ： 条件构造抽象类，最顶端父类
 

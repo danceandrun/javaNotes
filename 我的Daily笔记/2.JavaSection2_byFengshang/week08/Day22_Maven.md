@@ -22,7 +22,7 @@
   
   之前是下载jar的方式，非常麻烦。还容易出错。
 
-依赖管理， 比如你要在项目中使用 mysql 5.1.47 的包。 传统的项目，需要去mvnrepostory 。下载jar。放到项目里面， add as libaray.
+依赖管理， 比如你要在项目中使用 mysql 5.1.47 的包。 传统的项目，需要去mvnrepostory ，下载jar。放到项目里面， add as libaray.
 
 下dbcp，需要下两个包。 如果有一个 commons-java 如果没下，会报错。
 
@@ -804,13 +804,13 @@ Junit是一个被广泛使用的测试工具，可以帮助我们运行我们指
   > 2. `@Test` 注解修饰的方法必须是 public、必须是void、必须没有参数
   > 3. 测试类必须在 src/test/java 路径下
   > 4. 测试类的命名必须叫做 `XxxTest`
-  > 5. 测试方法（@Test注解修饰的方法）的命名必须叫做` testXxx`();
+  > 5. 测试方法（`@Test`注解修饰的方法）的命名必须叫做` testXxx`();
   
   这些注解的作用？
   
   ⚡ 初始化测试数据。
-
-> maven会帮助我们运行 src/test/java路径下的所有的测试类中的测试方法
+  
+  > maven会帮助我们运行 src/test/java路径下的所有的测试类中的测试方法
 
 ## 一些注意事项
 
