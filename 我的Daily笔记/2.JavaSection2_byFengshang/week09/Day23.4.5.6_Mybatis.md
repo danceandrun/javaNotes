@@ -2100,7 +2100,7 @@ insert into phone values (1, "小米10", "小米", "8", "128"), (2, "OPPO k9x", 
 >}
 >```
 
-### 方式一: 分次查询
+### 方式一：分次查询
 
 在Mybatis里如何唯一确定一条SQL?
 
@@ -2167,7 +2167,7 @@ namespace + 标签的id
 >     </mapper>
 >     ```
 
-### 方式二: 连接查询
+### 方式二：连接查询
 
 >测试
 >
@@ -2187,7 +2187,7 @@ namespace + 标签的id
 >List<User> queryAllUser2();
 >```
 >
->UserMapper.xml
+>`UserMapper.xml`
 >
 >```xml
 ><resultMap id="baseUserMap2" type="com.cskaoyan.demo9.bean.User">
@@ -2272,7 +2272,7 @@ namespace + 标签的id
 >}
 >```
 
-### 方式一: 分次查询
+### 方式一：分次查询
 
 `property` 就是最终封装到哪里去
 
@@ -2336,7 +2336,7 @@ namespace + 标签的id
 ></select>
 >```
 
-### 方式二: 连接查询
+### 方式二：连接查询
 
 >测试
 >
@@ -2350,13 +2350,13 @@ namespace + 标签的id
 >}
 >```
 >
->ClazzMapper接口
+>`ClazzMapper`接口
 >
 >```java
 >List<Clazz> queryAllClazz2();
 >```
 >
->TableMapper.xml
+>`TableMapper.xml`
 >
 >```xml
 ><resultMap id="baseResultMap2" type="com.cskaoyan.demo9.bean.Clazz">
@@ -2461,7 +2461,7 @@ namespace + 标签的id
 
 
 
-### 方式一: 分次查询
+### 方式一：分次查询
 
 > 根据用户的名字查询出用户信息以及用户对应购买的商品信息。
 >
@@ -2551,7 +2551,7 @@ namespace + 标签的id
 
 # 懒加载
 
-> 懒加载和MyBatis缓存作为了解, 知道是怎么回事, 面试的时候可以谈一谈思想即可, 因为工作中并不会使用(基本不会使用)
+> 懒加载和MyBatis缓存作为了解，知道是怎么回事，面试的时候可以谈一谈思想即可，因为工作中并不会使用(基本不会使用)
 
 懒加载又叫做延迟加载。
 
@@ -2565,7 +2565,7 @@ namespace + 标签的id
 
 3. 当总开关也没有配置的时候，以默认配置为准（默认配置是关闭懒加载）
 
->总开关配置: `Mybatis`的主配置文件里面的`settings`里面
+>总开关配置：`Mybatis`的主配置文件里面的`settings`里面
 >
 >```xml
 ><settings>
@@ -2641,7 +2641,7 @@ namespace + 标签的id
 
 ### 一级缓存
 
-> <span style='color:red;background:yellow;'>**一级缓存是一个以SqlSession管理的Mapper级别的缓存**</span>。缓存的内容存储在SqlSession中管理。
+> <span style='color:red;background:yellow;'>**一级缓存是一个以SqlSession管理的Mapper级别的缓存**</span>。缓存的内容存储在`SqlSession`中管理。
 >
 > ![image-20220523111926242](.\assets\image-20220523111926242.png)
 
@@ -2911,7 +2911,7 @@ public class Application {
 
 因为访问的是单表，所以要有一个**单表映射的实体类**。
 
-步骤二： 定义user表对应的映射实体类User
+步骤二： 定义`user`表对应的映射实体类`User`
 
 ```java
 @Data //lombok注解
@@ -2923,9 +2923,9 @@ public class User {
 }
 ```
 
-步骤三： 定义Mapper继承`BaseMapper`
+步骤三： 定义`Mapper`继承`BaseMapper`
 
-`BaseMapper`是MyBatis-Plus提供的模板mapper，其中包含了基本的CRUD方法，**泛型为操作的实体类型**
+`BaseMapper`是MyBatis-Plus提供的模板mapper，其中包含了基本的CRUD方法，**泛型为操作的实体类型**。
 
 通过泛型就可以将Mapper和实体类关联起来，通过注解将Mapper和数据库表关联起来，从而能够实现实体类与数据库表的映射关系。
 
@@ -2974,7 +2974,7 @@ public class TestBasic {
 
 MyBatis-Plus会为我们生成不依赖于自增主键的主键值。
 
-> 之前使用Mybatis时要获得自增主键，需要在sql语句标签里添加useGeneratedKey = "true"，keyProperty = "id"。
+> 之前使用Mybatis时要获得自增主键，需要在sql语句标签里添加`useGeneratedKey = "true"，keyProperty = "id"`。
 
 注意： MyBatis-Plus在实现插入数据时，会默认基于**雪花算法**(SnowFlake)的策略生成id
 
