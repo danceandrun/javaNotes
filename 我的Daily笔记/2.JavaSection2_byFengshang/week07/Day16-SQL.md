@@ -914,12 +914,12 @@ select * from students where class in ("一班", "二班");
 ```
 
 ## distinct-过滤
-获取某个列的不重复值。或者是某些列的不重复值
+获取某个列的不重复值或者是某些列的不重复值
 ```SQL
 SELECT DISTINCT <字段名> FROM <表名>;
 ```
 
->使用`DISTINCT`对数据表中`一个或多个字段`重复的数据进行过滤，重复的数据只返回其`一条`数据给用户.
+>使用`DISTINCT`对数据表中`一个或多个字段`重复的数据进行过滤，重复的数据只返回其`一条`数据给用户。
 
 ```SQL
 -- 返回所有的 class
@@ -927,7 +927,6 @@ select class from students;
 
 -- 返回不重复的 class
 select distinct class from students;
-
 
 -- 返回所有去重后的英语成绩
 -- 6条
@@ -945,9 +944,9 @@ select english,math from students;
 
 ## limit-限制结果集
 
-一般用来做，比如限制最大的返回数目。或者是做分页上面。
+一般用来做，比如限制最大的返回数目，或者做分页上面。
 
-select * from students limit 10;
+`select * from students limit 10;`
 
 ```SQL
 SELECT <查询内容|列等> FROM  <表名字> LIMIT 记录数目
@@ -965,11 +964,11 @@ select * from tableName where condition limit offsetNumber, number;
 select * from tableName where condition limit number offset offsetNumber;
 ```
 
->使用`LIMIT`对数据表查询结果集大小进行限定.
-LIMIT 记录数目: 从第一条开始, 限定记录数目
-LIMIT 初始位置，记录数目: 从起始位置开始, 限定记录数目
-LIMIT 记录数目 OFFSET 初始位置: 从起始位置开始, 限定记录数目
-注意: 数据(默认下标从0开始) 
+>使用`LIMIT`对数据表查询结果集大小进行限定。
+`LIMIT` 记录数目：从第一条开始，限定记录数目
+`LIMIT` 初始位置，记录数目：从起始位置开始，限定记录数目
+`LIMIT` 记录数目 `OFFSET` 初始位置：从起始位置开始，限定记录数目
+注意：数据(默认下标从0开始) 
 
 ```SQL
 -- 从第一条开始拿 
@@ -1015,14 +1014,13 @@ select s.name from students s;
 
 ```SQL
 SELECT <查询内容|列等> FROM  <表名字> ORDER BY <字段名> [ASC|DESC];
-
 ```
 
->`ORDER BY`对查询数据结果集进行排序.
-不加排序模式: 升序排序.
-ASC: 升序排序.
-DESC: 降序排序.
-注意: 如上查询, 当我们进行多字段排序的时候, 会先满足第一个列的排序要求, 如果第一列一致的话, 再按照第二列进行排序, 以此类推.
+>`ORDER BY`对查询数据结果集进行排序。
+不加排序模式：升序排序。
+`ASC`：升序排序。
+`DESC`：降序排序。
+注意：如上查询,，当我们进行多字段排序的时候，会先满足第一个列的排序要求，如果第一列一致的话，再按照第二列进行排序，以此类推。
 
 ## group by-分组
 
@@ -1050,23 +1048,23 @@ select class, group_concat(name) from students group by class having count(*) > 
 select class, group_concat(name), avg(chinese) from students group by class having avg(chinese) > 60;
 ```
 
-> GROUP_CONCAT()函数会把每个分组的字段值都拼接显示出来.
+> `GROUP_CONCAT()`函数会把每个分组的字段值都拼接显示出来。
 >
-> HAVING 可以让我们对分组后的各组数据过滤。(一般和分组+聚合函数配合使用)
+> `HAVING` 可以让我们对分组后的各组数据过滤。(一般和分组+聚合函数配合使用)
 
 <font color=red>**having注意和where的区别**</font>
-where主要用于对原始表进行过滤。having是对group by 后的结果进行过滤，一般配合聚合函数一起使用。
+`where`主要用于对原始表进行过滤。`having`是对`group by` 后的结果进行过滤，一般配合聚合函数一起使用。
 
 
 
 <span style=color:red;background:yellow>**注意点：**</span>
 
-- `group by`的select列中，只能有两种，<font color=red>**在group中出现的字段**</font>，<font color=red>**聚合函数聚合起来的东西**</font>
-- 多个字段分组查询时，会先按照第一个字段进行分组。如果第一个字段中有相同的值，MySQL 才会按照第二个字段进行分组。如果第一个字段中的数据都是唯一的，那么 MySQL 将不再对第二个字段进行分组.
-- 如果在select 字段中，可以看出group 字段，后方可以使用数字代替，从1开始
+- `group by`的`select`列中，只能有两种，<font color=red>**在group中出现的字段**</font>，<font color=red>**聚合函数聚合起来的东西**</font>
+- 多个字段分组查询时，会先按照第一个字段进行分组。如果第一个字段中有相同的值，MySQL 才会按照第二个字段进行分组。如果第一个字段中的数据都是唯一的，那么 MySQL 将不再对第二个字段进行分组。
+- 如果在`select` 字段中，可以看出`group` 字段，后方可以使用数字代替，从1开始
 
 ```SQL
--- 会报错。如果有同学不报错，是因为有一个选项没开
+-- 会报错。如果不报错，是因为有一个选项没开[only_full_group_by](https://www.cnblogs.com/csnjava/p/16531260.html)
 -- select * from students group by class;
 -- select id,class from students group by class;
 
@@ -1079,7 +1077,6 @@ select english from students group by 1;
 -- 根据英语成绩，数学成绩进行分组
 -- 会先按照英语成绩分组，如果英语成绩相同，则按照数学成绩进行分组
 select english,math from students group by english,math;
-
 ```
 
 
@@ -1090,15 +1087,17 @@ select english,math from students group by english,math;
 
 ## 聚合函数
 
-聚合函数一般用来计算列相关的指定值. `通常`和`分组`一起使用
+聚合函数一般用来计算列相关的指定值，通常和分组一起使用
 
-| 函数  | 作用   | 函数 | 作用   |
-| ----- | ------ | ---- | ------ |
-| COUNT | 计数   | SUM  | 和     |
-| AVG   | 平均值 | MAX  | 最大值 |
-| MIN   | 最小值 |      |        |
+| 函数    | 作用   |
+| ------- | ------ |
+| `COUNT` | 计数   |
+| `AVG`   | 平均值 |
+| `MIN`   | 最小值 |
+| `SUM`   | 和     |
+| `MAX`   | 最大值 |
 
-- COUNT: 计数
+- `COUNT`: 计数
 
   ```SQL
   select count(columnName) from tableName [where 条件];
@@ -1110,14 +1109,13 @@ select english,math from students group by english,math;
   -- 和分组一起使用。查看每个班级有多少人数
   
   select class,count(*) from students group by class;
-  
   ```
 
-> `COUNT(*)`:表示表中总行数
+> `COUNT(*)`：表示表中总行数
 >
-> `COUNT(列)`: 计算非NULL的总行数。
+> `COUNT(列)`：计算非`NULL`的总行数。
 
-- SUM: 求和
+- `SUM`：求和
 
   ```SQL
   SELECT <查询内容>|列等 , SUM<列 FROM  <表名字> GROUP BY HAVING SUM<表达式>|条件
@@ -1130,7 +1128,7 @@ select english,math from students group by english,math;
     select class,sum(chinese),group_concat(chinese) from students group by class;
   ```
 
-- AVG: 平均值
+- `AVG`：平均值
 
   ```SQL
   SELECT <查询内容>|列等 , AVG<列> FROM  <表名字> GROUP BY HAVING AVG<表达式>|条件
@@ -1143,7 +1141,7 @@ select english,math from students group by english,math;
       select class,avg(chinese), avg(english), avg(math) from students group by 1;
   ```
 
-- MAX: 最大值
+- `MAX`：最大值
 
   ```SQL
   SELECT <查询内容>|列等 , MAX(<列>) FROM  <表名字> GROUP BY HAVING MAX(<表达式>)|条件
@@ -1153,7 +1151,7 @@ select english,math from students group by english,math;
       select max(chinese), max(english), max(math) from students;
   ```
 
-- MIN: 最小值
+- `MIN`：最小值
 
   ```SQL
   SELECT <查询内容>|列等 , MIN(<列>) FROM  <表名字> GROUP BY HAVING MIN(<表达式>)|条件
@@ -1246,10 +1244,8 @@ select class from students group by class having sum(chinese) > 200;
 - 一个表只能有一个主键
 - <font color=red>**主键具有唯一性**</font>
 - <font color=red>**主键字段的值不能为null**</font>
-- 声明字段时，用 primary key 标识
+- 声明字段时，用 `primary key` 标识
 - 主键可以由多个字段共同组成。此时需要在字段列表后声明的方法
-
-
 
 ```SQL
 create table test_primary_key(
@@ -1267,10 +1263,10 @@ create table test_primary_key2(
 
 ```
 
-**auto_increment 自动增长约束**
+**`auto_increment` 自动增长约束**
 一些序号，没有必须手动生成，想让mysql自动生成。
 
-- 自动增长必须为索引(主键或unique)
+- 自动增长必须为索引(主键或`unique`)
 - 只能存在一个字段为自动增长。
 - 默认为1开始自动增长。
 
@@ -1280,8 +1276,6 @@ create table test_auto_increment(
 	......
 )
 ```
-
-
 
 ```SQL
 create table stu(  
@@ -1307,12 +1301,12 @@ show create table table_name;
 
 比如有一张学生表。 id name  id_card。
 
-**null约束**
+**`null`约束**
 
-- null不是数据类型，是列的一个属性。一个具体的值
-- 表示当前列是否可以为null，表示什么都没有
-- null, 允许为空。默认
-- not null, 不允许为空
+- `null`不是数据类型，是列的一个属性。一个具体的值
+- 表示当前列是否可以为`null`，表示什么都没有
+- `null`，允许为空。默认
+- `not null`，不允许为空
   <font color=red><b>null表示没有数据，但是注意null不是空字符串。</b></font>
 
 ```SQL
@@ -1331,7 +1325,7 @@ insert into test_null(column1) values ("null");
 
 **唯一值约束**
 
-- unique
+- `unique`
 
   表示值是唯一的，不重复的
 
@@ -1343,17 +1337,13 @@ create table teacher(
 );
 ```
 
-> unique：
+> `unique`：
 >
 > 1. 插入的值不能重复
-> 2. 可以插入null
-> 3. null可以重复
+> 2. 可以插入`null`
+> 3. `null`可以重复
 
-unique和primary key的区别：
-
-1. 主键值不能为空（null），而unique可以为空
-
-
+`unique`和`primary key`的区别：主键值不能为空（`null`），而`unique`可以为空
 
 
 ## 参照完整性
@@ -1425,7 +1415,7 @@ delete from province where id = 32;
 
 其他约束（属性）
 
-**default 默认值属性**
+**`default` 默认值属性**
 当前字段的默认值。
 
 ```SQL
@@ -1451,13 +1441,18 @@ CREATE TABLE `user_info`  (
 ```
 
 
+> ```sql
 > create table tab ( create_time timestamp default current_timestamp );
-> -- 表示将当前时间的时间戳设为默认值。
-> current_date, current_time
+> ```
 >
+> -- 表示将当前时间的时间戳设为默认值。
+> `current_date`，`current_time`
+>
+> ```sql
 > ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间'
+> ```
 
-**comment 注释**
+**`comment` 注释**
 
 ```SQL
 -- 作用是什么？
@@ -1541,8 +1536,6 @@ create table test_comment(
 一定要留有一定空间，灵活空间。
 
 > 原子性：表示表中的数据都是一个不可拆分的最小单元。
-
-
 
 > 第一范式：是跟着业务走的。但是业务是变动的，所以我们在设计表的时候，应该考虑之后业务的变化，来尽量的让每一列保持原子性。
 
@@ -1697,14 +1690,12 @@ LEFT OUTER JOIN table2
 ON table1.column = table2.column;
 
 -- 左外连接，保留匹配的数据。还会保留左表的所有数据
-
 ```
 
 ```SQL
 -- 左外连接
 select * from user left outer join user_detail on 
 user.id = user_detail.user_id;
-
 ```
 
 <font color=red>**右外连接**</font>
@@ -1764,7 +1755,6 @@ SQL支持把多个SQL语句的结果拼装起来。
 
 ```sql
 -- 写了两个SQL。把两个SQL的结果拼接起来
-
 
 select * from students where class = '一班'
 union

@@ -89,9 +89,9 @@ C:\Windows\System32\drivers\etc
 >
 > **1. 语义不同。**`get`请求是获取数据，`post`请求一般是提交数据
 >
-> **2. 参数放的位置不同。**`get`请求的参数放在`url`上面，使用`？`进行拼接， `post`请求的参数放在请求体里。 `url`长度有限制，所以使用`get`请求发送的数据长度有限制。
+> **2. 参数放的位置不同。**`get`请求的参数放在`url`上面，使用`?`进行拼接， `post`请求的参数放在请求体里。 `url`长度有限制，所以使用`get`请求发送的数据长度有限制。
 >
-> **3.`post`请求安全一点。** 因为它提交数据的时候，不能直接看到。
+> **3. `post`请求安全一点。** 因为它提交数据的时候，不能直接看到。
 
 - <font color=red>**请求方法**</font>：使用何种方法向当前的请求资源地址发起请求。常见的请求方法 `GET`  `POST`
 
@@ -465,7 +465,7 @@ Tomcat是**软件层面上**的服务器。
 
 静态资源：页面一成不变的。
 
-动态资源：富有交互性、变化性。目前访问的网站页面基本都是动态资源。本质就是程序。比如登录之后会显示各自的用户名。开发动态资源的技术有很多种，其中java语言中 **`Servlet`**。
+动态资源：富有交互性、变化性。目前访问的网站页面基本都是动态资源。本质就是程序。比如登录之后会显示各自的用户名。开发动态资源的技术有很多种，例如java语言中 **`Servlet`**。
 
 ## 手写简易服务器
 
@@ -474,8 +474,6 @@ Tomcat是**软件层面上**的服务器。
 要求：<font color:red>涉及协议的部分需要掌握</font>，其他部分根据自己的情况来。
 
 ```java
-package com.cskaoyan.server;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -563,8 +561,6 @@ public class MainServer {
 ```
 
 ```java
-package com.cskaoyan.server;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
