@@ -42,8 +42,6 @@ String对象不可变是字符串常量池应用的前提。
 
 
 
-
-
 intern方法在java8的实现逻辑：
 
 该方法是一个成员方法，调用者也是一个String对象
@@ -141,17 +139,17 @@ java.util.Comparator接口,自定义比较器接口
 
 string对象不可变：如果要频繁地修改字符串内容就需要频繁地创建对象，带来时间消耗，空间消耗等弊端。
 
-在实际开发中，如果遇到频繁操作字符串的场景，尤其是大量数据的场景，应该使用可变字符串java.lang.StringBuffer或者java.lang.StringBuilder
+在实际开发中，如果遇到频繁操作字符串的场景，尤其是大量数据的场景，应该使用可变字符串`java.lang.StringBuffer`或者`java.lang.StringBuilder`
 
-#### 为什么StringBuffer,StringBuilder是可变字符串呢？
+#### 为什么StringBuffer，StringBuilder是可变字符串呢？
 
 > 掌握两点
 >
-> 1.可变字符串的value和普通String的value有什么区别？
+> 1. 可变字符串的value和普通String的value有什么区别？
 >
-> 2.扩容的机制
+> 2. 扩容的机制
 
-AbstractStringBuilder源码
+`AbstractStringBuilder`源码
 
 可变字符串的value一般称之为“字符串缓冲区”，它是用来缓冲存储字符信息的，代表这个可变字符串当前能够存储的最长字符串。
 
@@ -159,29 +157,25 @@ AbstractStringBuilder源码
 
 
 
-**通过StringBuffer的构造器进一步了解可变字符串扩容机制。**⭐⭐⭐（集合里也有扩容，重点）
+**通过`StringBuffer`的构造器进一步了解可变字符串扩容机制。**⭐⭐⭐（集合里也有扩容，重点）
 
-.length()
+`.length()`
 
 获取当前字符串缓冲区真正存储的字符串的长度，也就是count取值；
 
-.capacity()
+`.capacity()`
 
 获取当前字符串缓冲区的容量，也就是value数组的长度
-
-
 
 > 查看源码时，控制鼠标光标的位置：
 >
 > ctrl + alt + <-
 
-
-
 反转字符串方法只有可变字符串有
 
 > 为什么String作为引用数据类型，可以使用运算符"+"?
 >
-> 编译器有自动处理，运算符重载。“+”用一次至少创建3个对象：StringBuffer,toString,value
+> 编译器有自动处理，运算符重载。“+”用一次至少创建3个对象：StringBuffer，toString，value
 
 
 
@@ -189,7 +183,7 @@ AbstractStringBuilder源码
 
 早期因为虚拟机的性能原因，没有把基本数据类型设计为对象。
 
-java.lang.Void
+`java.lang.Void`
 
 包装类型普遍封装了该类型下的一些常量。最大值，最小值，所占位数。
 
@@ -231,6 +225,7 @@ java.lang.Void
 
 
 
-**包装类型对象比较大小，不能用“==”，用equals；**
+**包装类型对象比较大小，不能用“`==`”，用`equals`；**
 
-包装类型的缓存机制，会将一个byte范围内的整型对象事先创建完毕，存储起来，然后在使用时，会直接复用缓存。
+⛳ **包装类型的缓存机制**，会将一个`byte`范围内的整型对象事先创建完毕，存储起来，然后在使用时，会直接复用缓存。
+
