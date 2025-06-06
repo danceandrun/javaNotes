@@ -112,7 +112,7 @@ loglevel notice
 databases 16
 
 # 密码设置
-requirepass cskaoyan
+requirepass feniel
 ```
 
 ### 4.2 持久化配置
@@ -273,19 +273,19 @@ setnx key value
 
 > 使用场景：
 >
-> 1. 利用incr命令可以统计网站的**访问量**
+> 1. 利用`incr`命令可以统计网站的**访问量**
 >
-> 2. 利用incr和decr统计游戏的**在线人数**
+> 2. 利用`incr`和`decr`统计游戏的**在线人数**
 >
-> 3. setex可以用于**秒杀**
+> 3. `setex`可以用于**秒杀**
 >
-> 4. setnx可以实现简单的**分布式锁**
+> 4. `setnx`可以实现简单的**分布式锁**
 
 > 如何基于Redis模拟最简单的锁？
 >
 > + 如何模拟加锁释放锁的状态？
 >   + 可以用有无键值对模拟加锁释放锁的状态
-> + setnx：只能添加一个新的键值对
+> + `setnx`：只能添加一个新的键值对
 >   + 如果redis已经有了该键值对（添加失败 → 加锁失败）
 >   + 如果redis中没有该键值对（添加成功 → 加锁成功）
 
@@ -703,9 +703,9 @@ config.setCodec(new JsonJacksonCodec());
 RedissonClient redissonClient = Redisson.create(config);
 ```
 
-需要注意的是，RedissonClient对象在创建的时候就会向Redis Server发起连接请求了，所以如果和Redis Server建立连接失败，那么RedissonClient对象也会创建失败！
+需要注意的是，`RedissonClient`对象在创建的时候就会向Redis Server发起连接请求了，所以如果和Redis Server建立连接失败，那么`RedissonClient`对象也会创建失败！
 
-创建好RedissonClient对象之后，我们就可以基于ReidssonClient对象实现对Redis中5种基本数据类型的访问了。
+创建好`RedissonClient`对象之后，我们就可以基于`ReidssonClient`对象实现对Redis中5种基本数据类型的访问了。
 
 + 在访问一个类型的值之前，总是要先获取`RBucket<>`对象，有一个泛型表示访问的类型对应的JAVA类型
 + `RBucket`对象：是一个代理对象，它就代理了Redis当中key值为name的键值对
@@ -750,7 +750,7 @@ private static void string(RedissonClient redissonClient) {
 
 > `bucket.tryset()`等同于Redis中的`setnx`：不存在key时再设置返回1代表成功，存在时设置失败返回0。不会覆盖原来的值。这种逻辑可以用来实现分布式锁。
 
-访问List类型的值
+访问`List`类型的值
 
 ```java
 private static void list(RedissonClient redissonClient) {
@@ -769,7 +769,7 @@ private static void list(RedissonClient redissonClient) {
 }
 ```
 
-访问Set类型的值
+访问`Set`类型的值
 
 ```java
 private static void set(RedissonClient redissonClient) {
@@ -790,7 +790,7 @@ private static void set(RedissonClient redissonClient) {
 }
 ```
 
-访问SortedSet类型的值
+访问`SortedSet`类型的值
 
 ```java
  private static void sortedSet(RedissonClient redissonClient) {
@@ -817,7 +817,7 @@ private static void set(RedissonClient redissonClient) {
 }
 ```
 
-访问hash数据类型的值
+访问`hash`数据类型的值
 
 ```java
 private static void map(RedissonClient redissonClient) {

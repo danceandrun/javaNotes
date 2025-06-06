@@ -1134,7 +1134,7 @@ public void testFieldMappingObj() {
 
 >  🏷️网关的实现方式：
 >
-> 1. 从代理的角度，网关是一个反向代理。可以基于Nginx实现，但是Nginx只有简单功能。Tenginx,OpenResty。
+> 1. 从代理的角度，网关是一个反向代理。可以基于Nginx实现，但是Nginx只有简单功能。Tenginx，OpenResty。
 > 2. 基于通用的网关框架，SpringCloud提供的一代Zuuul，二代Gateway等。（目前学习这种实现方式）
 > 3. 从web应用角度，网关本质是一个web应用。可以自己基于Web应用实现API网关的功能。
 
@@ -1149,6 +1149,7 @@ public void testFieldMappingObj() {
 所以 API 网关的通常作用是完成一些通用的功能，如请求认证，请求记录，请求限流，黑白名单判断等。
 
 API网关是一个服务器，是**系统的唯一入口**。
+
 API网关方式的核心要点是，所有的客户端和消费端都通过统一的网关接入微服务，在网关层处理所有的非业务功能。通常，网关提供REST/HTTP的访问API。
 
 ![1. 网关介绍](.\assets\1. 网关介绍.png)
@@ -1173,7 +1174,7 @@ API网关方式的核心要点是，所有的客户端和消费端都通过统�
 
  🏷️核心是通过定义`route`使用Spring Cloud Gateway。
 
-Spring Cloud Gateway是一个基于Spring生态的API网关，基于WebFlux（类似于SpringMVC）框架实现。它旨在以简单高效的方式实现，请求路由，以及一些其他的边缘功能，比如，安全，监控等功能。
+Spring Cloud Gateway是一个基于Spring生态的API网关，基于**WebFlux**（类似于SpringMVC）框架实现。它旨在以简单高效的方式实现，请求路由，以及一些其他的边缘功能，比如，安全，监控等功能。
 
 > WebFlux框架是一个**响应式编程的框架**。基于异步非阻塞实现，性能好。完全等价于SpringMVC。但是引入依赖时两者互斥，不能同时引入。
 >
@@ -1553,20 +1554,20 @@ public class MyGatewayFilter implements GlobalFilter, Ordered {
 
 ### MinIO介绍
 
-MinIO 是一个基于Apache License v2.0开源协议的对象存储服务器。它兼容亚马逊S3云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件等，而一个对象文件可以是任意大小，从几kb到最大`5T`[不等]。[详情参见官方文档地址](https://docs.min.io/)
+MinIO 是一个基于Apache License v2.0开源协议的对象存储服务器。它兼容亚马逊S3云存储服务接口，非常适合于存储**大容量非结构化**的数据，例如图片、视频、日志文件等，而一个对象文件可以是任意大小，从几kb到最大`5T`[不等]。[详情参见官方文档地址](https://docs.min.io/)
 
 MinIO作为一个优秀的开源对象存储服务器具有如下特征：
 
 - 高性能：作为高性能对象存储，在标准硬件条件下它能达到55GB/s的读、35GB/s的写速率
 - 可扩容：不同MinIO集群可以组成联邦，并形成一个全局的命名空间，并跨越多个数据中心
-- SDK支持: 它有类似Java、Python或Go等语言的sdk支持
-- 支持纠删码: MinIO使用纠删码、Checksum来防止硬件错误和静默数据污染。在最高冗余度配置下，即使丢失1/2的磁盘也能恢复数据。
+- SDK支持：它有类似Java、Python或Go等语言的sdk支持
+- 支持纠删码：MinIO使用纠删码、Checksum来防止硬件错误和静默数据污染。在最高冗余度配置下，即使丢失1/2的磁盘也能恢复数据。
 - 有控制台界面
 - 功能简单: 这一设计原则让MinIO不容易出错、更快启动
 
 MinIo的使用
 
-> 一下介绍是在Windows环境下，项目中是在Ubuntu中的docker安装，详情见环境配置。
+> 如下介绍是在Windows环境下，项目中是在Ubuntu中的docker安装，详情见环境配置。
 >
 > ### minio
 >
@@ -1643,7 +1644,7 @@ MinIO Server启动启动后，我们可以通过浏览器访问控制台界面�
 </dependency>
 ```
 
-基于客户端依赖，即可以实现文件上传功能，我们定义FilepuloadController代码如下：
+基于客户端依赖，即可以实现文件上传功能，我们定义`FileUploadController`代码如下：
 
 ```java
 @RestController
