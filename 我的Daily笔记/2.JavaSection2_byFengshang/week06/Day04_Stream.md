@@ -140,17 +140,17 @@ public void testWithStream() {
 
 ### 什么是流
 
-> `Java 8 API`添加了一个新的抽象称为流Stream，可以让你以一种声明的方式处理数据。
+> `Java 8 API`添加了一个新的抽象称为流`Stream`，可以让你以一种声明的方式处理数据。
 >
 > 这种风格将要处理的元素集合看作一种流， 流在管道中传输， 并且可以在管道的节点上进行处理， 比如筛选， 排序，聚合等。
 
-通俗的讲: 也就是说, `Stream`流是Java在`JDK1.8`提供的对<span style="font-size:20px;color:red;">集合数据进行优化/简化操作</span>的一种数据处理方式。
+通俗的讲: 也就是说，`Stream`流是Java在`JDK1.8`提供的对<span style="font-size:20px;color:red;">集合数据进行优化/简化操作</span>的一种数据处理方式。
 
 
 
 ### 流用来解决什么问题
 
-Stream流一般用来处理Java中的集合类数据, 进以避免在日常代码书写中的对集合数据操作的性能以及代码冗长问题。
+`Stream`流一般用来处理Java中的集合类数据，进以避免在日常代码书写中的对集合数据操作的性能以及代码冗长问题。
 
 ### 怎么使用流
 
@@ -187,11 +187,11 @@ Stream<String> stream = Arrays.stream(strs);
 
 ## 中间操作
 
-两个简单的中止操作：
+两个简单的终止操作：
 
-`count()`: 流里面有多少元素，最终会返回Long类型。
+`count()`：流里面有多少元素，最终会返回`Long`类型。
 
-`collect(Collectors.toList())`： 将流里面的元素，存储为一个List;
+`collect(Collectors.toList())`： 将流里面的元素，存储为一个`List`;
 
 
 
@@ -212,7 +212,7 @@ List<Student> collect = studentList.stream()
 System.out.println(collect);
 ```
 
-注意: 每次中间操作会返回一个 Stream (可以有多次中间操作),这就允许对其操作可以像链条一样排列,变成一个管道。
+注意：每次中间操作会返回一个 `Stream` (可以有多次中间操作)，这就允许对其操作可以像链条一样排列，变成一个管道。
 
 ```JAVA
 // Stream<T> filter(Predicate<? super T> predicate); 
@@ -224,13 +224,13 @@ System.out.println(collect);
 
 ### distinct(去重)
 
-distinct方法用于筛选元素(相当于去除重复元素)
+`distinct`方法用于筛选元素(相当于去除重复元素)
 
 <span style="font-size:20px;color:red;">使用场景：</span>
 
 - 对元素进行去重处理。底层是`LinkedHashSet`
 
-所以需要注意：如果使用自定义的类，调用distinct，需要重写hashCode和equals方法
+所以需要注意：如果使用自定义的类，调用`distinct`，需要重写`hashCode`和`equals`方法
 
 ```java
 //  Stream<T> distinct();
@@ -281,7 +281,7 @@ limit 方法用于获取指定数量(最大)的流。
 
 ### skip(跳过)
 
-skip(n)方法, 跳过前n个元素
+skip(n)方法，跳过前n个元素
 
 ```java
     List<Person> personList = StudentList.personList;
@@ -304,7 +304,7 @@ skip(n)方法, 跳过前n个元素
 
 ### <span style="color:red;">==map(转换)==</span>
 
-map 方法用于映射每个元素到对应的结果。
+map方法用于映射每个元素到对应的结果。
 
 从一个类型转换到另外一种类型。或者不变化类型
 
@@ -313,8 +313,6 @@ map 方法用于映射每个元素到对应的结果。
 - <span style=color:yellow;background:red>**输入的是一个类型，希望以另外一个类型输出。**</span>
   - 比如我想将一批人的年龄，转化为 青年（0-29），中青年（30-39），中年（40-49），中老年（50岁以上）。 
   - 比如我想将身高，映射为 超高人，高人，普通人。[190, +无穷), [175, 190) , (-无穷, 175]
-
-
 
 ```java
 // <R> Stream<R> map(Function<? super T, ? extends R> mapper);
@@ -402,7 +400,7 @@ sorted 方法用于对流进行排序
 
 ### anyMatch(是否有任意一个匹配)
 
-anyMatch:检查流到最后的数据,  是否有一个/多个数据匹配某种情况
+anyMatch：检查流到最后的数据,  是否有一个/多个数据匹配某种情况
 
 ```java
 //  boolean anyMatch(Predicate<? super T> predicate);
@@ -427,7 +425,7 @@ anyMatch:检查流到最后的数据,  是否有一个/多个数据匹配某种�
 
 ### allMatch(是否所有的全匹配)
 
-allMatch:检查是否所有元素都匹配
+allMatch：检查是否所有元素都匹配
 
 ```java
 // boolean allMatch(Predicate<? super T> predicate);
@@ -447,7 +445,7 @@ allMatch:检查是否所有元素都匹配
 
 ### noneMatch(没有匹配)
 
-noneMatch: 检查是否没有匹配元素
+noneMatch：检查是否没有匹配元素
 
 ```java
 // boolean noneMatch(Predicate<? super T> predicate);
@@ -463,7 +461,7 @@ noneMatch: 检查是否没有匹配元素
 
 ### findAny(找到任意一个)
 
-findAny:返回流中任意元素: 默认第一个
+findAny：返回流中任意元素: 默认第一个
 
 ```java
 // Optional<T> findAny();
@@ -514,7 +512,7 @@ if (any.isPresent()){
 
 ### findFirst(找到第一个)
 
-findFirst:返回第一个元素
+findFirst：返回第一个元素
 
 ```java
 //  Optional<T> findFirst();
@@ -528,7 +526,7 @@ findFirst:返回第一个元素
 
 ### forEach
 
-forEach: 遍历流
+forEach：遍历流
 
 ```java
 //  void forEach(Consumer<? super T> action);
@@ -543,7 +541,7 @@ forEach: 遍历流
 
 ### count
 
-count: 返回元素中数量
+count：返回元素中数量
 
 ```java
 //  long count();
@@ -560,9 +558,9 @@ count: 返回元素中数量
 
 ### reduce
 
-reduce: 计算元素
+reduce：计算元素
 
-reduce: 将参加计算的元素按照某种方式减少。
+reduce：将参加计算的元素按照某种方式减少。
 
 - 比如，两个元素比较，返回大的； 按照这个方式，最终会拿到最大的
 
@@ -622,7 +620,7 @@ List<Student> studentList = new StudentList().studentList;
 
 ### <span style="color:red;">==collect==</span>
 
-collect: 收集器, 用于收集数据经过流计算的结果
+collect: 收集器，用于收集数据经过流计算的结果
 
 #### 收集
 

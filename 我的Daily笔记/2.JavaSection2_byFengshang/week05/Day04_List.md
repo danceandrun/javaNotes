@@ -31,11 +31,11 @@
 
 ## 特点(重点)
 
-1. List是Collection的子接口。（父子继承关系，想对原有接口进行增强。）
+1. `List`是`Collection`的子接口。（父子继承关系，想对原有接口进行增强。）
 2. 数据结构表现为线性表。
 3. 存储数据有序。（存储进去的顺序和读取出来的顺序。 完全一致或者完全相反）
 4. 可以存储重复元素
-5. 可以存储null
+5. 可以存储`null`
 
 
 
@@ -59,7 +59,7 @@
 
 `Collection`的API我们已经学习过，所以直接学习`List`所特有的。
 
-// 线性表。 和Collection里面的API，最大的区别，就是**增加了很多下标操作**。
+// 线性表。 和`Collection`里面的API之间最大的区别，就是**增加了很多下标操作**。
 
 
 
@@ -108,9 +108,9 @@ ListIterator<E> listIterator(int index)；
 
 ### `listIterator`方法
 
-返回一个`ListIterator`的对象。这个与迭代器类似，只是可以前后移动，可以返回index。
+返回一个`ListIterator`的对象。这个与迭代器类似，只是可以前后移动，可以返回`index`。
 
-- 有参构造，返回的迭代器对象，调用next返回的是指定下标的元素。<font color=red>**所以传入的index应该在什么范围？**</font>
+- 有参构造，返回的迭代器对象，调用`next`返回的是指定下标的元素。<font color=red>**所以传入的index应该在什么范围？**</font>
 
 [0,length]
 
@@ -188,30 +188,30 @@ Edit Configurations --> Add VM options -->
 
 ## <span style=color:yellow;background:red>**ArrayList**</span>
 
-ArrayList是Java集合框架中的一种，它实现了List接口，可以动态地添加、删除和修改元素。<span style=color:red;background:yellow>**与传统的数组不同，ArrayList的大小可以根据需要自动增长和缩小，因此非常适用于需要频繁添加或删除元素的场景。**</span>
+`ArrayList`是Java集合框架中的一种，它实现了`List`接口，可以动态地添加、删除和修改元素。<span style=color:red;background:yellow>**与传统的数组不同，ArrayList的大小可以根据需要自动增长和缩小，因此非常适用于需要频繁添加或删除元素的场景。**</span>
 
-<span style=color:yellow;background:red>**ArrayList内部实际上是一个动态数组，它可以存储任意类型的对象。**</span>当创建一个ArrayList时，它的初始容量是10个元素，当元素数量超过容量时，ArrayList会自动增加容量，以便能够容纳更多的元素。
+<span style=color:yellow;background:red>**ArrayList内部实际上是一个动态数组，它可以存储任意类型的对象。**</span>当创建一个`ArrayList`时，它的初始容量是`10`个元素，当元素数量超过容量时，`ArrayList`会自动增加容量，以便能够容纳更多的元素。
 
-ArrayList提供了一系列方法，可以方便地操作其中的元素，例如add()方法可以在末尾添加元素，remove()方法可以删除指定位置的元素，get()方法可以获取指定位置的元素，set()方法可以修改指定位置的元素等等。
+`ArrayList`提供了一系列方法，可以方便地操作其中的元素，例如`add()`方法可以在末尾添加元素，`remove()`方法可以删除指定位置的元素，`get()`方法可以获取指定位置的元素，`set()`方法可以修改指定位置的元素等等。
 
 ### 特点
 
-1. ArrayList是List的实现。
-2. ArrayList数据结构表现为线性表
+1. `ArrayList`是`List`的实现。
+2. `ArrayList`数据结构表现为线性表
 3. <span style=color:red;background:yellow>**底层结构是数组**</span>
 4. 存储元素，有序
 5. 可以存储重复元素
-6. 可以存储null
+6. 可以存储`null`
 
 ### 构造方法
 
 ```java
 //构造一个初始容量为 10 的空数组。
-	ArrayList()；
+ArrayList()；
 //构造一个包含指定 collection 的元素的列表，这些元素是按照该 collection 的迭代器返回它们的顺序排列的。
-  ArrayList(Collection<? extends E> c)；
+ArrayList(Collection<? extends E> c)；
 //构造一个具有指定初始容量的空列表。    
-  ArrayList(int initialCapacity)
+ArrayList(int initialCapacity)
 
 // List接口。 接口没有构造方法
 ```
@@ -231,9 +231,9 @@ void trimToSize()
 
 怎么写集合
 
-推荐一般情况用List引用指向ArrayList对象。
+推荐一般情况用`List`引用指向`ArrayList`对象。
 
-原因在于面向接口编程，这样如果以后发现数组效率不行，可以便于在不改变引用的情况下，改对象new LinkedList<>().
+原因在于面向接口编程，这样如果以后发现数组效率不行，可以便于在不改变引用的情况下，改对象`new LinkedList<>()`。
 
 ```JAVA
 List<String> list = new ArrayList<>();
@@ -243,7 +243,10 @@ List<String> list = new ArrayList<>();
 
 ## `ArrayList`的源码
 
-关心两点：1.在哪里进行初始化的；2.怎么扩容的
+关心两点：
+
+1. 在哪里进行初始化的；
+2. 怎么扩容的
 
 ### 初始化
 
