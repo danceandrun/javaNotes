@@ -27,7 +27,7 @@ Ribbon是一个客户端负载均衡器，能够给HTTP客户端带来灵活的�
 >
 > [CircuitBreaker (martinfowler.com)](https://martinfowler.com/bliki/CircuitBreaker.html)
 >
-> 1. 所谓的服务实例的断路，是指Ribbon在选择服务实例的时候不再考虑选择这个服务实例
+> 1. 所谓的服务实例的断路，是**指Ribbon在选择服务实例的时候不再考虑选择这个服务实例**
 > 2. 服务实例断路效果是有一个时间窗口的，过了这个时间窗口（默认是60秒），Ribbon又会重新考虑选择该服务实例
 >
 >  🏷️区域权重策略
@@ -38,7 +38,7 @@ Ribbon是一个客户端负载均衡器，能够给HTTP客户端带来灵活的�
 >
 > 1. 选择合适的机房
 >    1. 怎么选择机房？
->    2. Ribbon会统计一个机房当中总体的服务实例数量，未被断路的服务实例数量，所有服务实例并发连接数的总和。从而利用平均负载判断忙碌程度（平均负载=并发连接数总和/未断路的服务数量）。
+>    2. Ribbon会统计一个机房当中总体的服务实例数量，未被断路的服务实例数量，所有服务实例并发连接数的总和。从而利用平均负载判断忙碌程度（平均负载 = 并发连接数总和/未断路的服务数量）。
 > 2. 在合适机房中的多个实例里选择合适的服务实例
 >    1. 使用轮询策略
 >
@@ -103,7 +103,7 @@ public class RegistryConsumerController {
 >  🏷️Ribbon增加`@LoadBalanced`之后的工作原理
 >
 > 1. 当加了`@LoadBalanced`注解之后，`RestTemplate`会被增强
-> 2. 所谓增强指的是，Ribbon会给`RestTemplate`设置一个拦截器，该拦截器，在`RestTemplate`真正发起请求**之前**，拦截请求，Ribbon的功能就在该拦截器中执行
+> 2. 所谓增强指的是，Ribbon会给`RestTemplate`设置一个拦截器。该拦截器，在`RestTemplate`真正发起请求**之前**拦截请求，Ribbon的功能就在该拦截器中执行
 > 3. Ribbon会访问服务注册中心，根据原始url中的服务名称，获取该服务的所有服务实例的地址信息
 > 4. Ribbon会根据自己的负载均衡策略，选择一个服务实例，用该服务实例的ip:port，替换原始url中的服务名称
 > 5. 由`RestTemplate`发送真正的请求
@@ -135,7 +135,7 @@ users:
 public class FooConfiguration {
 
     // 这里的xxxRule对应的就是
-  // 只有IRule对象才代表负载均衡的策略对象
+  	// 只有IRule对象才代表负载均衡的策略对象
     @Bean
     public IRule ribbonRule() {
         return new xxxRule();
@@ -186,9 +186,9 @@ public class MyBalanceRule extends AbstractLoadBalancerRule {
 
 >  // `getReachableServers()`和`getAllServers()`的区别？
 >
->  这涉及到Ribbon的实现，Ribbon会访问到服务注册中心，拿到的服务实例列表就是allServers，Ribbon进一步地会做**可答性检查**。如何检查的呢？Ribbon有一个类似ping的接口操作，ping操作，可以建立连接就会放入reachableServers。
+>  这涉及到Ribbon的实现，Ribbon会访问到服务注册中心，拿到的服务实例列表就是`allServers`，Ribbon进一步地会做**可答性检查**。如何检查的呢？Ribbon有一个类似ping的接口操作，ping操作，可以建立连接就会放入`reachableServers`。
 >
->  而在SpringCloud的默认ping操作中DummyPing不做判断，isAlive方法直接返回true。
+>  而在SpringCloud的默认ping操作中DummyPing不做判断，`isAlive`方法直接返回`true`。
 >
 >  ![ribbon reachable-servers](.\assets\ribbon reachable-servers.png)
 
@@ -228,7 +228,7 @@ public class RegistryConsumerController {
 ### OpenFeign 客户端
 
 > 1. OpenFeign整合了Ribbon，有负载均衡
-> 2. OpenFeign可以发送请求，不需要再使用RestTemplate
+> 2. OpenFeign可以发送请求，不需要再使用`RestTemplate`
 
 OpenFeign可以帮助我们实现服务调用代码与Restful风格的Http请求解耦的功能。OpenFeign是一个实现Java代码和Http客户端绑定的**绑定器**，通俗解释，它可以帮助我们以统一的方式，将接口"翻译"成Restful风格的HTTP请求。
 
@@ -311,7 +311,7 @@ public interface TestArgFeignClient {
 
 ##### 对象参数(返回值)
 
-刚才我们测试了，简单参数(Jdk中本身就有的数据类型)，现在我们来看看另一种情况，当我们被调用的目标服务方法需要返回(或接收)一个自定义对象User的时候，比如我们对用户服务做一个简单的改造如下
+刚才我们测试了，简单参数(Jdk中本身就有的数据类型)，现在我们来看看另一种情况，当我们被调用的目标服务方法需要返回(或接收)一个自定义对象`User`的时候，比如我们对用户服务做一个简单的改造如下
 
 ```java
 @RestController
@@ -353,7 +353,7 @@ public interface UserFeignClient {
 - 让Order-Service也认识User-Service中定义的即可
 - 因此我们在添加一个Maven工程，在该工程中，定义User，在让Order-Service和User-Service都依赖这个Maven工程即可
 
-![](E:\0.王道训练营\3.我的Daily笔记\4.MicroService\06_SpringCloud-2\assets\feign-api.png)
+![](.\assets\feign-api.png)
 
 同时，分别在Order-Service和UserService中添加User-service-api的依赖即可
 
@@ -361,7 +361,7 @@ public interface UserFeignClient {
 
 ![](.\assets\orer-feign-api.png)
 
-这里要注意，为什么我们不直接让Order-Service直接依赖UserService，这样不是也可以让Order-Service认识在User-Service中定义的User类吗？因为一旦Order-Service依赖了User-Service，那么OrderService在打包的时候，就会把User-Service的代码直接打包在一起，两个服务打成一个jar包，一旦运行起来，两个服务的代码运行在同一个进程中，这违反了微服务的理念。
+这里要注意，为什么我们不直接让Order-Service直接依赖UserService，这样不是也可以让Order-Service认识在User-Service中定义的`User`类吗？因为一旦Order-Service依赖了User-Service，那么OrderService在打包的时候，就会把User-Service的代码直接打包在一起，两个服务打成一个jar包，一旦运行起来，两个服务的代码运行在同一个进程中，这违反了微服务的理念。
 
 > 如何做到“翻译”的呢？
 >
@@ -373,7 +373,7 @@ public interface UserFeignClient {
 >
 > 🍃 但是在OpenFeign中请求参数必须要加上`@RequestParam`注解。因为在SpringMVC解析时不需要注解，但是现在解析请求参数的不是SpringMVC而是OpenFeign。
 >
-> 🍃OpenFeign的原理是使用注解信息找到服务调用的Controller方法，所以方法名不需要和Controller方法一致，没有要求。但是实际开发中，习惯上会保持一致。
+> 🍃OpenFeign的原理是使用注解信息找到服务调用的`Controller`方法，所以方法名不需要和`Controller`方法一致，没有要求。但是实际开发中，习惯上会保持一致。
 >
 > 进一步使用：
 >
@@ -419,7 +419,7 @@ public class FeignConfig {
 
 > 一次正常的服务调用过程，应该在有限的时间内返回。
 
-通常，一次远程调用过程中，服务消费者不可能无限制的等待服务提供者返回的结果，正常情况下，服务提供者的一次调用执行过程也不会执行很长时间(除非出现网络故障，或者服务提供者宕机等问题)，所以为防止，在非正常情况下服务消费者在调用过程中的长时间**阻塞等待**，对于一次服务调用过程，我们会设置其**超时时间**。一次服务调用，超时未返回即认为调用失败。在使用Feign的时候，我们可以配置其超时时间。默认配置是1秒。
+通常，一次远程调用过程中，服务消费者不可能无限制的等待服务提供者返回的结果，正常情况下，服务提供者的一次调用执行过程也不会执行很长时间(除非出现网络故障，或者服务提供者宕机等问题)。所以为防止在非正常情况下服务消费者在调用过程中的长时间**阻塞等待**，对于一次服务调用过程，我们会设置其**超时时间**。一次服务调用，超时未返回即认为调用失败。在使用Feign的时候，我们可以配置其超时时间。默认配置是1秒。
 
 ![服务调用的超时时间](.\assets\服务调用的超时时间.png)
 
@@ -452,7 +452,7 @@ feign:
 
 ### 配置中心
 
-如果要解决以上问题，那么在我们微服务架构的项目中，我们就得引入一个新的角色——配置中心来解决这个问题了，类似于注册中心，配置中心的实现也有多种，而**Nacos同时也实现了配置中心的角色**。
+如果要解决以上问题，那么在我们微服务架构的项目中，我们就得引入一个新的角色——配置中心来解决这个问题了。类似于注册中心，配置中心的实现也有多种，而**Nacos同时也实现了配置中心的角色**。
 
 - 使用配置中心可以让您以**中心化、外部化和动态化**(动态化即可以实时刷新配置)的方式管理所有环境的应用配置和服务配置。
 - 动态配置消除了配置变更时重新部署应用和服务的需要，让配置管理变得更加高效和敏捷。
@@ -468,7 +468,7 @@ Nacos除了可以作为服务注册中心之外，还可以实现服务配置中
 
 所以接下来，我们得介绍一下Nacos中定义的基本概念：
 
-- **配置项**: 一个具体的可配置的参数与其值域，通常以 param-key=param-value 的形式存在。例如我们常配置系统的日志输出级别（logLevel=INFO|WARN|ERROR） 就是一个配置项。
+- **配置项**: 一个具体的可配置的参数与其值域，通常以 `param-key=param-value` 的形式存在。例如我们常配置系统的日志输出级别（logLevel=INFO|WARN|ERROR） 就是一个配置项。
 - **配置集**：一组相关或者不相关的配置项的集合称为配置集。在系统中，一个配置文件通常就是一个配置集，包含了系统各个方面的配置，每一个配置集都对应一个唯一的DataId，DataId必须由我们自己定义。
 - **配置分组**:  Nacos 中的一组配置集，是组织配置的维度之一，每一个分组都有一个唯一的组名，如果我们未定义，则默认使用DEFAULT-GROUP分组
 - **命名空间**:  用于进行*用户粒度*的配置隔离，每一个命名空间都有一个唯一的Id值，如果我们未定义，则默认使用public命名空间

@@ -33,7 +33,7 @@
 - 代码过度复杂且严重耦合，导致难以维护
 
 > 1. 由于系统本身过于庞大和复杂，以至于任何一个开发者都很难理解它的全部，因此，修复软件中的问题和正确实现新功能就变得困难且耗时
-> 2. 更糟糕的是，这种极度的复杂性，可能会形成一个恶性循环: 由于代码难以理解，因此开发者在更改时更容易出错，每一次更改都会让代码库变得更复杂，更难懂
+> 2. 更糟糕的是，这种极度的复杂性，可能会形成一个恶性循环：由于代码难以理解，因此开发者在更改时更容易出错，每一次更改都会让代码库变得更复杂，更难懂
 
 - 从代码提交到实际部署的周期很长
 
@@ -44,7 +44,7 @@
 - 扩展性受限
 
 > 1. 如果单体应用中的某一个功能点存在性能问题，那么就需要多部署几个单体应用的实例，再加上负载均衡的设备(比如nginx)，才能保证整个应用的性能能够支撑用户的使用
-> 2. 在某些情况下，应用的不同模块对资源的需求是相互冲突的，比如某些模块需要高效的IO，某些模块需要高性能的CPU, 而这些模块都在一个单体应用之内，因此其所部署的服务器必须满足所有的需求  
+> 2. 在某些情况下，应用的不同模块对资源的需求是相互冲突的，比如某些模块需要高效的IO，某些模块需要高性能的CPU，而这些模块都在一个单体应用之内，因此其所部署的服务器必须满足所有的需求  
 
 - 开发慢，启动慢，严重影响开发效率
 - 交付可靠的单体应用困难
@@ -149,7 +149,7 @@ SpringCloud 基于SpringBoot提供了一套微服务架构实现的解决方案�
 >
 > 注意：一个子工程只能有一个父工程
 >
-> SpringBoot工程天生有一个父工程，而我们使用springCloud时要使用到spring-cloud,spring-cloud-alibaba,spring-boot这三个东西，所以一般不创建SpringBoot工程而是创建普通Maven工程。
+> SpringBoot工程天生有一个父工程，而我们使用springCloud时要使用到spring-cloud，spring-cloud-alibaba，spring-boot这三个东西，所以一般不创建SpringBoot工程而是创建普通Maven工程。
 >
 > 如何整合父子工程，在操作系统中直接将子工程的文件夹放在父工程的pom.xml所在文件夹下。
 
@@ -178,8 +178,8 @@ SpringCloud 基于SpringBoot提供了一套微服务架构实现的解决方案�
 
 实际上，服务间的调用，基于我们以前学习过的知识，就可以轻松解决：
 
-- 基于SpringCloud实现的微服务，其本质是Tomcat中的一个应用，它们都支持基于Http协议的通信，因此我们可以通过Http协议实现服务进程(实例)间的通信
-- 于是服务间的通信过程就变成了，调用者发送Http请求，被调用这返回Http响应，一次请求响应过程，就等价于一次服务调用过程
+- 基于SpringCloud实现的微服务，其本质是Tomcat中的一个应用，它们都支持基于Http协议的通信，因此我们可以通过Http协议实现服务进程（实例）间的通信
+- 于是服务间的通信过程就变成了：调用者发送Http请求，被调用者返回Http响应。一次请求响应过程，就等价于一次服务调用过程
 - 在一次服务调用过程中，我们称调用者为**服务消费者**(使用或者消费另一个服务的功能)，我们称被调用者为**服务提供者**(提供被消费的功能)
 
 因此，服务提供者只要对外暴露了接口，那么服务消费者就能通过调用服务提供者对外提供的接口，从而实现对服务提供者的调用，使用服务提供者的功能。
@@ -206,7 +206,7 @@ RestTemplate()
 Create a new instance of the RestTemplate using default settings.
 ```
 
-同时，我们可以通过一个`RestTemplate`对象，发起`POST`,`GET`,`DELETE`,`PUT`,`PATCH` 等不同种类的Http请求，我们以最常用的`GET`和`POST`两种方式为例来学习`RestTemplate`的用法。
+同时，我们可以通过一个`RestTemplate`对象，发起`POST`、`GET`、`DELETE`、`PUT`、`PATCH` 等不同种类的Http请求，我们以最常用的`GET`和`POST`两种方式为例来学习`RestTemplate`的用法。
 
 ```java
 // RestTemplate的API
@@ -251,7 +251,7 @@ public <T> ResponseEntity<T> postForEntity(String url, @Nullable Object request,
 public <T> ResponseEntity<T> postForEntity(String url, @Nullable Object request, Class<T> responseType, Map<String,?> uriVariables)
 ```
 
-我们以发送GET请求为例来说明：
+我们以发送`GET`请求为例来说明：
 
 ```java
 // 准备好请求的url，携带名为name的请求参数，占位符的名称为name 
@@ -547,11 +547,13 @@ public class OrderService {
 }
 ```
 
-> 🏷️ 新的问题
->
-> 多个订单服务进程，代表多个订单服务实例，可以组成订单服务集群。但是url里将端口号写定了，只能发给一个服务器。
+🏷️ 新的问题
 
-如果一个服务消费者实例可以**自动发现服务提供者**就可以解决了。这就需要使用新的组件，服务注册中心。
+多个订单服务进程，代表多个订单服务实例，可以组成订单服务集群。但是url里将端口号写定了，只能发给一个服务器。
+
+
+
+如果一个服务消费者实例可以**自动发现服务提供者**就可以解决了。这就需要使用新的组件：服务注册中心。
 
 服务实例，在**启动的时候**会向服务注册中心注册，注册服务实例所属的服务名称，ip地址，端口号。
 
@@ -563,9 +565,8 @@ public class OrderService {
 3. 服务实例从注册中心下载服务实例地址列表
 4. 注册中心还需要给服务实例同步最新的服务实例列表信息
 
-> 一个进程如何感知另一个进程的状态？
+> 一个进程如何感知另一个进程的状态？通过心跳协议
 >
-> 通过心跳协议
 
 ## 服务的注册与发现
 
@@ -573,7 +574,9 @@ public class OrderService {
 
 ### 问题的引出
 
-首先回顾一下，对于服务消费者而言，它如何知道服务提供者的信息，从而调用远程服务的功能呢? 再来看看代码
+首先回顾一下，**对于服务消费者而言，它如何知道服务提供者的信息，从而调用远程服务的功能呢**? 
+
+再来看看代码
 
 ```java
 String url = "http://localhost:9001/user/address/{userId}";
@@ -588,11 +591,11 @@ String userAddress = restTemplate.getForObject(url, String.class, order.getUserI
 - 假设对于用户服务的请求量很大，一个用户服务实例(进程)处理不了这么多的请求了，此时我们就可以启动多个用户服务实例(进程)，此时，这多个用户服务实例就组成了**用户服务的集群**
 - 但是我们如果写死了调用的服务提供者的地址，即使有用户服务的集群，有意义吗？没有，因为写死了服务调用的地址，所以我们永远只能调用到集群中的一个服务实例！
 
- 此时矛盾就出现了，服务调用时必须知道服务提供者的地址，但是在代码里把改地址写死，就永远只能调用确定的那一个服务实例，但是如果不在代码里写服务调用的地址，我们又从哪里得到服务提供者实例的地址呢？
+此时矛盾就出现了，服务调用时必须知道服务提供者的地址，但是在代码里把改地址写死，就永远只能调用确定的那一个服务实例，**但是如果不在代码里写服务调用的地址，我们又从哪里得到服务提供者实例的地址呢**？
 
 ### 服务注册中心
 
-那么，如果在定义服务消费者的时候，不指明服务消费者调用的服务提供者地址，那么服务消费者怎么知道去哪里调用服务提供者呢？此时，我们就需要引入一个新的角色——服务注册中心，由服务注册中心来统一管理服务的状态和信息，那么这个问题就可以解决了。
+那么，如果在定义服务消费者的时候，不指明服务消费者调用的服务提供者地址，那么服务消费者怎么知道去哪里调用服务提供者呢？此时，我们就需要引入一个新的角色——服务注册中心，<u>由服务注册中心来统一管理服务的状态和信息</u>，那么这个问题就可以解决了。
 
 ![服务注册中心 (1)](SpringCloud笔记  .assets/服务注册中心 (1).png)
 
@@ -601,10 +604,12 @@ String userAddress = restTemplate.getForObject(url, String.class, order.getUserI
 - 在服务启动时，会将自己的信息，注册到服务注册中心，其中就包括ip地址，端口号等信息。即实现服务的注册
 - 在服务运行过程中，会实时向服务注册中心"报告"自己的状态，因此服务注册中心就可以实时感知到服务的运行状态
 
-- 同时，在服务启动时，也会去注册中心拉取，其他服务信息，即将服务注册表信息下载到本地，这样一来一个服务就可以知道，其他服务调用地址等信息
+- 同时，在服务启动时，也会去注册中心拉取，其他服务信息，即将服务注册表信息下载到本地。这样一来，一个服务就可以知道其他服务调用地址等信息
 - 在服务运行的过程中，服务会从注册中心实时拉取最新的服务注册表信息，从而实现服务的实时发现
 
-那么服务注册中心需要我们自己去实现吗？不是，已经有很多的注册中心实现供我们使用了，比如SpringCloud Netflix中的**Eureka**，比如SpringCloud Alibaba中的**Nacos**等等。
+那么服务注册中心需要我们自己去实现吗？
+
+不需要，已经有很多的注册中心实现供我们使用了，比如SpringCloud Netflix中的**Eureka**，SpringCloud Alibaba中的**Nacos**等等。
 
 > 微服务的鼻祖就是Netflix
 
@@ -666,7 +671,7 @@ eureka:
   client:
     # 表示是否向 Eureka 注册中心注册自己(这个模块本身是服务器,所以不需要)
     register-with-eureka: false
-    # fetch-registry如果为false,则表示自己为注册中心,客户端的为 ture
+    # fetch-registry如果为false，则表示自己为注册中心,客户端的为 ture
     fetch-registry: false
     service-url:
       defaultZone: http://localhost:7001/eureka/
@@ -793,10 +798,10 @@ public class RegistryConsumerApplication {
 
 ```java
 // 注入服务发现的客户端对象，通过该对象访问从注册中心下载的服务信息 
-@Autowired
- DiscoveryClient discoveryClient;   
+	@Autowired
+	DiscoveryClient discoveryClient;   
 
-@GetMapping("/eureka")
+	@GetMapping("/eureka")
     public String consumeByEureka(String name) {
         // 获取名为registry-provider的服务实例
         List<ServiceInstance> instances = discoveryClient.getInstances("registry-provider");
@@ -964,7 +969,7 @@ public class NacosProvider8002Application {
 
 ```
 
-接着是nacos-consumer-8001模块，依赖，配置同nacos-provider-8002，就是server.port端口改为8001,**这里不再赘述**。代码如下
+接着是nacos-consumer-8001模块，依赖，配置同nacos-provider-8002，就是server.port端口改为8001，这里不再赘述。代码如下
 
 ```java
 @Configuration
