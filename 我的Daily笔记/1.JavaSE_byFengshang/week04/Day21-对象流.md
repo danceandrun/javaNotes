@@ -48,8 +48,8 @@
 
 >目前已知三种创建对象的方式：
 >
->1. new对象 
->2. clone  
+>1. `new()`对象 
+>2. `clone()`
 >3. 反序列化   
 
 ### 序列化和反序列化基本使用
@@ -96,19 +96,19 @@
 >
 > 克隆操作要实现`java.lang.Cloneable`
 
->  🏷️序列化要做的事情：
->
-> 1. 实现接口`java.io.Serializable`
->
-> 2. 某个要进行序列化操作的类型，必须显示声明`serialVersionUID`
->
->    格式：
->
->    ```java
->    private static final long serialVersionUID = xxxL;
->    ```
->
->    修改IDEA设置自动加UID（Editors ---> Inspections --->  搜索UID）
+🏷️序列化要做的事情：
+
+1. 实现接口`java.io.Serializable`
+
+2. 某个要进行序列化操作的类型，必须显示声明`serialVersionUID`
+
+  格式：
+
+  ```java
+private static final long serialVersionUID = xxxL;
+  ```
+
+  修改IDEA设置自动加UID（Editors ---> Inspections --->  搜索UID）
 
 ### `transient`关键字
 
@@ -121,5 +121,4 @@
 3. 成员变量包含敏感信息，如密码、安全密钥等，不应该在序列化过程中暴露。
 
 > `static`修饰的静态字段也是不能够序列化保存的。因为序列化的目的是保存对象的状态，当然不会存储属于类的静态字段。
-
 
